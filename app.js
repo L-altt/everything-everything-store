@@ -1354,15 +1354,7 @@ modal?.addEventListener(
       event.target === modal
     ) {
 
-      closeCheckout();
-
-    }
-
-  }
-);
-
-
-/* =========================================================
+      /* =========================================================
    CHECKOUT
 ========================================================= */
 
@@ -1374,11 +1366,16 @@ document
 
       event.preventDefault();
 
+      if (!state.cart.length) {
+
+        alert("Your basket is empty.");
+
+        return;
+
+      }
 
       const form =
-        new FormData(
-          event.target
-        );
+        new FormData(event.target);
 
 
       const customer = {
@@ -1404,26 +1401,91 @@ document
       );
 
 
-      /*
-        Payment integration will be connected
-        here later.
+      /* =====================================================
+         CALCULATE ORDER TOTAL
+      ====================================================== */
 
-        For now we display a message rather
-        than pretending payment has happened.
-      */
-
-      const status =
-        document.querySelector(
-          "#checkoutStatus"
+      const total =
+        state.cart.reduce(
+          (sum, item) =>
+            sum +
+            (Number(item.price) * Number(item.qty)),
+          0
         );
 
 
-      if (status) {
+      /* =====================================================
+         BUILD WHATSAPP ORDER MESSAGE
+      ====================================================== */
 
-        status.textContent =
-          "Your order details have been saved. Payment integration will be connected next.";
+      let message =
+        "Hello Everything Everything! 👋\n\n" +
+        "I would like to place an order.\n\n";
 
-      }
+
+      message += "CUSTOMER DETAILS\n";
+      message += "Name: " + customer.name + "\n";
+      message += "Phone: " + customer.phone + "\n";
+      message += "Email: " + customer.email + "\n";
+      message += "Delivery location: " + customer.address + "\n\n";
+
+
+      message += "ORDER DETAILS\n";
+
+
+      state.cart.forEach((item, index) => {
+
+        message +=
+          `${index + 1}. ${item.name}\n`;
+
+        message +=
+          `Quantity: ${item.qty}\n`;
+
+        message +=
+          `Price: GH₵${money(item.price)} each\n`;
+
+        if (item.meta) {
+
+          message +=
+            `Ingredients: ${item.meta}\n`;
+
+        }
+
+        message +=
+          `Subtotal: GH₵${money(
+            item.price * item.qty
+          )}\n\n`;
+
+      });
+
+
+      message +=
+        "TOTAL: GH₵" +
+        money(total) +
+        "\n\n";
+
+
+      message +=
+        "Please confirm my order and let me know the next steps. Thank you!";
+
+
+      /* =====================================================
+         OPEN WHATSAPP
+      ====================================================== */
+
+      const whatsappNumber =
+        "233547026348";
+
+
+      const whatsappUrl =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(message);
+
+
+      window.location.href =
+        whatsappUrl;
 
     }
   );
