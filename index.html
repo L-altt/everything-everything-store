@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Everything Everything — groceries, clothing, jewelry and gifts.">
+  <title>Everything Everything</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home">EVERYTHING <span>EVERYTHING</span></a>
+    <nav>
+      <a href="#shop">Shop</a>
+      <a href="#platter">Build a Platter</a>
+      <a href="#about">About</a>
+    </nav>
+    <button id="cartBtn" class="cart-btn">Basket <b id="cartCount">0</b></button>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div>
+        <p class="eyebrow">A PLATTER MALL</p>
+        <h1>Everything you need,<br>all in one place.</h1>
+        <p>Browse groceries, clothing, jewelry and gifts, then check out securely.</p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#shop">Browse stock ↓</a>
+          <a class="btn secondary" href="#platter">Build a platter</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <span>EVERYTHING</span>
+        <strong>ONE PLACE.<br>EVERYTHING.</strong>
+      </div>
+    </section>
+
+    <section id="shop" class="section">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">SHOP</p>
+          <h2>Browse our store</h2>
+        </div>
+        <div id="categoryFilters" class="filters"></div>
+      </div>
+      <div id="productGrid" class="product-grid">
+        <div class="loading">Loading products…</div>
+      </div>
+    </section>
+
+    <section id="platter" class="section platter">
+      <div>
+        <p class="eyebrow">BUILD YOUR OWN</p>
+        <h2>Create your custom platter.</h2>
+        <p>Choose a meal and select exactly the ingredients you want. Your custom platter is added to the basket as one order item.</p>
+      </div>
+      <div class="platter-box">
+        <label>Choose a meal
+          <select id="mealSelect"><option value="">Select a meal</option></select>
+        </label>
+        <div id="ingredientList" class="ingredient-list"></div>
+        <div class="platter-total">Total <strong>GH₵<span id="platterTotal">0.00</span></strong></div>
+        <button id="addPlatter" class="btn primary" disabled>Add platter to basket</button>
+      </div>
+    </section>
+
+    <section id="about" class="section features">
+      <div><b>Sold in platters</b><span>Carefully packed for you.</span></div>
+      <div><b>Fast & reliable delivery</b><span>Delivered safely to your doorstep.</span></div>
+      <div><b>Safe & easy shopping</b><span>Secure online checkout.</span></div>
+      <div><b>Quality assured</b><span>We deliver only the best.</span></div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>EVERYTHING EVERYTHING</strong>
+    <span>Your one-stop shopping mall.</span>
+  </footer>
+
+  <aside id="cartDrawer" class="drawer" aria-hidden="true">
+    <div class="drawer-head"><h2>Your Basket</h2><button id="closeCart">×</button></div>
+    <div id="cartItems" class="cart-items"></div>
+    <div class="cart-total">Total <strong>GH₵<span id="cartTotal">0.00</span></strong></div>
+    <button id="checkoutBtn" class="btn primary full">Checkout</button>
+  </aside>
+
+  <div id="modal" class="modal hidden">
+    <div class="modal-card">
+      <button id="closeModal" class="modal-close">×</button>
+      <h2>Checkout</h2>
+      <p>Enter your delivery details. Payment is processed securely through Paystack.</p>
+      <form id="checkoutForm">
+        <label>Name<input name="name" required></label>
+        <label>Phone<input name="phone" required></label>
+        <label>Email<input name="email" type="email" required></label>
+        <label>Delivery location<textarea name="address" required></textarea></label>
+        <button class="btn primary full" type="submit">Continue to Paystack</button>
+      </form>
+      <p id="checkoutStatus" class="status"></p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
