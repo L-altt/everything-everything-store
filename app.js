@@ -1305,30 +1305,25 @@ function openCheckout() {
 
   if (!state.cart.length) {
 
-    alert(
-      "Your basket is empty."
-    );
+    alert("Your basket is empty.");
 
     return;
 
   }
 
-
-  modal?.classList.remove(
-    "hidden"
-  );
+  modal?.classList.remove("hidden");
 
 }
 
 
 function closeCheckout() {
 
-  modal?.classList.add(
-    "hidden"
-  );
+  modal?.classList.add("hidden");
 
 }
 
+
+/* OPEN CHECKOUT */
 
 document
   .querySelector("#checkoutBtn")
@@ -1338,6 +1333,8 @@ document
   );
 
 
+/* CLOSE CHECKOUT */
+
 document
   .querySelector("#closeModal")
   ?.addEventListener(
@@ -1346,16 +1343,24 @@ document
   );
 
 
+/* CLOSE WHEN CLICKING OUTSIDE MODAL */
+
 modal?.addEventListener(
   "click",
   event => {
 
-    if (
-      event.target === modal
-    ) {
+    if (event.target === modal) {
 
-      /* =========================================================
-   CHECKOUT
+      closeCheckout();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   CHECKOUT FORM
 ========================================================= */
 
 document
@@ -1366,6 +1371,7 @@ document
 
       event.preventDefault();
 
+
       if (!state.cart.length) {
 
         alert("Your basket is empty.");
@@ -1373,6 +1379,7 @@ document
         return;
 
       }
+
 
       const form =
         new FormData(event.target);
@@ -1395,6 +1402,8 @@ document
       };
 
 
+      /* SAVE CUSTOMER DETAILS */
+
       localStorage.setItem(
         "ee_customer",
         JSON.stringify(customer)
@@ -1415,7 +1424,7 @@ document
 
 
       /* =====================================================
-         BUILD WHATSAPP ORDER MESSAGE
+         BUILD WHATSAPP MESSAGE
       ====================================================== */
 
       let message =
@@ -1424,10 +1433,26 @@ document
 
 
       message += "CUSTOMER DETAILS\n";
-      message += "Name: " + customer.name + "\n";
-      message += "Phone: " + customer.phone + "\n";
-      message += "Email: " + customer.email + "\n";
-      message += "Delivery location: " + customer.address + "\n\n";
+
+      message +=
+        "Name: " +
+        customer.name +
+        "\n";
+
+      message +=
+        "Phone: " +
+        customer.phone +
+        "\n";
+
+      message +=
+        "Email: " +
+        customer.email +
+        "\n";
+
+      message +=
+        "Delivery location: " +
+        customer.address +
+        "\n\n";
 
 
       message += "ORDER DETAILS\n";
@@ -1444,12 +1469,14 @@ document
         message +=
           `Price: GH₵${money(item.price)} each\n`;
 
+
         if (item.meta) {
 
           message +=
             `Ingredients: ${item.meta}\n`;
 
         }
+
 
         message +=
           `Subtotal: GH₵${money(
@@ -1470,7 +1497,7 @@ document
 
 
       /* =====================================================
-         OPEN WHATSAPP
+         WHATSAPP
       ====================================================== */
 
       const whatsappNumber =
@@ -1483,6 +1510,13 @@ document
         "?text=" +
         encodeURIComponent(message);
 
+
+      /* CLOSE MODAL */
+
+      closeCheckout();
+
+
+      /* OPEN WHATSAPP */
 
       window.location.href =
         whatsappUrl;
