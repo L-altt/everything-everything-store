@@ -2,105 +2,994 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Everything Everything — groceries, clothing, jewelry and gifts.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="Everything Everything — your one-stop shopping destination for groceries, clothing, jewelry, gifts and more."
+  >
+
+  <meta name="theme-color" content="#111111">
+
   <title>Everything Everything</title>
+
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <header class="site-header">
-    <a class="brand" href="#home">EVERYTHING <span>EVERYTHING</span></a>
-    <nav>
-      <a href="#shop">Shop</a>
-      <a href="#platter">Build a Platter</a>
-      <a href="#about">About</a>
-    </nav>
-    <button id="cartBtn" class="cart-btn">Basket <b id="cartCount">0</b></button>
-  </header>
 
-  <main>
-    <section id="home" class="hero">
-      <div>
-        <p class="eyebrow">A PLATTER MALL</p>
-        <h1>Everything you need,<br>all in one place.</h1>
-        <p>Browse groceries, clothing, jewelry and gifts, then check out securely.</p>
-        <div class="hero-actions">
-          <a class="btn primary" href="#shop">Browse stock ↓</a>
-          <a class="btn secondary" href="#platter">Build a platter</a>
-        </div>
-      </div>
-      <div class="hero-card">
-        <span>EVERYTHING</span>
-        <strong>ONE PLACE.<br>EVERYTHING.</strong>
-      </div>
-    </section>
+  <!-- =====================================================
+       ANNOUNCEMENT BAR
+  ====================================================== -->
 
-    <section id="shop" class="section">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">SHOP</p>
-          <h2>Browse our store</h2>
-        </div>
-        <div id="categoryFilters" class="filters"></div>
-      </div>
-      <div id="productGrid" class="product-grid">
-        <div class="loading">Loading products…</div>
-      </div>
-    </section>
-
-    <section id="platter" class="section platter">
-      <div>
-        <p class="eyebrow">BUILD YOUR OWN</p>
-        <h2>Create your custom platter.</h2>
-        <p>Choose a meal and select exactly the ingredients you want. Your custom platter is added to the basket as one order item.</p>
-      </div>
-      <div class="platter-box">
-        <label>Choose a meal
-          <select id="mealSelect"><option value="">Select a meal</option></select>
-        </label>
-        <div id="ingredientList" class="ingredient-list"></div>
-        <div class="platter-total">Total <strong>GH₵<span id="platterTotal">0.00</span></strong></div>
-        <button id="addPlatter" class="btn primary" disabled>Add platter to basket</button>
-      </div>
-    </section>
-
-    <section id="about" class="section features">
-      <div><b>Sold in platters</b><span>Carefully packed for you.</span></div>
-      <div><b>Fast & reliable delivery</b><span>Delivered safely to your doorstep.</span></div>
-      <div><b>Safe & easy shopping</b><span>Secure online checkout.</span></div>
-      <div><b>Quality assured</b><span>We deliver only the best.</span></div>
-    </section>
-  </main>
-
-  <footer>
-    <strong>EVERYTHING EVERYTHING</strong>
-    <span>Your one-stop shopping mall.</span>
-  </footer>
-
-  <aside id="cartDrawer" class="drawer" aria-hidden="true">
-    <div class="drawer-head"><h2>Your Basket</h2><button id="closeCart">×</button></div>
-    <div id="cartItems" class="cart-items"></div>
-    <div class="cart-total">Total <strong>GH₵<span id="cartTotal">0.00</span></strong></div>
-    <button id="checkoutBtn" class="btn primary full">Checkout</button>
-  </aside>
-
-  <div id="modal" class="modal hidden">
-    <div class="modal-card">
-      <button id="closeModal" class="modal-close">×</button>
-      <h2>Checkout</h2>
-      <p>Enter your delivery details. Payment is processed securely through Paystack.</p>
-      <form id="checkoutForm">
-        <label>Name<input name="name" required></label>
-        <label>Phone<input name="phone" required></label>
-        <label>Email<input name="email" type="email" required></label>
-        <label>Delivery location<textarea name="address" required></textarea></label>
-        <button class="btn primary full" type="submit">Continue to Paystack</button>
-      </form>
-      <p id="checkoutStatus" class="status"></p>
-    </div>
+  <div class="announcement-bar">
+    <p>Welcome to Everything Everything — Everything you need, all in one place.</p>
   </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- =====================================================
+       HEADER / NAVIGATION
+  ====================================================== -->
+
+  <header class="site-header" id="header">
+
+    <div class="header-inner">
+
+      <a class="brand" href="#home" aria-label="Everything Everything home">
+        <span class="brand-small">EVERYTHING</span>
+        <span class="brand-large">EVERYTHING</span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Main navigation">
+
+        <a href="#home">Home</a>
+        <a href="#shop">Shop</a>
+        <a href="#categories">Categories</a>
+        <a href="#platter">Build a Platter</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+
+      </nav>
+
+      <div class="header-actions">
+
+        <button
+          class="icon-btn search-btn"
+          id="searchBtn"
+          aria-label="Search"
+        >
+          <span>⌕</span>
+        </button>
+
+        <button
+          id="cartBtn"
+          class="cart-btn"
+          aria-label="Open shopping basket"
+        >
+          <span>Basket</span>
+          <b id="cartCount">0</b>
+        </button>
+
+        <button
+          class="menu-btn"
+          id="menuBtn"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       SEARCH OVERLAY
+  ====================================================== -->
+
+  <div class="search-overlay" id="searchOverlay">
+
+    <div class="search-box">
+
+      <button
+        class="search-close"
+        id="searchClose"
+        aria-label="Close search"
+      >
+        ×
+      </button>
+
+      <p class="eyebrow">SEARCH EVERYTHING</p>
+
+      <h2>What are you looking for?</h2>
+
+      <div class="search-input-wrap">
+
+        <input
+          type="search"
+          id="searchInput"
+          placeholder="Search products..."
+          autocomplete="off"
+        >
+
+        <button id="searchSubmit">Search</button>
+
+      </div>
+
+      <div id="searchResults" class="search-results"></div>
+
+    </div>
+
+  </div>
+
+
+  <main>
+
+
+    <!-- ===================================================
+         HERO
+    ==================================================== -->
+
+    <section id="home" class="hero">
+
+      <div class="hero-content">
+
+        <p class="eyebrow">EVERYTHING EVERYTHING</p>
+
+        <h1>
+          Everything you need.
+          <span>All in one place.</span>
+        </h1>
+
+        <p class="hero-description">
+          Discover carefully selected products, delicious platters,
+          clothing, jewelry, gifts and more — all from one place.
+        </p>
+
+        <div class="hero-actions">
+
+          <a class="btn primary" href="#shop">
+            Shop now
+          </a>
+
+          <a class="btn secondary" href="#platter">
+            Build a platter
+          </a>
+
+        </div>
+
+        <div class="hero-trust">
+
+          <span>✓ Quality products</span>
+          <span>✓ Reliable delivery</span>
+          <span>✓ Secure checkout</span>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-visual">
+
+        <div class="hero-image-main">
+
+          <!-- Replace with your real hero image -->
+          <img
+            src="assets/images/hero.jpg"
+            alt="Everything Everything featured products"
+          >
+
+        </div>
+
+        <div class="hero-floating-card">
+
+          <span>EVERYTHING</span>
+
+          <strong>
+            ONE PLACE.
+            <br>
+            EVERYTHING.
+          </strong>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         CATEGORY STRIP
+    ==================================================== -->
+
+    <section id="categories" class="categories-section">
+
+      <div class="section-head centered">
+
+        <p class="eyebrow">EXPLORE</p>
+
+        <h2>Shop by category</h2>
+
+        <p>
+          Find exactly what you're looking for.
+        </p>
+
+      </div>
+
+
+      <div class="category-grid">
+
+        <a class="category-card" href="#shop" data-category="Groceries">
+
+          <div class="category-image">
+            <img
+              src="assets/images/category-groceries.jpg"
+              alt="Groceries"
+            >
+          </div>
+
+          <div class="category-info">
+            <span>01</span>
+            <h3>Groceries</h3>
+            <p>Everyday essentials</p>
+          </div>
+
+        </a>
+
+
+        <a class="category-card" href="#shop" data-category="Clothing">
+
+          <div class="category-image">
+            <img
+              src="assets/images/category-clothing.jpg"
+              alt="Clothing"
+            >
+          </div>
+
+          <div class="category-info">
+            <span>02</span>
+            <h3>Clothing</h3>
+            <p>Style your way</p>
+          </div>
+
+        </a>
+
+
+        <a class="category-card" href="#shop" data-category="Jewelry">
+
+          <div class="category-image">
+            <img
+              src="assets/images/category-jewelry.jpg"
+              alt="Jewelry"
+            >
+          </div>
+
+          <div class="category-info">
+            <span>03</span>
+            <h3>Jewelry</h3>
+            <p>Pieces that stand out</p>
+          </div>
+
+        </a>
+
+
+        <a class="category-card" href="#shop" data-category="Gifts">
+
+          <div class="category-image">
+            <img
+              src="assets/images/category-gifts.jpg"
+              alt="Gifts"
+            >
+          </div>
+
+          <div class="category-info">
+            <span>04</span>
+            <h3>Gifts</h3>
+            <p>Something special</p>
+          </div>
+
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         SHOP
+    ==================================================== -->
+
+    <section id="shop" class="section shop-section">
+
+      <div class="section-head">
+
+        <div>
+
+          <p class="eyebrow">OUR STORE</p>
+
+          <h2>Shop everything</h2>
+
+          <p>
+            Browse our collection and add your favourites to your basket.
+          </p>
+
+        </div>
+
+        <div id="categoryFilters" class="filters"></div>
+
+      </div>
+
+
+      <div class="shop-toolbar">
+
+        <span id="productCount">
+          Showing our products
+        </span>
+
+        <select id="sortProducts" aria-label="Sort products">
+
+          <option value="default">Sort by</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="name">Name: A–Z</option>
+
+        </select>
+
+      </div>
+
+
+      <div id="productGrid" class="product-grid">
+
+        <div class="loading">
+          Loading products…
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         FEATURED PROMOTION
+    ==================================================== -->
+
+    <section class="promo-section">
+
+      <div class="promo-content">
+
+        <p class="eyebrow">EVERYTHING IN ONE PLACE</p>
+
+        <h2>
+          More than a store.
+          <span>It's Everything.</span>
+        </h2>
+
+        <p>
+          From everyday essentials to something special,
+          discover products made to fit every moment.
+        </p>
+
+        <a href="#shop" class="btn light">
+          Explore the store
+        </a>
+
+      </div>
+
+      <div class="promo-image">
+
+        <img
+          src="assets/images/promo.jpg"
+          alt="Everything Everything collection"
+        >
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         BUILD YOUR OWN PLATTER
+    ==================================================== -->
+
+    <section id="platter" class="section platter-section">
+
+      <div class="platter-intro">
+
+        <p class="eyebrow">BUILD YOUR OWN</p>
+
+        <h2>Create your custom platter.</h2>
+
+        <p>
+          Choose your meal, select the ingredients you want,
+          customize your order and add it directly to your basket.
+        </p>
+
+        <div class="platter-benefits">
+
+          <div>
+            <strong>01</strong>
+            <span>Choose your meal</span>
+          </div>
+
+          <div>
+            <strong>02</strong>
+            <span>Select ingredients</span>
+          </div>
+
+          <div>
+            <strong>03</strong>
+            <span>Enjoy your platter</span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="platter-box">
+
+        <label>
+          <span>Choose a meal</span>
+
+          <select id="mealSelect">
+            <option value="">Select a meal</option>
+          </select>
+
+        </label>
+
+
+        <div id="ingredientList" class="ingredient-list"></div>
+
+
+        <div class="platter-total">
+
+          <span>Total</span>
+
+          <strong>
+            GH₵<span id="platterTotal">0.00</span>
+          </strong>
+
+        </div>
+
+
+        <button
+          id="addPlatter"
+          class="btn primary full"
+          disabled
+        >
+          Add platter to basket
+        </button>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         WHY SHOP WITH US
+    ==================================================== -->
+
+    <section id="about" class="section benefits-section">
+
+      <div class="section-head centered">
+
+        <p class="eyebrow">WHY EVERYTHING EVERYTHING</p>
+
+        <h2>Shopping made simple.</h2>
+
+        <p>
+          We make it easy to find what you need and get it delivered.
+        </p>
+
+      </div>
+
+
+      <div class="features">
+
+        <div class="feature-card">
+
+          <div class="feature-number">01</div>
+
+          <h3>Quality products</h3>
+
+          <p>
+            Carefully selected products you can feel confident buying.
+          </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+          <div class="feature-number">02</div>
+
+          <h3>Reliable delivery</h3>
+
+          <p>
+            Your order is carefully prepared and delivered safely.
+          </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+          <div class="feature-number">03</div>
+
+          <h3>Easy shopping</h3>
+
+          <p>
+            Browse, add to your basket and checkout without the hassle.
+          </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+          <div class="feature-number">04</div>
+
+          <h3>Secure checkout</h3>
+
+          <p>
+            Pay securely and conveniently when completing your order.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         BRAND STORY
+    ==================================================== -->
+
+    <section class="story-section">
+
+      <div class="story-image">
+
+        <img
+          src="assets/images/about.jpg"
+          alt="Everything Everything"
+        >
+
+      </div>
+
+
+      <div class="story-content">
+
+        <p class="eyebrow">OUR STORY</p>
+
+        <h2>
+          Everything you need,
+          brought together.
+        </h2>
+
+        <p>
+          Everything Everything was created around one simple idea:
+          make finding the things you need easier.
+        </p>
+
+        <p>
+          From everyday products to unique pieces and custom platters,
+          we're building a shopping experience where there's always
+          something worth discovering.
+        </p>
+
+        <a href="#contact" class="btn secondary">
+          Learn more
+        </a>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         TESTIMONIALS
+    ==================================================== -->
+
+    <section class="section testimonials-section">
+
+      <div class="section-head centered">
+
+        <p class="eyebrow">CUSTOMER LOVE</p>
+
+        <h2>What our customers say.</h2>
+
+      </div>
+
+
+      <div class="testimonial-grid">
+
+        <article class="testimonial">
+
+          <div class="stars">★★★★★</div>
+
+          <p>
+            “Everything was so easy from browsing to ordering.
+            I loved the experience.”
+          </p>
+
+          <strong>Customer</strong>
+
+        </article>
+
+
+        <article class="testimonial">
+
+          <div class="stars">★★★★★</div>
+
+          <p>
+            “The platter was exactly what I wanted and everything
+            arrived beautifully packed.”
+          </p>
+
+          <strong>Customer</strong>
+
+        </article>
+
+
+        <article class="testimonial">
+
+          <div class="stars">★★★★★</div>
+
+          <p>
+            “I love having so many different things available
+            in one place.”
+          </p>
+
+          <strong>Customer</strong>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         NEWSLETTER
+    ==================================================== -->
+
+    <section class="newsletter-section">
+
+      <div>
+
+        <p class="eyebrow">STAY CONNECTED</p>
+
+        <h2>
+          Don't miss what's next.
+        </h2>
+
+        <p>
+          Sign up for new products, offers and updates.
+        </p>
+
+      </div>
+
+
+      <form id="newsletterForm" class="newsletter-form">
+
+        <input
+          type="email"
+          id="newsletterEmail"
+          placeholder="Your email address"
+          aria-label="Email address"
+          required
+        >
+
+        <button class="btn primary" type="submit">
+          Subscribe
+        </button>
+
+      </form>
+
+    </section>
+
+
+    <!-- ===================================================
+         CONTACT
+    ==================================================== -->
+
+    <section id="contact" class="section contact-section">
+
+      <div>
+
+        <p class="eyebrow">GET IN TOUCH</p>
+
+        <h2>We're here to help.</h2>
+
+        <p>
+          Have a question about an order, product or delivery?
+          Get in touch with us.
+        </p>
+
+      </div>
+
+
+      <div class="contact-links">
+
+        <a href="mailto:hello@everythingeverything.com">
+          <span>Email</span>
+          <strong>hello@everythingeverything.com</strong>
+        </a>
+
+        <a href="tel:+233000000000">
+          <span>Phone</span>
+          <strong>+233 00 000 0000</strong>
+        </a>
+
+        <a href="#">
+          <span>Instagram</span>
+          <strong>@everythingeverything</strong>
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
+
+  <footer class="site-footer">
+
+    <div class="footer-main">
+
+      <div class="footer-brand">
+
+        <a class="brand footer-logo" href="#home">
+          <span class="brand-small">EVERYTHING</span>
+          <span class="brand-large">EVERYTHING</span>
+        </a>
+
+        <p>
+          Your one-stop shopping destination.
+        </p>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h3>Shop</h3>
+
+        <a href="#shop">All Products</a>
+        <a href="#categories">Categories</a>
+        <a href="#platter">Build a Platter</a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h3>Company</h3>
+
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h3>Help</h3>
+
+        <a href="#contact">Delivery</a>
+        <a href="#contact">Returns</a>
+        <a href="#contact">Support</a>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 Everything Everything. All rights reserved.
+      </span>
+
+      <span>
+        Made with care.
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =====================================================
+       CART DRAWER
+  ====================================================== -->
+
+  <aside
+    id="cartDrawer"
+    class="drawer"
+    aria-hidden="true"
+  >
+
+    <div class="drawer-head">
+
+      <div>
+
+        <p class="eyebrow">YOUR ORDER</p>
+
+        <h2>Your Basket</h2>
+
+      </div>
+
+      <button
+        id="closeCart"
+        class="drawer-close"
+        aria-label="Close basket"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div id="cartItems" class="cart-items">
+
+      <!-- Cart items generated by JavaScript -->
+
+    </div>
+
+
+    <div class="cart-footer">
+
+      <div class="cart-total">
+
+        <span>Total</span>
+
+        <strong>
+          GH₵<span id="cartTotal">0.00</span>
+        </strong>
+
+      </div>
+
+      <button
+        id="checkoutBtn"
+        class="btn primary full"
+      >
+        Checkout
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- =====================================================
+       CART OVERLAY
+  ====================================================== -->
+
+  <div
+    id="drawerOverlay"
+    class="drawer-overlay"
+  ></div>
+
+
+  <!-- =====================================================
+       CHECKOUT MODAL
+  ====================================================== -->
+
+  <div
+    id="modal"
+    class="modal hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="checkoutTitle"
+  >
+
+    <div class="modal-card">
+
+      <button
+        id="closeModal"
+        class="modal-close"
+        aria-label="Close checkout"
+      >
+        ×
+      </button>
+
+
+      <p class="eyebrow">CHECKOUT</p>
+
+      <h2 id="checkoutTitle">
+        Complete your order.
+      </h2>
+
+      <p class="modal-description">
+        Enter your delivery details to continue to secure payment.
+      </p>
+
+
+      <form id="checkoutForm">
+
+        <label>
+          <span>Name</span>
+          <input
+            name="name"
+            type="text"
+            autocomplete="name"
+            required
+          >
+        </label>
+
+
+        <label>
+          <span>Phone</span>
+          <input
+            name="phone"
+            type="tel"
+            autocomplete="tel"
+            required
+          >
+        </label>
+
+
+        <label>
+          <span>Email</span>
+          <input
+            name="email"
+            type="email"
+            autocomplete="email"
+            required
+          >
+        </label>
+
+
+        <label>
+          <span>Delivery location</span>
+
+          <textarea
+            name="address"
+            rows="4"
+            autocomplete="street-address"
+            required
+          ></textarea>
+
+        </label>
+
+
+        <button
+          class="btn primary full"
+          type="submit"
+        >
+          Continue to Payment
+        </button>
+
+      </form>
+
+
+      <p
+        id="checkoutStatus"
+        class="status"
+        aria-live="polite"
+      ></p>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
+
   <script src="app.js"></script>
+
 </body>
 </html>
