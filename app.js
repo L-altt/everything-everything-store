@@ -1,172 +1,238 @@
 /* =========================================================
    EVERYTHING EVERYTHING
-   STORE APP — PHASE 1
-   WhatsApp Checkout
+   Store Application
 ========================================================= */
 
-const WHATSAPP_NUMBER = "233547026348";
+
+/* =========================================================
+   STORE DATA
+========================================================= */
+
+const products = [
+  {
+    id: "product-1",
+    name: "Featured Product",
+    category: "Groceries",
+    price: 25,
+    image: "assets/images/products/product-1.jpg"
+  },
+
+  {
+    id: "product-2",
+    name: "Everyday Essentials",
+    category: "Groceries",
+    price: 40,
+    image: "assets/images/products/product-2.jpg"
+  },
+
+  {
+    id: "product-3",
+    name: "Signature Clothing",
+    category: "Clothing",
+    price: 180,
+    image: "assets/images/products/product-3.jpg"
+  },
+
+  {
+    id: "product-4",
+    name: "Classic Jewelry",
+    category: "Jewelry",
+    price: 120,
+    image: "assets/images/products/product-4.jpg"
+  },
+
+  {
+    id: "product-5",
+    name: "Special Gift",
+    category: "Gifts",
+    price: 100,
+    image: "assets/images/products/product-5.jpg"
+  },
+
+  {
+    id: "product-6",
+    name: "Premium Collection",
+    category: "Clothing",
+    price: 250,
+    image: "assets/images/products/product-6.jpg"
+  },
+
+  {
+    id: "product-7",
+    name: "Everyday Jewelry",
+    category: "Jewelry",
+    price: 90,
+    image: "assets/images/products/product-7.jpg"
+  },
+
+  {
+    id: "product-8",
+    name: "Gift Box",
+    category: "Gifts",
+    price: 150,
+    image: "assets/images/products/product-8.jpg"
+  }
+];
+
+
+/* =========================================================
+   CATEGORIES
+========================================================= */
+
+const categories = [
+  {
+    name: "Groceries",
+    slug: "groceries"
+  },
+
+  {
+    name: "Clothing",
+    slug: "clothing"
+  },
+
+  {
+    name: "Jewelry",
+    slug: "jewelry"
+  },
+
+  {
+    name: "Gifts",
+    slug: "gifts"
+  }
+];
+
+
+/* =========================================================
+   PLATTER MEALS
+========================================================= */
+
+const meals = [
+  {
+    id: "meal-1",
+
+    name: "Breakfast Platter",
+
+    ingredients: [
+      {
+        id: "bread",
+        name: "Bread",
+        price: 10
+      },
+
+      {
+        id: "egg",
+        name: "Eggs",
+        price: 15
+      },
+
+      {
+        id: "sausage",
+        name: "Sausage",
+        price: 20
+      },
+
+      {
+        id: "tea",
+        name: "Tea",
+        price: 8
+      }
+    ]
+  },
+
+
+  {
+    id: "meal-2",
+
+    name: "Lunch Platter",
+
+    ingredients: [
+      {
+        id: "rice",
+        name: "Rice",
+        price: 20
+      },
+
+      {
+        id: "chicken",
+        name: "Chicken",
+        price: 35
+      },
+
+      {
+        id: "salad",
+        name: "Salad",
+        price: 15
+      },
+
+      {
+        id: "drink",
+        name: "Soft Drink",
+        price: 10
+      }
+    ]
+  },
+
+
+  {
+    id: "meal-3",
+
+    name: "Special Platter",
+
+    ingredients: [
+      {
+        id: "jollof",
+        name: "Jollof Rice",
+        price: 25
+      },
+
+      {
+        id: "chicken-special",
+        name: "Grilled Chicken",
+        price: 40
+      },
+
+      {
+        id: "plantain",
+        name: "Fried Plantain",
+        price: 15
+      },
+
+      {
+        id: "salad-special",
+        name: "Fresh Salad",
+        price: 15
+      },
+
+      {
+        id: "drink-special",
+        name: "Soft Drink",
+        price: 10
+      }
+    ]
+  }
+];
+
+
+/* =========================================================
+   APPLICATION STATE
+========================================================= */
 
 const state = {
-  products: [
-    {
-      id: "product-1",
-      name: "Classic White Tee",
-      category: "clothing",
-      price: 120,
-      image: "",
-      description: "A clean everyday essential."
-    },
-    {
-      id: "product-2",
-      name: "Premium Black Tee",
-      category: "clothing",
-      price: 150,
-      image: "",
-      description: "Minimal, comfortable and easy to wear."
-    },
-    {
-      id: "product-3",
-      name: "Gold Bracelet",
-      category: "jewelry",
-      price: 250,
-      image: "",
-      description: "A simple statement piece."
-    },
-    {
-      id: "product-4",
-      name: "Gift Box",
-      category: "gifts",
-      price: 180,
-      image: "",
-      description: "A thoughtful gift for someone special."
-    },
-    {
-      id: "product-5",
-      name: "Fresh Fruit Basket",
-      category: "groceries",
-      price: 200,
-      image: "",
-      description: "A selection of fresh fruits."
-    },
-    {
-      id: "product-6",
-      name: "Snack Box",
-      category: "groceries",
-      price: 150,
-      image: "",
-      description: "A convenient selection of snacks."
-    }
-  ],
 
-  categories: [
-    {
-      name: "All",
-      slug: "all"
-    },
-    {
-      name: "Clothing",
-      slug: "clothing"
-    },
-    {
-      name: "Jewelry",
-      slug: "jewelry"
-    },
-    {
-      name: "Gifts",
-      slug: "gifts"
-    },
-    {
-      name: "Groceries",
-      slug: "groceries"
-    }
-  ],
+  products,
 
-  meals: [
-    {
-      id: "meal-1",
-      name: "Breakfast Platter",
-      ingredients: [
-        {
-          id: "egg",
-          name: "Eggs",
-          price: 20
-        },
-        {
-          id: "bread",
-          name: "Bread",
-          price: 15
-        },
-        {
-          id: "sausage",
-          name: "Sausage",
-          price: 30
-        },
-        {
-          id: "fruit",
-          name: "Fresh Fruit",
-          price: 25
-        }
-      ]
-    },
+  categories,
 
-    {
-      id: "meal-2",
-      name: "Lunch Platter",
-      ingredients: [
-        {
-          id: "rice",
-          name: "Rice",
-          price: 30
-        },
-        {
-          id: "chicken",
-          name: "Chicken",
-          price: 45
-        },
-        {
-          id: "salad",
-          name: "Fresh Salad",
-          price: 25
-        },
-        {
-          id: "drink",
-          name: "Soft Drink",
-          price: 15
-        }
-      ]
-    },
-
-    {
-      id: "meal-3",
-      name: "Dinner Platter",
-      ingredients: [
-        {
-          id: "rice-dinner",
-          name: "Jollof Rice",
-          price: 35
-        },
-        {
-          id: "chicken-dinner",
-          name: "Grilled Chicken",
-          price: 50
-        },
-        {
-          id: "plantain",
-          name: "Fried Plantain",
-          price: 25
-        },
-        {
-          id: "salad-dinner",
-          name: "Fresh Salad",
-          price: 25
-        }
-      ]
-    }
-  ],
+  meals,
 
   cart: [],
+
   filter: "all",
-  search: ""
+
+  search: "",
+
+  sort: "default"
+
 };
 
 
@@ -174,131 +240,56 @@ const state = {
    HELPERS
 ========================================================= */
 
-const money = value => Number(value || 0).toFixed(2);
+const money = value => {
+
+  return Number(value || 0).toFixed(2);
+
+};
+
 
 function escapeHtml(value) {
-  return String(value ?? "").replace(/[&<>"']/g, character => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#039;"
-  }[character]));
-}
 
-function getCategoryName(slug) {
-  const category = state.categories.find(
-    category => category.slug === slug
+  return String(value ?? "").replace(
+    /[&<>"']/g,
+
+    character => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#039;"
+    })[character]
+
   );
 
-  return category ? category.name : "SHOP";
 }
 
 
 /* =========================================================
-   PRODUCTS
+   PRODUCT IMAGE FALLBACK
 ========================================================= */
 
-function renderProducts() {
+function productImage(image, name) {
 
-  const grid = document.querySelector("#productGrid");
+  if (!image) {
 
-  if (!grid) return;
-
-  let products = [...state.products];
-
-  if (state.filter !== "all") {
-    products = products.filter(
-      product => product.category === state.filter
-    );
-  }
-
-  if (state.search.trim()) {
-
-    const query = state.search.toLowerCase();
-
-    products = products.filter(product =>
-      product.name.toLowerCase().includes(query) ||
-      product.description.toLowerCase().includes(query) ||
-      product.category.toLowerCase().includes(query)
-    );
-  }
-
-  if (!products.length) {
-
-    grid.innerHTML = `
-      <div class="loading">
-        No products found.
+    return `
+      <div class="product-placeholder">
+        ${escapeHtml(name)}
       </div>
     `;
 
-    return;
   }
 
-  grid.innerHTML = products.map(product => {
+  return `
+    <img
+      src="${image}"
+      alt="${escapeHtml(name)}"
+      loading="lazy"
+      onerror="this.style.display='none';this.parentElement.classList.add('image-error')"
+    >
+  `;
 
-    const image = product.image
-      ? `
-        <img
-          src="${escapeHtml(product.image)}"
-          alt="${escapeHtml(product.name)}"
-        >
-      `
-      : `
-        <div class="product-placeholder">
-          EVERYTHING EVERYTHING
-        </div>
-      `;
-
-    return `
-      <article class="product">
-
-        <div class="product-img">
-          ${image}
-        </div>
-
-        <div class="product-body">
-
-          <small>
-            ${escapeHtml(
-              getCategoryName(product.category)
-            )}
-          </small>
-
-          <h3>
-            ${escapeHtml(product.name)}
-          </h3>
-
-          <p class="product-description">
-            ${escapeHtml(product.description)}
-          </p>
-
-          <p class="price">
-            GH₵${money(product.price)}
-          </p>
-
-          <button
-            class="btn primary"
-            type="button"
-            data-add-product="${product.id}"
-          >
-            Add to basket
-          </button>
-
-        </div>
-
-      </article>
-    `;
-
-  }).join("");
-
-  grid.querySelectorAll("[data-add-product]").forEach(button => {
-
-    button.addEventListener("click", () => {
-      addProduct(button.dataset.addProduct);
-    });
-
-  });
 }
 
 
@@ -308,71 +299,224 @@ function renderProducts() {
 
 function renderFilters() {
 
-  const container =
-    document.querySelector("#categoryFilters");
+  const element = document.querySelector("#categoryFilters");
 
-  if (!container) return;
+  if (!element) return;
 
-  container.innerHTML =
-    state.categories.map(category => {
 
-      return `
-        <button
-          class="filter ${
-            state.filter === category.slug
-              ? "active"
-              : ""
-          }"
-          type="button"
-          data-filter="${category.slug}"
-        >
-          ${escapeHtml(category.name)}
-        </button>
-      `;
+  element.innerHTML = `
 
-    }).join("");
+    <button
+      class="filter active"
+      data-filter="all"
+    >
+      All
+    </button>
 
-  container
-    .querySelectorAll("[data-filter]")
-    .forEach(button => {
+    ${state.categories.map(category => `
 
-      button.addEventListener("click", () => {
+      <button
+        class="filter"
+        data-filter="${category.slug}"
+      >
+        ${escapeHtml(category.name)}
+      </button>
 
-        state.filter =
-          button.dataset.filter;
+    `).join("")}
 
-        container
-          .querySelectorAll(".filter")
-          .forEach(item =>
-            item.classList.remove("active")
-          );
+  `;
 
-        button.classList.add("active");
 
-        renderProducts();
+  element.querySelectorAll(".filter").forEach(button => {
 
-      });
+    button.addEventListener("click", () => {
+
+      element
+        .querySelectorAll(".filter")
+        .forEach(item => item.classList.remove("active"));
+
+      button.classList.add("active");
+
+      state.filter = button.dataset.filter;
+
+      renderProducts();
 
     });
+
+  });
+
 }
 
 
 /* =========================================================
-   SEARCH
+   GET FILTERED PRODUCTS
 ========================================================= */
 
-function setupSearch() {
+function getFilteredProducts() {
 
-  const searchInput =
-    document.querySelector(
-      "#searchInput, #search-input, .search-input"
+  let list = [...state.products];
+
+
+  /* CATEGORY */
+
+  if (state.filter !== "all") {
+
+    list = list.filter(product => {
+
+      return product.category.toLowerCase() === state.filter;
+
+    });
+
+  }
+
+
+  /* SEARCH */
+
+  if (state.search.trim()) {
+
+    const query = state.search.toLowerCase();
+
+    list = list.filter(product => {
+
+      return (
+        product.name.toLowerCase().includes(query) ||
+        product.category.toLowerCase().includes(query)
+      );
+
+    });
+
+  }
+
+
+  /* SORT */
+
+  if (state.sort === "price-low") {
+
+    list.sort((a, b) => a.price - b.price);
+
+  }
+
+  if (state.sort === "price-high") {
+
+    list.sort((a, b) => b.price - a.price);
+
+  }
+
+  if (state.sort === "name") {
+
+    list.sort((a, b) =>
+      a.name.localeCompare(b.name)
     );
 
-  if (!searchInput) return;
+  }
 
-  searchInput.addEventListener("input", event => {
 
-    state.search = event.target.value;
+  return list;
+
+}
+
+
+/* =========================================================
+   RENDER PRODUCTS
+========================================================= */
+
+function renderProducts() {
+
+  const grid = document.querySelector("#productGrid");
+
+  const count = document.querySelector("#productCount");
+
+  if (!grid) return;
+
+
+  const list = getFilteredProducts();
+
+
+  if (count) {
+
+    count.textContent =
+      `${list.length} product${list.length === 1 ? "" : "s"}`;
+
+  }
+
+
+  if (!list.length) {
+
+    grid.innerHTML = `
+
+      <div class="loading">
+
+        <strong>No products found.</strong>
+
+        <p>
+          Try another category or search.
+        </p>
+
+      </div>
+
+    `;
+
+    return;
+
+  }
+
+
+  grid.innerHTML = list.map(product => `
+
+    <article class="product">
+
+      <div class="product-img">
+
+        ${productImage(
+          product.image,
+          product.name
+        )}
+
+      </div>
+
+
+      <div class="product-body">
+
+        <small>
+          ${escapeHtml(product.category)}
+        </small>
+
+        <h3>
+          ${escapeHtml(product.name)}
+        </h3>
+
+        <p class="price">
+          GH₵${money(product.price)}
+        </p>
+
+        <button
+          class="btn primary"
+          onclick="addProduct('${product.id}')"
+        >
+          Add to basket
+        </button>
+
+      </div>
+
+    </article>
+
+  `).join("");
+
+}
+
+
+/* =========================================================
+   SORTING
+========================================================= */
+
+const sortProducts =
+  document.querySelector("#sortProducts");
+
+if (sortProducts) {
+
+  sortProducts.addEventListener("change", event => {
+
+    state.sort = event.target.value;
 
     renderProducts();
 
@@ -382,7 +526,216 @@ function setupSearch() {
 
 
 /* =========================================================
-   PLATTERS
+   CATEGORY CARDS
+========================================================= */
+
+document
+  .querySelectorAll(".category-card")
+  .forEach(card => {
+
+    card.addEventListener("click", event => {
+
+      const category =
+        card.dataset.category?.toLowerCase();
+
+      if (!category) return;
+
+
+      state.filter = category;
+
+
+      document
+        .querySelector("#shop")
+        ?.scrollIntoView({
+          behavior: "smooth"
+        });
+
+
+      setTimeout(() => {
+
+        renderFilters();
+
+        const filterButton =
+          document.querySelector(
+            `.filter[data-filter="${category}"]`
+          );
+
+        if (filterButton) {
+
+          document
+            .querySelectorAll(".filter")
+            .forEach(button =>
+              button.classList.remove("active")
+            );
+
+          filterButton.classList.add("active");
+
+        }
+
+        renderProducts();
+
+      }, 300);
+
+    });
+
+  });
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+const searchBtn =
+  document.querySelector("#searchBtn");
+
+const searchOverlay =
+  document.querySelector("#searchOverlay");
+
+const searchClose =
+  document.querySelector("#searchClose");
+
+const searchInput =
+  document.querySelector("#searchInput");
+
+const searchSubmit =
+  document.querySelector("#searchSubmit");
+
+
+function openSearch() {
+
+  if (!searchOverlay) return;
+
+  searchOverlay.classList.add("open");
+
+  setTimeout(() => {
+
+    searchInput?.focus();
+
+  }, 100);
+
+}
+
+
+function closeSearch() {
+
+  searchOverlay?.classList.remove("open");
+
+}
+
+
+searchBtn?.addEventListener(
+  "click",
+  openSearch
+);
+
+searchClose?.addEventListener(
+  "click",
+  closeSearch
+);
+
+
+searchOverlay?.addEventListener("click", event => {
+
+  if (event.target === searchOverlay) {
+
+    closeSearch();
+
+  }
+
+});
+
+
+function performSearch() {
+
+  state.search =
+    searchInput?.value.trim() || "";
+
+  state.filter = "all";
+
+  renderFilters();
+
+  renderProducts();
+
+  closeSearch();
+
+
+  document
+    .querySelector("#shop")
+    ?.scrollIntoView({
+      behavior: "smooth"
+    });
+
+}
+
+
+searchSubmit?.addEventListener(
+  "click",
+  performSearch
+);
+
+
+searchInput?.addEventListener(
+  "keydown",
+  event => {
+
+    if (event.key === "Enter") {
+
+      performSearch();
+
+    }
+
+    if (event.key === "Escape") {
+
+      closeSearch();
+
+    }
+
+  }
+);
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menuBtn =
+  document.querySelector("#menuBtn");
+
+const mainNav =
+  document.querySelector("#mainNav");
+
+
+menuBtn?.addEventListener("click", () => {
+
+  const open =
+    mainNav.classList.toggle("open");
+
+  menuBtn.setAttribute(
+    "aria-expanded",
+    open ? "true" : "false"
+  );
+
+});
+
+
+mainNav?.querySelectorAll("a").forEach(link => {
+
+  link.addEventListener("click", () => {
+
+    mainNav.classList.remove("open");
+
+    menuBtn?.setAttribute(
+      "aria-expanded",
+      "false"
+    );
+
+  });
+
+});
+
+
+/* =========================================================
+   PLATTER
 ========================================================= */
 
 function renderMeals() {
@@ -392,17 +745,23 @@ function renderMeals() {
 
   if (!select) return;
 
+
   select.innerHTML = `
+
     <option value="">
       Select a meal
     </option>
 
     ${state.meals.map(meal => `
+
       <option value="${meal.id}">
         ${escapeHtml(meal.name)}
       </option>
+
     `).join("")}
+
   `;
+
 }
 
 
@@ -420,11 +779,15 @@ function renderIngredients() {
   const addButton =
     document.querySelector("#addPlatter");
 
+
   if (!select || !list) return;
 
-  const meal = state.meals.find(
-    meal => meal.id === select.value
-  );
+
+  const meal =
+    state.meals.find(
+      item => item.id === select.value
+    );
+
 
   if (!meal) {
 
@@ -439,10 +802,12 @@ function renderIngredients() {
     }
 
     return;
+
   }
 
-  list.innerHTML =
-    meal.ingredients.map(ingredient => `
+
+  list.innerHTML = meal.ingredients.map(
+    ingredient => `
 
       <div class="ingredient">
 
@@ -452,10 +817,8 @@ function renderIngredients() {
             type="checkbox"
             class="ingredient-check"
             value="${ingredient.id}"
-            data-name="${escapeHtml(
-              ingredient.name
-            )}"
             data-price="${ingredient.price}"
+            data-name="${escapeHtml(ingredient.name)}"
           >
 
           ${escapeHtml(ingredient.name)}
@@ -468,7 +831,9 @@ function renderIngredients() {
 
       </div>
 
-    `).join("");
+    `
+  ).join("");
+
 
   list
     .querySelectorAll(".ingredient-check")
@@ -476,121 +841,193 @@ function renderIngredients() {
 
       input.addEventListener(
         "change",
-        updatePlatterTotal
+        updatePlatter
       );
 
     });
 
-  updatePlatterTotal();
+
+  updatePlatter();
+
 }
 
 
-function updatePlatterTotal() {
-
-  const totalElement =
-    document.querySelector("#platterTotal");
-
-  const button =
-    document.querySelector("#addPlatter");
+function updatePlatter() {
 
   const selected =
     document.querySelectorAll(
       ".ingredient-check:checked"
     );
 
+
   let total = 0;
 
+
   selected.forEach(item => {
-    total += Number(item.dataset.price);
+
+    total += Number(
+      item.dataset.price
+    );
+
   });
+
+
+  const totalElement =
+    document.querySelector("#platterTotal");
+
+  const addButton =
+    document.querySelector("#addPlatter");
+
 
   if (totalElement) {
+
     totalElement.textContent =
       money(total);
+
   }
 
-  if (button) {
-    button.disabled = total <= 0;
+
+  if (addButton) {
+
+    addButton.disabled =
+      total <= 0;
+
   }
+
 }
 
 
-function addPlatterToCart() {
+document
+  .querySelector("#mealSelect")
+  ?.addEventListener(
+    "change",
+    renderIngredients
+  );
 
-  const select =
-    document.querySelector("#mealSelect");
 
-  if (!select) return;
+/* =========================================================
+   ADD PLATTER
+========================================================= */
 
-  const meal =
-    state.meals.find(
-      meal => meal.id === select.value
-    );
+document
+  .querySelector("#addPlatter")
+  ?.addEventListener("click", () => {
 
-  if (!meal) return;
+    const mealId =
+      document.querySelector("#mealSelect")?.value;
 
-  const selected =
-    [...document.querySelectorAll(
-      ".ingredient-check:checked"
-    )];
+    const meal =
+      state.meals.find(
+        item => item.id === mealId
+      );
 
-  if (!selected.length) return;
 
-  const ingredients =
-    selected.map(item => ({
-      id: item.value,
-      name: item.dataset.name,
-      price: Number(item.dataset.price)
-    }));
+    if (!meal) return;
 
-  const total =
-    ingredients.reduce(
-      (sum, item) =>
-        sum + item.price,
-      0
-    );
 
-  state.cart.push({
+    const selected =
+      [...document.querySelectorAll(
+        ".ingredient-check:checked"
+      )].map(item => ({
 
-    id: `platter-${Date.now()}`,
+        id: item.value,
 
-    name: `Custom ${meal.name}`,
+        name: item.dataset.name,
 
-    price: total,
+        price: Number(
+          item.dataset.price
+        )
 
-    qty: 1,
+      }));
 
-    meta: ingredients
-      .map(item => item.name)
-      .join(", ")
+
+    if (!selected.length) return;
+
+
+    const price =
+      selected.reduce(
+        (total, item) =>
+          total + item.price,
+        0
+      );
+
+
+    state.cart.push({
+
+      id: `platter-${Date.now()}`,
+
+      name: `Custom ${meal.name}`,
+
+      price,
+
+      qty: 1,
+
+      meta: selected
+        .map(item => item.name)
+        .join(", ")
+
+    });
+
+
+    saveCart();
+
+    renderCart();
+
+    openCart();
 
   });
-
-  saveCart();
-
-  renderCart();
-
-  openCart();
-}
 
 
 /* =========================================================
    CART
 ========================================================= */
 
+function loadCart() {
+
+  try {
+
+    state.cart =
+      JSON.parse(
+        localStorage.getItem(
+          "ee_cart"
+        ) || "[]"
+      );
+
+  } catch {
+
+    state.cart = [];
+
+  }
+
+}
+
+
+function saveCart() {
+
+  localStorage.setItem(
+    "ee_cart",
+    JSON.stringify(state.cart)
+  );
+
+}
+
+
 function addProduct(id) {
 
   const product =
     state.products.find(
-      product => product.id === id
+      item => item.id === id
     );
 
+
   if (!product) return;
+
 
   const existing =
     state.cart.find(
       item => item.id === id
     );
+
 
   if (existing) {
 
@@ -604,7 +1041,9 @@ function addProduct(id) {
 
       name: product.name,
 
-      price: Number(product.price),
+      price: Number(
+        product.price
+      ),
 
       qty: 1
 
@@ -612,42 +1051,17 @@ function addProduct(id) {
 
   }
 
+
   saveCart();
 
   renderCart();
 
   openCart();
+
 }
 
-
-function changeQty(index, amount) {
-
-  if (!state.cart[index]) return;
-
-  state.cart[index].qty += amount;
-
-  if (state.cart[index].qty <= 0) {
-    state.cart.splice(index, 1);
-  }
-
-  saveCart();
-
-  renderCart();
-}
-
-
-function removeCartItem(index) {
-
-  state.cart.splice(index, 1);
-
-  saveCart();
-
-  renderCart();
-}
 
 window.addProduct = addProduct;
-window.changeQty = changeQty;
-window.removeCartItem = removeCartItem;
 
 
 /* =========================================================
@@ -662,8 +1076,9 @@ function renderCart() {
   const items =
     document.querySelector("#cartItems");
 
-  const totalElement =
+  const total =
     document.querySelector("#cartTotal");
+
 
   const quantity =
     state.cart.reduce(
@@ -672,628 +1087,421 @@ function renderCart() {
       0
     );
 
-  const total =
-    state.cart.reduce(
-      (sum, item) =>
-        sum + item.price * item.qty,
-      0
-    );
 
   if (count) {
-    count.textContent = quantity;
+
+    count.textContent =
+      quantity;
+
   }
 
-  if (totalElement) {
-    totalElement.textContent =
-      money(total);
-  }
 
   if (!items) return;
+
 
   if (!state.cart.length) {
 
     items.innerHTML = `
+
       <div class="loading">
-        Your basket is empty.
+
+        <strong>Your basket is empty.</strong>
+
+        <p>
+          Add something you love to get started.
+        </p>
+
       </div>
+
     `;
 
-    return;
-  }
+  } else {
 
-  items.innerHTML =
-    state.cart.map((item, index) => `
+    items.innerHTML =
+      state.cart.map(
+        (item, index) => `
 
-      <div class="cart-row">
+          <div class="cart-row">
 
-        <div>
+            <div>
 
-          <b>
-            ${escapeHtml(item.name)}
-          </b>
+              <b>
+                ${escapeHtml(item.name)}
+              </b>
 
-          ${
-            item.meta
-              ? `<small>
-                   ${escapeHtml(item.meta)}
-                 </small>`
-              : ""
-          }
+              ${
+                item.meta
+                  ? `<small>
+                      ${escapeHtml(item.meta)}
+                    </small>`
+                  : ""
+              }
 
-          <div>
-            GH₵${money(
-              item.price * item.qty
-            )}
+              <div>
+                GH₵${money(
+                  item.price *
+                  item.qty
+                )}
+              </div>
+
+            </div>
+
+
+            <div class="qty">
+
+              <button
+                onclick="changeQty(${index}, -1)"
+                aria-label="Decrease quantity"
+              >
+                −
+              </button>
+
+              <span>
+                ${item.qty}
+              </span>
+
+              <button
+                onclick="changeQty(${index}, 1)"
+                aria-label="Increase quantity"
+              >
+                +
+              </button>
+
+            </div>
+
           </div>
 
-        </div>
+        `
+      ).join("");
 
-        <div class="qty">
+  }
 
-          <button
-            type="button"
-            onclick="changeQty(${index}, -1)"
-          >
-            −
-          </button>
 
-          <span>
-            ${item.qty}
-          </span>
+  const cartTotal =
+    state.cart.reduce(
+      (sum, item) =>
+        sum +
+        item.price *
+        item.qty,
+      0
+    );
 
-          <button
-            type="button"
-            onclick="changeQty(${index}, 1)"
-          >
-            +
-          </button>
 
-        </div>
+  if (total) {
 
-        <button
-          type="button"
-          class="remove-item"
-          onclick="removeCartItem(${index})"
-        >
-          Remove
-        </button>
+    total.textContent =
+      money(cartTotal);
 
-      </div>
+  }
 
-    `).join("");
 }
 
 
 /* =========================================================
-   LOCAL STORAGE
+   CHANGE CART QUANTITY
 ========================================================= */
 
-function saveCart() {
+function changeQty(index, amount) {
 
-  localStorage.setItem(
-    "everything_everything_cart",
-    JSON.stringify(state.cart)
-  );
-
-}
+  if (!state.cart[index]) return;
 
 
-function loadCart() {
+  state.cart[index].qty += amount;
 
-  try {
 
-    const saved =
-      localStorage.getItem(
-        "everything_everything_cart"
-      );
+  if (state.cart[index].qty <= 0) {
 
-    state.cart =
-      saved
-        ? JSON.parse(saved)
-        : [];
-
-  } catch {
-
-    state.cart = [];
+    state.cart.splice(index, 1);
 
   }
+
+
+  saveCart();
+
+  renderCart();
+
 }
+
+
+window.changeQty = changeQty;
 
 
 /* =========================================================
    CART DRAWER
 ========================================================= */
 
+const cartDrawer =
+  document.querySelector("#cartDrawer");
+
+const drawerOverlay =
+  document.querySelector("#drawerOverlay");
+
+
 function openCart() {
 
-  const drawer =
-    document.querySelector("#cartDrawer");
+  cartDrawer?.classList.add("open");
 
-  if (!drawer) return;
+  drawerOverlay?.classList.add("open");
 
-  drawer.classList.add("open");
-
-  drawer.setAttribute(
+  cartDrawer?.setAttribute(
     "aria-hidden",
     "false"
   );
+
+  document.body.style.overflow =
+    "hidden";
+
 }
 
 
 function closeCart() {
 
-  const drawer =
-    document.querySelector("#cartDrawer");
+  cartDrawer?.classList.remove("open");
 
-  if (!drawer) return;
+  drawerOverlay?.classList.remove("open");
 
-  drawer.classList.remove("open");
-
-  drawer.setAttribute(
+  cartDrawer?.setAttribute(
     "aria-hidden",
     "true"
   );
+
+  document.body.style.overflow =
+    "";
+
 }
+
+
+document
+  .querySelector("#cartBtn")
+  ?.addEventListener(
+    "click",
+    openCart
+  );
+
+
+document
+  .querySelector("#closeCart")
+  ?.addEventListener(
+    "click",
+    closeCart
+  );
+
+
+drawerOverlay?.addEventListener(
+  "click",
+  closeCart
+);
 
 
 /* =========================================================
    CHECKOUT MODAL
 ========================================================= */
 
+const modal =
+  document.querySelector("#modal");
+
+
 function openCheckout() {
 
   if (!state.cart.length) {
 
     alert(
-      "Your basket is empty. Add something before checking out."
+      "Your basket is empty."
     );
 
     return;
+
   }
 
-  const modal =
-    document.querySelector("#modal");
 
-  if (!modal) return;
+  modal?.classList.remove(
+    "hidden"
+  );
 
-  modal.classList.remove("hidden");
 }
 
 
 function closeCheckout() {
 
-  const modal =
-    document.querySelector("#modal");
+  modal?.classList.add(
+    "hidden"
+  );
 
-  if (!modal) return;
-
-  modal.classList.add("hidden");
 }
 
 
-/* =========================================================
-   WHATSAPP CHECKOUT
-========================================================= */
+document
+  .querySelector("#checkoutBtn")
+  ?.addEventListener(
+    "click",
+    openCheckout
+  );
 
-function sendOrderToWhatsApp(customer) {
 
-  if (!state.cart.length) {
-    return;
+document
+  .querySelector("#closeModal")
+  ?.addEventListener(
+    "click",
+    closeCheckout
+  );
+
+
+modal?.addEventListener(
+  "click",
+  event => {
+
+    if (
+      event.target === modal
+    ) {
+
+      closeCheckout();
+
+    }
+
   }
-
-  const total =
-    state.cart.reduce(
-      (sum, item) =>
-        sum + item.price * item.qty,
-      0
-    );
-
-  const orderNumber =
-    `EE-${Date.now()}`;
-
-  let message = "";
-
-  message +=
-    `*EVERYTHING EVERYTHING*\n`;
-
-  message +=
-    `*NEW ORDER*\n\n`;
-
-  message +=
-    `Order No: ${orderNumber}\n\n`;
-
-  message +=
-    `*CUSTOMER DETAILS*\n`;
-
-  message +=
-    `Name: ${customer.name}\n`;
-
-  message +=
-    `Phone: ${customer.phone}\n`;
-
-  message +=
-    `Email: ${customer.email}\n`;
-
-  message +=
-    `Delivery Location: ${customer.address}\n\n`;
-
-  message +=
-    `*ORDER ITEMS*\n`;
-
-  state.cart.forEach((item, index) => {
-
-    message +=
-      `${index + 1}. ${item.name}\n`;
-
-    message +=
-      `   Quantity: ${item.qty}\n`;
-
-    message +=
-      `   Price: GH₵${money(
-        item.price
-      )}\n`;
-
-    message +=
-      `   Subtotal: GH₵${money(
-        item.price * item.qty
-      )}\n`;
-
-    if (item.meta) {
-
-      message +=
-        `   Selection: ${item.meta}\n`;
-
-    }
-
-    message += "\n";
-
-  });
-
-  message +=
-    `*TOTAL: GH₵${money(total)}*\n\n`;
-
-  message +=
-    `Please confirm my order.`;
-
-  const url =
-    `https://wa.me/${WHATSAPP_NUMBER}` +
-    `?text=${encodeURIComponent(message)}`;
-
-  window.open(
-    url,
-    "_blank",
-    "noopener,noreferrer"
-  );
-}
+);
 
 
 /* =========================================================
-   CHECKOUT FORM
+   CHECKOUT
 ========================================================= */
 
-function handleCheckout(event) {
-
-  event.preventDefault();
-
-  const form =
-    new FormData(event.target);
-
-  const customer = {
-
-    name:
-      String(
-        form.get("name") || ""
-      ).trim(),
-
-    phone:
-      String(
-        form.get("phone") || ""
-      ).trim(),
-
-    email:
-      String(
-        form.get("email") || ""
-      ).trim(),
-
-    address:
-      String(
-        form.get("address") || ""
-      ).trim()
-
-  };
-
-  if (
-    !customer.name ||
-    !customer.phone ||
-    !customer.email ||
-    !customer.address
-  ) {
-
-    alert(
-      "Please complete all your delivery details."
-    );
-
-    return;
-  }
-
-  sendOrderToWhatsApp(customer);
-}
-
-
-/* =========================================================
-   HAMBURGER MENU
-   Supports common IDs/classes so it can work with
-   the redesigned header when we add the button.
-========================================================= */
-
-function setupHamburger() {
-
-  const button =
-    document.querySelector(
-      "#hamburger, #menuBtn, .hamburger, .menu-btn"
-    );
-
-  const menu =
-    document.querySelector(
-      "#mobileMenu, #mobileNav, .mobile-menu, .mobile-nav"
-    );
-
-  if (!button || !menu) return;
-
-  button.addEventListener(
-    "click",
-    () => {
-
-      const open =
-        menu.classList.toggle("open");
-
-      button.classList.toggle(
-        "active",
-        open
-      );
-
-      button.setAttribute(
-        "aria-expanded",
-        String(open)
-      );
-
-      menu.setAttribute(
-        "aria-hidden",
-        String(!open)
-      );
-
-    }
-  );
-
-  menu.querySelectorAll("a").forEach(link => {
-
-    link.addEventListener(
-      "click",
-      () => {
-
-        menu.classList.remove("open");
-
-        button.classList.remove(
-          "active"
-        );
-
-        button.setAttribute(
-          "aria-expanded",
-          "false"
-        );
-
-      }
-    );
-
-  });
-}
-
-
-/* =========================================================
-   SEARCH BUTTON
-========================================================= */
-
-function setupSearchButton() {
-
-  const button =
-    document.querySelector(
-      "#searchBtn, .search-btn"
-    );
-
-  const search =
-    document.querySelector(
-      "#searchBox, #searchInput, .search-box"
-    );
-
-  if (!button || !search) return;
-
-  button.addEventListener(
-    "click",
-    () => {
-
-      search.classList.toggle("open");
-
-      if (
-        search.matches("input") &&
-        search.classList.contains("open")
-      ) {
-        search.focus();
-      }
-
-    }
-  );
-}
-
-
-/* =========================================================
-   NAVIGATION
-========================================================= */
-
-function setupNavigation() {
-
-  document
-    .querySelectorAll(
-      'a[href^="#"]'
-    )
-    .forEach(link => {
-
-      link.addEventListener(
-        "click",
-        event => {
-
-          const id =
-            link.getAttribute("href");
-
-          const target =
-            document.querySelector(id);
-
-          if (!target) return;
-
-          event.preventDefault();
-
-          target.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-
-        }
-      );
-
-    });
-}
-
-
-/* =========================================================
-   MODAL
-========================================================= */
-
-function setupModal() {
-
-  const modal =
-    document.querySelector("#modal");
-
-  if (!modal) return;
-
-  modal.addEventListener(
-    "click",
+document
+  .querySelector("#checkoutForm")
+  ?.addEventListener(
+    "submit",
     event => {
 
-      if (event.target === modal) {
-        closeCheckout();
+      event.preventDefault();
+
+
+      const form =
+        new FormData(
+          event.target
+        );
+
+
+      const customer = {
+
+        name:
+          form.get("name"),
+
+        phone:
+          form.get("phone"),
+
+        email:
+          form.get("email"),
+
+        address:
+          form.get("address")
+
+      };
+
+
+      localStorage.setItem(
+        "ee_customer",
+        JSON.stringify(customer)
+      );
+
+
+      /*
+        Payment integration will be connected
+        here later.
+
+        For now we display a message rather
+        than pretending payment has happened.
+      */
+
+      const status =
+        document.querySelector(
+          "#checkoutStatus"
+        );
+
+
+      if (status) {
+
+        status.textContent =
+          "Your order details have been saved. Payment integration will be connected next.";
+
       }
 
     }
   );
-}
 
 
 /* =========================================================
-   KEYBOARD
+   NEWSLETTER
 ========================================================= */
 
-function setupKeyboard() {
-
-  document.addEventListener(
-    "keydown",
+document
+  .querySelector("#newsletterForm")
+  ?.addEventListener(
+    "submit",
     event => {
 
-      if (event.key === "Escape") {
+      event.preventDefault();
 
-        closeCart();
 
-        closeCheckout();
+      const email =
+        document.querySelector(
+          "#newsletterEmail"
+        )?.value.trim();
 
-      }
+
+      if (!email) return;
+
+
+      localStorage.setItem(
+        "ee_newsletter_email",
+        email
+      );
+
+
+      event.target.innerHTML = `
+
+        <p
+          style="
+            color:white;
+            font-weight:800;
+            padding:12px 0;
+          "
+        >
+          Thanks for subscribing!
+        </p>
+
+      `;
 
     }
   );
-}
 
 
 /* =========================================================
-   BUTTONS
+   KEYBOARD ESCAPE
 ========================================================= */
 
-function setupButtons() {
+document.addEventListener(
+  "keydown",
+  event => {
 
-  const cartButton =
-    document.querySelector("#cartBtn");
+    if (event.key !== "Escape") {
+      return;
+    }
 
-  const closeCartButton =
-    document.querySelector("#closeCart");
+    closeSearch();
 
-  const checkoutButton =
-    document.querySelector("#checkoutBtn");
+    closeCart();
 
-  const closeModal =
-    document.querySelector("#closeModal");
+    closeCheckout();
 
-  const checkoutForm =
-    document.querySelector("#checkoutForm");
-
-  const mealSelect =
-    document.querySelector("#mealSelect");
-
-  const addPlatter =
-    document.querySelector("#addPlatter");
-
-
-  if (cartButton) {
-    cartButton.addEventListener(
-      "click",
-      openCart
-    );
   }
-
-  if (closeCartButton) {
-    closeCartButton.addEventListener(
-      "click",
-      closeCart
-    );
-  }
-
-  if (checkoutButton) {
-    checkoutButton.addEventListener(
-      "click",
-      openCheckout
-    );
-  }
-
-  if (closeModal) {
-    closeModal.addEventListener(
-      "click",
-      closeCheckout
-    );
-  }
-
-  if (checkoutForm) {
-    checkoutForm.addEventListener(
-      "submit",
-      handleCheckout
-    );
-  }
-
-  if (mealSelect) {
-    mealSelect.addEventListener(
-      "change",
-      renderIngredients
-    );
-  }
-
-  if (addPlatter) {
-    addPlatter.addEventListener(
-      "click",
-      addPlatterToCart
-    );
-  }
-}
+);
 
 
 /* =========================================================
    INITIALIZE
 ========================================================= */
 
-function initStore() {
+function initializeStore() {
 
   loadCart();
 
@@ -1305,28 +1513,7 @@ function initStore() {
 
   renderCart();
 
-  setupButtons();
-
-  setupSearch();
-
-  setupSearchButton();
-
-  setupHamburger();
-
-  setupNavigation();
-
-  setupModal();
-
-  setupKeyboard();
-
-  console.log(
-    "Everything Everything store loaded."
-  );
-
 }
 
 
-document.addEventListener(
-  "DOMContentLoaded",
-  initStore
-);
+initializeStore();
