@@ -9,6 +9,9 @@
 ========================================================= */
 
 const products = [
+
+  /* ----------------- GROCERIES ----------------- */
+
   {
     id: "product-1",
     name: "Featured Product",
@@ -16,7 +19,6 @@ const products = [
     price: 25,
     image: "assets/images/products/product-1.jpg"
   },
-
   {
     id: "product-2",
     name: "Everyday Essentials",
@@ -24,54 +26,170 @@ const products = [
     price: 40,
     image: "assets/images/products/product-2.jpg"
   },
-
   {
     id: "product-3",
-    name: "Signature Clothing",
-    category: "Clothing",
-    price: 180,
+    name: "Fresh Produce Box",
+    category: "Groceries",
+    price: 35,
     image: "assets/images/products/product-3.jpg"
   },
-
   {
     id: "product-4",
-    name: "Classic Jewelry",
-    category: "Jewelry",
-    price: 120,
+    name: "Pantry Staples Pack",
+    category: "Groceries",
+    price: 55,
     image: "assets/images/products/product-4.jpg"
   },
-
   {
     id: "product-5",
-    name: "Special Gift",
-    category: "Gifts",
-    price: 100,
+    name: "Breakfast Cereal",
+    category: "Groceries",
+    price: 28,
     image: "assets/images/products/product-5.jpg"
   },
-
   {
     id: "product-6",
-    name: "Premium Collection",
-    category: "Clothing",
-    price: 250,
+    name: "Cooking Oil 5L",
+    category: "Groceries",
+    price: 65,
     image: "assets/images/products/product-6.jpg"
   },
 
+  /* ----------------- CLOTHING ----------------- */
+
   {
     id: "product-7",
+    name: "Signature Clothing",
+    category: "Clothing",
+    price: 180,
+    image: "assets/images/products/product-7.jpg"
+  },
+  {
+    id: "product-8",
+    name: "Premium Collection",
+    category: "Clothing",
+    price: 250,
+    image: "assets/images/products/product-8.jpg"
+  },
+  {
+    id: "product-9",
+    name: "Men's Casual Shirt",
+    category: "Clothing",
+    price: 95,
+    image: "assets/images/products/product-9.jpg"
+  },
+  {
+    id: "product-10",
+    name: "Women's Summer Dress",
+    category: "Clothing",
+    price: 160,
+    image: "assets/images/products/product-10.jpg"
+  },
+  {
+    id: "product-11",
+    name: "Denim Jacket",
+    category: "Clothing",
+    price: 220,
+    image: "assets/images/products/product-11.jpg"
+  },
+  {
+    id: "product-12",
+    name: "Kids Playwear Set",
+    category: "Clothing",
+    price: 85,
+    image: "assets/images/products/product-12.jpg"
+  },
+
+  /* ----------------- JEWELRY ----------------- */
+
+  {
+    id: "product-13",
+    name: "Classic Jewelry",
+    category: "Jewelry",
+    price: 120,
+    image: "assets/images/products/product-13.jpg"
+  },
+  {
+    id: "product-14",
     name: "Everyday Jewelry",
     category: "Jewelry",
     price: 90,
-    image: "assets/images/products/product-7.jpg"
+    image: "assets/images/products/product-14.jpg"
+  },
+  {
+    id: "product-15",
+    name: "Gold Plated Necklace",
+    category: "Jewelry",
+    price: 200,
+    image: "assets/images/products/product-15.jpg"
+  },
+  {
+    id: "product-16",
+    name: "Silver Hoop Earrings",
+    category: "Jewelry",
+    price: 75,
+    image: "assets/images/products/product-16.jpg"
+  },
+  {
+    id: "product-17",
+    name: "Beaded Bracelet",
+    category: "Jewelry",
+    price: 45,
+    image: "assets/images/products/product-17.jpg"
+  },
+  {
+    id: "product-18",
+    name: "Statement Ring",
+    category: "Jewelry",
+    price: 110,
+    image: "assets/images/products/product-18.jpg"
   },
 
+  /* ----------------- GIFTS ----------------- */
+
   {
-    id: "product-8",
+    id: "product-19",
+    name: "Special Gift",
+    category: "Gifts",
+    price: 100,
+    image: "assets/images/products/product-19.jpg"
+  },
+  {
+    id: "product-20",
     name: "Gift Box",
     category: "Gifts",
     price: 150,
-    image: "assets/images/products/product-8.jpg"
+    image: "assets/images/products/product-20.jpg"
+  },
+  {
+    id: "product-21",
+    name: "Personalized Mug",
+    category: "Gifts",
+    price: 40,
+    image: "assets/images/products/product-21.jpg"
+  },
+  {
+    id: "product-22",
+    name: "Scented Candle Set",
+    category: "Gifts",
+    price: 60,
+    image: "assets/images/products/product-22.jpg"
+  },
+  {
+    id: "product-23",
+    name: "Gift Hamper",
+    category: "Gifts",
+    price: 220,
+    image: "assets/images/products/product-23.jpg"
+  },
+  {
+    id: "product-24",
+    name: "Anniversary Gift Bag",
+    category: "Gifts",
+    price: 130,
+    image: "assets/images/products/product-24.jpg"
   }
+
 ];
 
 
@@ -103,113 +221,125 @@ const categories = [
 
 
 /* =========================================================
-   PLATTER MEALS
+   PLATTER / BUNDLE BUILDER DATA
+   Each bundle belongs to a category (Groceries, Clothing,
+   Jewelry, Gifts) so the "Build a Platter" tool works for
+   more than just food.
 ========================================================= */
 
-const meals = [
+const bundles = [
+
+  /* ----------------- GROCERIES (meals) ----------------- */
+
   {
     id: "meal-1",
-
     name: "Breakfast Platter",
-
+    category: "Groceries",
     ingredients: [
-      {
-        id: "bread",
-        name: "Bread",
-        price: 10
-      },
-
-      {
-        id: "egg",
-        name: "Eggs",
-        price: 15
-      },
-
-      {
-        id: "sausage",
-        name: "Sausage",
-        price: 20
-      },
-
-      {
-        id: "tea",
-        name: "Tea",
-        price: 8
-      }
+      { id: "bread", name: "Bread", price: 10 },
+      { id: "egg", name: "Eggs", price: 15 },
+      { id: "sausage", name: "Sausage", price: 20 },
+      { id: "tea", name: "Tea", price: 8 }
     ]
   },
-
-
   {
     id: "meal-2",
-
     name: "Lunch Platter",
-
+    category: "Groceries",
     ingredients: [
-      {
-        id: "rice",
-        name: "Rice",
-        price: 20
-      },
-
-      {
-        id: "chicken",
-        name: "Chicken",
-        price: 35
-      },
-
-      {
-        id: "salad",
-        name: "Salad",
-        price: 15
-      },
-
-      {
-        id: "drink",
-        name: "Soft Drink",
-        price: 10
-      }
+      { id: "rice", name: "Rice", price: 20 },
+      { id: "chicken", name: "Chicken", price: 35 },
+      { id: "salad", name: "Salad", price: 15 },
+      { id: "drink", name: "Soft Drink", price: 10 }
+    ]
+  },
+  {
+    id: "meal-3",
+    name: "Special Platter",
+    category: "Groceries",
+    ingredients: [
+      { id: "jollof", name: "Jollof Rice", price: 25 },
+      { id: "chicken-special", name: "Grilled Chicken", price: 40 },
+      { id: "plantain", name: "Fried Plantain", price: 15 },
+      { id: "salad-special", name: "Fresh Salad", price: 15 },
+      { id: "drink-special", name: "Soft Drink", price: 10 }
     ]
   },
 
+  /* ----------------- CLOTHING (outfit sets) ----------------- */
 
   {
-    id: "meal-3",
-
-    name: "Special Platter",
-
+    id: "outfit-1",
+    name: "Casual Outfit Set",
+    category: "Clothing",
     ingredients: [
-      {
-        id: "jollof",
-        name: "Jollof Rice",
-        price: 25
-      },
+      { id: "tshirt", name: "T-Shirt", price: 45 },
+      { id: "jeans", name: "Jeans", price: 80 },
+      { id: "sneakers", name: "Sneakers", price: 150 },
+      { id: "cap", name: "Cap", price: 25 }
+    ]
+  },
+  {
+    id: "outfit-2",
+    name: "Formal Outfit Set",
+    category: "Clothing",
+    ingredients: [
+      { id: "dress-shirt", name: "Dress Shirt", price: 90 },
+      { id: "trousers", name: "Trousers", price: 110 },
+      { id: "blazer", name: "Blazer", price: 220 },
+      { id: "tie", name: "Tie", price: 35 }
+    ]
+  },
 
-      {
-        id: "chicken-special",
-        name: "Grilled Chicken",
-        price: 40
-      },
+  /* ----------------- JEWELRY (jewelry sets) ----------------- */
 
-      {
-        id: "plantain",
-        name: "Fried Plantain",
-        price: 15
-      },
+  {
+    id: "jewelry-set-1",
+    name: "Everyday Jewelry Set",
+    category: "Jewelry",
+    ingredients: [
+      { id: "necklace", name: "Necklace", price: 120 },
+      { id: "earrings", name: "Earrings", price: 80 },
+      { id: "bracelet", name: "Bracelet", price: 70 }
+    ]
+  },
+  {
+    id: "jewelry-set-2",
+    name: "Bridal Jewelry Set",
+    category: "Jewelry",
+    ingredients: [
+      { id: "statement-necklace", name: "Statement Necklace", price: 280 },
+      { id: "drop-earrings", name: "Drop Earrings", price: 150 },
+      { id: "tennis-bracelet", name: "Tennis Bracelet", price: 200 },
+      { id: "cocktail-ring", name: "Cocktail Ring", price: 130 }
+    ]
+  },
 
-      {
-        id: "salad-special",
-        name: "Fresh Salad",
-        price: 15
-      },
+  /* ----------------- GIFTS (gift sets) ----------------- */
 
-      {
-        id: "drink-special",
-        name: "Soft Drink",
-        price: 10
-      }
+  {
+    id: "gift-set-1",
+    name: "Birthday Gift Set",
+    category: "Gifts",
+    ingredients: [
+      { id: "card", name: "Greeting Card", price: 15 },
+      { id: "chocolate", name: "Chocolate Box", price: 60 },
+      { id: "flowers", name: "Flower Bouquet", price: 90 },
+      { id: "balloon", name: "Balloon Bundle", price: 35 }
+    ]
+  },
+  {
+    id: "gift-set-2",
+    name: "Anniversary Gift Set",
+    category: "Gifts",
+    ingredients: [
+      { id: "wine", name: "Sparkling Wine", price: 100 },
+      { id: "luxury-chocolate", name: "Luxury Chocolate Box", price: 85 },
+      { id: "rose-bouquet", name: "Rose Bouquet", price: 110 },
+      { id: "anniversary-card", name: "Anniversary Card", price: 15 }
     ]
   }
+
 ];
 
 
@@ -223,7 +353,7 @@ const state = {
 
   categories,
 
-  meals,
+  bundles,
 
   cart: [],
 
@@ -735,13 +865,15 @@ mainNav?.querySelectorAll("a").forEach(link => {
 
 
 /* =========================================================
-   PLATTER
+   PLATTER / BUNDLE BUILDER
+   Now works across Groceries, Clothing, Jewelry and Gifts.
+   Flow: choose a category -> choose a bundle -> pick items.
 ========================================================= */
 
-function renderMeals() {
+function renderPlatterCategories() {
 
   const select =
-    document.querySelector("#mealSelect");
+    document.querySelector("#platterCategorySelect");
 
   if (!select) return;
 
@@ -749,18 +881,71 @@ function renderMeals() {
   select.innerHTML = `
 
     <option value="">
-      Select a meal
+      Select a category
     </option>
 
-    ${state.meals.map(meal => `
+    ${state.categories.map(category => `
 
-      <option value="${meal.id}">
-        ${escapeHtml(meal.name)}
+      <option value="${escapeHtml(category.name)}">
+        ${escapeHtml(category.name)}
       </option>
 
     `).join("")}
 
   `;
+
+}
+
+
+function renderMeals(category) {
+
+  const select =
+    document.querySelector("#mealSelect");
+
+  if (!select) return;
+
+
+  const filtered =
+    category
+      ? state.bundles.filter(item => item.category === category)
+      : [];
+
+
+  if (!category) {
+
+    select.innerHTML = `
+      <option value="">Select a category first</option>
+    `;
+
+    select.disabled = true;
+
+    renderIngredients();
+
+    return;
+
+  }
+
+
+  select.disabled = false;
+
+  select.innerHTML = `
+
+    <option value="">
+      Select a bundle
+    </option>
+
+    ${filtered.map(bundle => `
+
+      <option value="${bundle.id}">
+        ${escapeHtml(bundle.name)}
+      </option>
+
+    `).join("")}
+
+  `;
+
+
+  renderIngredients();
 
 }
 
@@ -783,13 +968,13 @@ function renderIngredients() {
   if (!select || !list) return;
 
 
-  const meal =
-    state.meals.find(
+  const bundle =
+    state.bundles.find(
       item => item.id === select.value
     );
 
 
-  if (!meal) {
+  if (!bundle) {
 
     list.innerHTML = "";
 
@@ -806,7 +991,7 @@ function renderIngredients() {
   }
 
 
-  list.innerHTML = meal.ingredients.map(
+  list.innerHTML = bundle.ingredients.map(
     ingredient => `
 
       <div class="ingredient">
@@ -898,6 +1083,15 @@ function updatePlatter() {
 
 
 document
+  .querySelector("#platterCategorySelect")
+  ?.addEventListener("change", event => {
+
+    renderMeals(event.target.value);
+
+  });
+
+
+document
   .querySelector("#mealSelect")
   ?.addEventListener(
     "change",
@@ -906,23 +1100,23 @@ document
 
 
 /* =========================================================
-   ADD PLATTER
+   ADD PLATTER / BUNDLE TO BASKET
 ========================================================= */
 
 document
   .querySelector("#addPlatter")
   ?.addEventListener("click", () => {
 
-    const mealId =
+    const bundleId =
       document.querySelector("#mealSelect")?.value;
 
-    const meal =
-      state.meals.find(
-        item => item.id === mealId
+    const bundle =
+      state.bundles.find(
+        item => item.id === bundleId
       );
 
 
-    if (!meal) return;
+    if (!bundle) return;
 
 
     const selected =
@@ -954,9 +1148,9 @@ document
 
     state.cart.push({
 
-      id: `platter-${Date.now()}`,
+      id: `bundle-${Date.now()}`,
 
-      name: `Custom ${meal.name}`,
+      name: `Custom ${bundle.name}`,
 
       price,
 
@@ -1605,7 +1799,9 @@ function initializeStore() {
 
   renderProducts();
 
-  renderMeals();
+  renderPlatterCategories();
+
+  renderMeals("");
 
   renderCart();
 
