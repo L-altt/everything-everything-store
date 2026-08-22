@@ -1,26 +1,24 @@
 /* =========================================================
    EVERYTHING EVERYTHING
-   STORE APPLICATION
-   CUSTOM BUILD SYSTEM
+   Store Application
 ========================================================= */
 
 
 /* =========================================================
-   SAMPLE STORE DATA
-   Replace these products with your real products later.
+   STORE PRODUCTS
 ========================================================= */
 
 const products = [
 
-  /* =======================================================
+  /* -------------------------
      GROCERIES
-  ======================================================= */
+  ------------------------- */
 
   {
     id: "grocery-rice",
-    name: "Rice",
+    name: "Premium Rice",
     category: "Groceries",
-    price: 25,
+    price: 45,
     image: "assets/images/products/rice.jpg"
   },
 
@@ -33,96 +31,48 @@ const products = [
   },
 
   {
-    id: "grocery-tomato",
-    name: "Tomatoes",
+    id: "grocery-tomatoes",
+    name: "Fresh Tomatoes",
     category: "Groceries",
-    price: 15,
+    price: 20,
     image: "assets/images/products/tomatoes.jpg"
   },
 
   {
-    id: "grocery-onion",
-    name: "Onions",
+    id: "grocery-onions",
+    name: "Fresh Onions",
     category: "Groceries",
-    price: 10,
+    price: 15,
     image: "assets/images/products/onions.jpg"
   },
 
   {
-    id: "grocery-chicken",
-    name: "Chicken",
-    category: "Groceries",
-    price: 40,
-    image: "assets/images/products/chicken.jpg"
-  },
-
-  {
-    id: "grocery-egg",
-    name: "Eggs",
-    category: "Groceries",
-    price: 15,
-    image: "assets/images/products/eggs.jpg"
-  },
-
-  {
-    id: "grocery-bread",
-    name: "Bread",
+    id: "grocery-seasoning",
+    name: "Seasoning",
     category: "Groceries",
     price: 12,
-    image: "assets/images/products/bread.jpg"
+    image: "assets/images/products/seasoning.jpg"
   },
 
   {
-    id: "grocery-sausage",
-    name: "Sausage",
+    id: "grocery-drink",
+    name: "Soft Drink",
     category: "Groceries",
-    price: 20,
-    image: "assets/images/products/sausage.jpg"
-  },
-
-  {
-    id: "grocery-plantain",
-    name: "Plantain",
-    category: "Groceries",
-    price: 18,
-    image: "assets/images/products/plantain.jpg"
-  },
-
-  {
-    id: "grocery-salad",
-    name: "Fresh Salad",
-    category: "Groceries",
-    price: 15,
-    image: "assets/images/products/salad.jpg"
+    price: 10,
+    image: "assets/images/products/drink.jpg"
   },
 
 
-  /* =======================================================
+  /* -------------------------
      CLOTHING
-  ======================================================= */
+  ------------------------- */
 
   {
-    id: "clothing-shirt",
+    id: "clothing-tshirt",
     name: "Classic T-Shirt",
     category: "Clothing",
     price: 120,
-    image: "assets/images/products/shirt.jpg"
-  },
-
-  {
-    id: "clothing-hoodie",
-    name: "Signature Hoodie",
-    category: "Clothing",
-    price: 250,
-    image: "assets/images/products/hoodie.jpg"
-  },
-
-  {
-    id: "clothing-dress",
-    name: "Everyday Dress",
-    category: "Clothing",
-    price: 220,
-    image: "assets/images/products/dress.jpg"
+    image: "assets/images/products/tshirt.jpg"
   },
 
   {
@@ -133,32 +83,48 @@ const products = [
     image: "assets/images/products/trousers.jpg"
   },
 
+  {
+    id: "clothing-cap",
+    name: "Everyday Cap",
+    category: "Clothing",
+    price: 70,
+    image: "assets/images/products/cap.jpg"
+  },
 
-  /* =======================================================
+  {
+    id: "clothing-hoodie",
+    name: "Signature Hoodie",
+    category: "Clothing",
+    price: 250,
+    image: "assets/images/products/hoodie.jpg"
+  },
+
+
+  /* -------------------------
      JEWELRY
-  ======================================================= */
+  ------------------------- */
 
   {
     id: "jewelry-necklace",
-    name: "Signature Necklace",
+    name: "Classic Necklace",
     category: "Jewelry",
-    price: 180,
+    price: 150,
     image: "assets/images/products/necklace.jpg"
   },
 
   {
     id: "jewelry-bracelet",
-    name: "Classic Bracelet",
+    name: "Everyday Bracelet",
     category: "Jewelry",
-    price: 100,
+    price: 90,
     image: "assets/images/products/bracelet.jpg"
   },
 
   {
     id: "jewelry-earrings",
-    name: "Elegant Earrings",
+    name: "Classic Earrings",
     category: "Jewelry",
-    price: 130,
+    price: 110,
     image: "assets/images/products/earrings.jpg"
   },
 
@@ -166,45 +132,45 @@ const products = [
     id: "jewelry-ring",
     name: "Signature Ring",
     category: "Jewelry",
-    price: 150,
+    price: 130,
     image: "assets/images/products/ring.jpg"
   },
 
 
-  /* =======================================================
+  /* -------------------------
      GIFTS
-  ======================================================= */
+  ------------------------- */
 
   {
-    id: "gift-box",
-    name: "Everything Gift Box",
+    id: "gift-perfume",
+    name: "Signature Perfume",
     category: "Gifts",
-    price: 150,
-    image: "assets/images/products/gift-box.jpg"
+    price: 220,
+    image: "assets/images/products/perfume.jpg"
   },
 
   {
-    id: "gift-basket",
-    name: "Premium Gift Basket",
+    id: "gift-chocolate",
+    name: "Chocolate Box",
     category: "Gifts",
-    price: 250,
-    image: "assets/images/products/gift-basket.jpg"
+    price: 80,
+    image: "assets/images/products/chocolate.jpg"
   },
 
   {
     id: "gift-card",
-    name: "Gift Card",
+    name: "Greeting Card",
     category: "Gifts",
-    price: 100,
-    image: "assets/images/products/gift-card.jpg"
+    price: 25,
+    image: "assets/images/products/card.jpg"
   },
 
   {
-    id: "gift-special",
-    name: "Special Gift Set",
+    id: "gift-bag",
+    name: "Premium Gift Bag",
     category: "Gifts",
-    price: 300,
-    image: "assets/images/products/gift-set.jpg"
+    price: 40,
+    image: "assets/images/products/gift-bag.jpg"
   }
 
 ];
@@ -240,50 +206,72 @@ const categories = [
 
 
 /* =========================================================
-   MEAL / RECIPE GROUPS
+   BUILD YOUR OWN COLLECTIONS
 =========================================================
+
+   IMPORTANT:
 
    These are NOT products.
 
-   They simply group existing grocery products together.
+   They are combinations made from existing products.
 
-   Customers can still deselect individual ingredients.
+   Each item can be individually selected/deselected.
+
 ========================================================= */
 
-const mealGroups = [
+const meals = [
+
+  /* =======================================================
+     JOLLOF MEAL
+  ======================================================== */
 
   {
-    id: "jollof",
-    name: "Jollof Rice",
+    id: "jollof-meal",
 
-    description:
-      "A complete jollof combination.",
+    name: "Jollof Meal",
 
     ingredients: [
 
       {
         productId: "grocery-rice",
-        quantity: 1
+        name: "Bag of Rice",
+        price: 45,
+        defaultSelected: true
       },
 
       {
         productId: "grocery-oil",
-        quantity: 1
+        name: "Cooking Oil",
+        price: 35,
+        defaultSelected: true
       },
 
       {
-        productId: "grocery-tomato",
-        quantity: 1
+        productId: "grocery-tomatoes",
+        name: "Fresh Tomatoes",
+        price: 20,
+        defaultSelected: true
       },
 
       {
-        productId: "grocery-onion",
-        quantity: 1
+        productId: "grocery-onions",
+        name: "Fresh Onions",
+        price: 15,
+        defaultSelected: true
       },
 
       {
-        productId: "grocery-chicken",
-        quantity: 1
+        productId: "grocery-seasoning",
+        name: "Seasoning",
+        price: 12,
+        defaultSelected: true
+      },
+
+      {
+        productId: "grocery-drink",
+        name: "Soft Drink",
+        price: 10,
+        defaultSelected: true
       }
 
     ]
@@ -291,28 +279,36 @@ const mealGroups = [
   },
 
 
-  {
-    id: "breakfast",
-    name: "Breakfast",
+  /* =======================================================
+     EVERYDAY OUTFIT
+  ======================================================== */
 
-    description:
-      "A simple breakfast combination.",
+  {
+    id: "everyday-outfit",
+
+    name: "Everyday Outfit",
 
     ingredients: [
 
       {
-        productId: "grocery-bread",
-        quantity: 1
+        productId: "clothing-tshirt",
+        name: "Classic T-Shirt",
+        price: 120,
+        defaultSelected: true
       },
 
       {
-        productId: "grocery-egg",
-        quantity: 1
+        productId: "clothing-trousers",
+        name: "Classic Trousers",
+        price: 180,
+        defaultSelected: true
       },
 
       {
-        productId: "grocery-sausage",
-        quantity: 1
+        productId: "clothing-cap",
+        name: "Everyday Cap",
+        price: 70,
+        defaultSelected: true
       }
 
     ]
@@ -320,33 +316,185 @@ const mealGroups = [
   },
 
 
-  {
-    id: "special-meal",
-    name: "Special Meal",
+  /* =======================================================
+     SIGNATURE OUTFIT
+  ======================================================== */
 
-    description:
-      "A larger meal combination.",
+  {
+    id: "signature-outfit",
+
+    name: "Signature Outfit",
 
     ingredients: [
 
       {
-        productId: "grocery-rice",
-        quantity: 1
+        productId: "clothing-tshirt",
+        name: "Classic T-Shirt",
+        price: 120,
+        defaultSelected: true
       },
 
       {
-        productId: "grocery-chicken",
-        quantity: 1
+        productId: "clothing-trousers",
+        name: "Classic Trousers",
+        price: 180,
+        defaultSelected: true
       },
 
       {
-        productId: "grocery-plantain",
-        quantity: 1
+        productId: "clothing-hoodie",
+        name: "Signature Hoodie",
+        price: 250,
+        defaultSelected: true
       },
 
       {
-        productId: "grocery-salad",
-        quantity: 1
+        productId: "clothing-cap",
+        name: "Everyday Cap",
+        price: 70,
+        defaultSelected: false
+      }
+
+    ]
+
+  },
+
+
+  /* =======================================================
+     JEWELRY SET
+  ======================================================== */
+
+  {
+    id: "jewelry-set",
+
+    name: "Jewelry Set",
+
+    ingredients: [
+
+      {
+        productId: "jewelry-necklace",
+        name: "Classic Necklace",
+        price: 150,
+        defaultSelected: true
+      },
+
+      {
+        productId: "jewelry-bracelet",
+        name: "Everyday Bracelet",
+        price: 90,
+        defaultSelected: true
+      },
+
+      {
+        productId: "jewelry-earrings",
+        name: "Classic Earrings",
+        price: 110,
+        defaultSelected: true
+      },
+
+      {
+        productId: "jewelry-ring",
+        name: "Signature Ring",
+        price: 130,
+        defaultSelected: false
+      }
+
+    ]
+
+  },
+
+
+  /* =======================================================
+     BIRTHDAY GIFT
+  ======================================================== */
+
+  {
+    id: "birthday-gift",
+
+    name: "Birthday Gift",
+
+    ingredients: [
+
+      {
+        productId: "gift-perfume",
+        name: "Signature Perfume",
+        price: 220,
+        defaultSelected: true
+      },
+
+      {
+        productId: "gift-chocolate",
+        name: "Chocolate Box",
+        price: 80,
+        defaultSelected: true
+      },
+
+      {
+        productId: "gift-card",
+        name: "Greeting Card",
+        price: 25,
+        defaultSelected: true
+      },
+
+      {
+        productId: "gift-bag",
+        name: "Premium Gift Bag",
+        price: 40,
+        defaultSelected: true
+      }
+
+    ]
+
+  },
+
+
+  /* =======================================================
+     EVERYTHING BOX
+
+     This demonstrates that the builder can combine
+     completely different categories.
+  ======================================================== */
+
+  {
+    id: "everything-box",
+
+    name: "Everything Box",
+
+    ingredients: [
+
+      {
+        productId: "grocery-drink",
+        name: "Soft Drink",
+        price: 10,
+        defaultSelected: true
+      },
+
+      {
+        productId: "clothing-cap",
+        name: "Everyday Cap",
+        price: 70,
+        defaultSelected: true
+      },
+
+      {
+        productId: "jewelry-bracelet",
+        name: "Everyday Bracelet",
+        price: 90,
+        defaultSelected: true
+      },
+
+      {
+        productId: "gift-chocolate",
+        name: "Chocolate Box",
+        price: 80,
+        defaultSelected: true
+      },
+
+      {
+        productId: "gift-card",
+        name: "Greeting Card",
+        price: 25,
+        defaultSelected: true
       }
 
     ]
@@ -366,7 +514,7 @@ const state = {
 
   categories,
 
-  mealGroups,
+  meals,
 
   cart: [],
 
@@ -374,9 +522,7 @@ const state = {
 
   search: "",
 
-  sort: "default",
-
-  builderSelections: []
+  sort: "default"
 
 };
 
@@ -412,15 +558,6 @@ function escapeHtml(value) {
 }
 
 
-function getProduct(id) {
-
-  return state.products.find(
-    product => product.id === id
-  );
-
-}
-
-
 /* =========================================================
    PRODUCT IMAGE
 ========================================================= */
@@ -439,15 +576,17 @@ function productImage(image, name) {
 
 
   return `
+
     <img
       src="${image}"
       alt="${escapeHtml(name)}"
       loading="lazy"
       onerror="
         this.style.display='none';
-        this.parentElement.classList.add('image-error');
+        this.parentElement.classList.add('image-error')
       "
     >
+
   `;
 
 }
@@ -470,6 +609,7 @@ function renderFilters() {
     <button
       class="filter ${state.filter === "all" ? "active" : ""}"
       data-filter="all"
+      type="button"
     >
       All
     </button>
@@ -483,6 +623,7 @@ function renderFilters() {
             : ""
         }"
         data-filter="${category.slug}"
+        type="button"
       >
         ${escapeHtml(category.name)}
       </button>
@@ -496,16 +637,19 @@ function renderFilters() {
     .querySelectorAll(".filter")
     .forEach(button => {
 
-      button.addEventListener("click", () => {
+      button.addEventListener(
+        "click",
+        () => {
 
-        state.filter =
-          button.dataset.filter;
+          state.filter =
+            button.dataset.filter;
 
-        renderFilters();
+          renderFilters();
 
-        renderProducts();
+          renderProducts();
 
-      });
+        }
+      );
 
     });
 
@@ -523,12 +667,15 @@ function getFilteredProducts() {
   ];
 
 
+  /* CATEGORY */
+
   if (state.filter !== "all") {
 
     list = list.filter(product => {
 
       return (
-        product.category.toLowerCase() ===
+        product.category
+          .toLowerCase() ===
         state.filter
       );
 
@@ -537,10 +684,15 @@ function getFilteredProducts() {
   }
 
 
+  /* SEARCH */
+
   if (state.search.trim()) {
 
     const query =
-      state.search.toLowerCase();
+      state.search
+        .trim()
+        .toLowerCase();
+
 
     list = list.filter(product => {
 
@@ -563,10 +715,13 @@ function getFilteredProducts() {
   }
 
 
+  /* SORT */
+
   if (state.sort === "price-low") {
 
     list.sort(
-      (a, b) => a.price - b.price
+      (a, b) =>
+        a.price - b.price
     );
 
   }
@@ -575,7 +730,8 @@ function getFilteredProducts() {
   if (state.sort === "price-high") {
 
     list.sort(
-      (a, b) => b.price - a.price
+      (a, b) =>
+        b.price - a.price
     );
 
   }
@@ -607,6 +763,7 @@ function renderProducts() {
 
   const count =
     document.querySelector("#productCount");
+
 
   if (!grid) return;
 
@@ -677,8 +834,10 @@ function renderProducts() {
             GH₵${money(product.price)}
           </p>
 
+
           <button
             class="btn primary"
+            type="button"
             onclick="addProduct('${product.id}')"
           >
             Add to basket
@@ -724,9 +883,13 @@ document
       "click",
       event => {
 
+        event.preventDefault();
+
+
         const category =
           card.dataset.category
             ?.toLowerCase();
+
 
         if (!category) return;
 
@@ -735,16 +898,16 @@ document
           category;
 
 
+        renderFilters();
+
+        renderProducts();
+
+
         document
           .querySelector("#shop")
           ?.scrollIntoView({
             behavior: "smooth"
           });
-
-
-        renderFilters();
-
-        renderProducts();
 
       }
     );
@@ -776,7 +939,14 @@ function openSearch() {
 
   if (!searchOverlay) return;
 
+
   searchOverlay.classList.add("open");
+
+  searchOverlay.setAttribute(
+    "aria-hidden",
+    "false"
+  );
+
 
   setTimeout(
     () => searchInput?.focus(),
@@ -788,10 +958,43 @@ function openSearch() {
 
 function closeSearch() {
 
-  searchOverlay
-    ?.classList.remove("open");
+  searchOverlay?.classList.remove("open");
+
+  searchOverlay?.setAttribute(
+    "aria-hidden",
+    "true"
+  );
 
 }
+
+
+searchBtn?.addEventListener(
+  "click",
+  openSearch
+);
+
+
+searchClose?.addEventListener(
+  "click",
+  closeSearch
+);
+
+
+searchOverlay?.addEventListener(
+  "click",
+  event => {
+
+    if (
+      event.target ===
+      searchOverlay
+    ) {
+
+      closeSearch();
+
+    }
+
+  }
+);
 
 
 function performSearch() {
@@ -799,8 +1002,10 @@ function performSearch() {
   state.search =
     searchInput?.value.trim() || "";
 
+
   state.filter =
     "all";
+
 
   renderFilters();
 
@@ -818,16 +1023,6 @@ function performSearch() {
 }
 
 
-searchBtn?.addEventListener(
-  "click",
-  openSearch
-);
-
-searchClose?.addEventListener(
-  "click",
-  closeSearch
-);
-
 searchSubmit?.addEventListener(
   "click",
   performSearch
@@ -844,23 +1039,8 @@ searchInput?.addEventListener(
 
     }
 
+
     if (event.key === "Escape") {
-
-      closeSearch();
-
-    }
-
-  }
-);
-
-
-searchOverlay?.addEventListener(
-  "click",
-  event => {
-
-    if (
-      event.target === searchOverlay
-    ) {
 
       closeSearch();
 
@@ -886,13 +1066,12 @@ menuBtn?.addEventListener(
   () => {
 
     const open =
-      mainNav.classList.toggle("open");
+      mainNav?.classList.toggle("open");
+
 
     menuBtn.setAttribute(
       "aria-expanded",
-      open
-        ? "true"
-        : "false"
+      open ? "true" : "false"
     );
 
   }
@@ -911,6 +1090,7 @@ mainNav
           "open"
         );
 
+
         menuBtn?.setAttribute(
           "aria-expanded",
           "false"
@@ -923,407 +1103,13 @@ mainNav
 
 
 /* =========================================================
-   BUILD A PLATTER
-=========================================================
-
-   The builder now works with ALL store categories.
-
-   Customers can:
-
-   1. Choose a meal/recipe.
-   2. See its ingredients.
-   3. Deselect individual ingredients.
-   4. Add clothing.
-   5. Add jewelry.
-   6. Add gifts.
-   7. Add individual groceries.
-   8. See the combined total.
-   9. Add the complete custom selection to basket.
+   BUILD YOUR OWN
 ========================================================= */
 
-
-/* =========================================================
-   BUILDER STATE
-========================================================= */
-
-function clearBuilder() {
-
-  state.builderSelections = [];
-
-  document
-    .querySelectorAll(
-      ".builder-product-check"
-    )
-    .forEach(input => {
-
-      input.checked = false;
-
-    });
-
-  document
-    .querySelectorAll(
-      ".ingredient-check"
-    )
-    .forEach(input => {
-
-      input.checked = false;
-
-    });
-
-  updateBuilderTotal();
-
-}
-
-
-/* =========================================================
-   ADD BUILDER ITEM
-========================================================= */
-
-function addBuilderItem(
-  productId,
-  quantity = 1
-) {
-
-  const product =
-    getProduct(productId);
-
-  if (!product) return;
-
-
-  const existing =
-    state.builderSelections.find(
-      item =>
-        item.productId === productId
-    );
-
-
-  if (existing) {
-
-    existing.quantity += quantity;
-
-  } else {
-
-    state.builderSelections.push({
-
-      productId,
-
-      quantity
-
-    });
-
-  }
-
-
-  updateBuilderTotal();
-
-}
-
-
-/* =========================================================
-   REMOVE BUILDER ITEM
-========================================================= */
-
-function removeBuilderItem(
-  productId
-) {
-
-  state.builderSelections =
-    state.builderSelections.filter(
-      item =>
-        item.productId !== productId
-    );
-
-  updateBuilderTotal();
-
-}
-
-
-/* =========================================================
-   TOGGLE BUILDER ITEM
-========================================================= */
-
-function toggleBuilderItem(
-  productId,
-  checked
-) {
-
-  if (checked) {
-
-    addBuilderItem(productId);
-
-  } else {
-
-    removeBuilderItem(productId);
-
-  }
-
-}
-
-
-/* =========================================================
-   BUILD MEAL
-========================================================= */
-
-function loadMealIntoBuilder(
-  mealId
-) {
-
-  const meal =
-    state.mealGroups.find(
-      item => item.id === mealId
-    );
-
-  if (!meal) return;
-
-
-  /* Remove previous grocery selections */
-
-  meal.ingredients.forEach(
-    ingredient => {
-
-      removeBuilderItem(
-        ingredient.productId
-      );
-
-    }
-  );
-
-
-  /* Add meal ingredients */
-
-  meal.ingredients.forEach(
-    ingredient => {
-
-      addBuilderItem(
-        ingredient.productId,
-        ingredient.quantity || 1
-      );
-
-    }
-  );
-
-
-  syncBuilderCheckboxes();
-
-  updateBuilderTotal();
-
-}
-
-
-/* =========================================================
-   SYNC CHECKBOXES
-========================================================= */
-
-function syncBuilderCheckboxes() {
-
-  const selectedIds =
-    new Set(
-      state.builderSelections.map(
-        item => item.productId
-      )
-    );
-
-
-  document
-    .querySelectorAll(
-      ".builder-product-check, .ingredient-check"
-    )
-    .forEach(input => {
-
-      input.checked =
-        selectedIds.has(
-          input.value
-        );
-
-    });
-
-}
-
-
-/* =========================================================
-   BUILDER TOTAL
-========================================================= */
-
-function getBuilderTotal() {
-
-  return state.builderSelections
-    .reduce(
-      (total, selection) => {
-
-        const product =
-          getProduct(
-            selection.productId
-          );
-
-        if (!product) {
-          return total;
-        }
-
-        return (
-          total +
-          product.price *
-          selection.quantity
-        );
-
-      },
-      0
-    );
-
-}
-
-
-function updateBuilderTotal() {
-
-  const total =
-    getBuilderTotal();
-
-
-  const element =
-    document.querySelector(
-      "#platterTotal"
-    );
-
-
-  if (element) {
-
-    element.textContent =
-      money(total);
-
-  }
-
-
-  const addButton =
-    document.querySelector(
-      "#addPlatter"
-    );
-
-
-  if (addButton) {
-
-    addButton.disabled =
-      state.builderSelections.length === 0;
-
-  }
-
-
-  renderBuilderSummary();
-
-}
-
-
-/* =========================================================
-   BUILDER SUMMARY
-========================================================= */
-
-function renderBuilderSummary() {
-
-  const summary =
-    document.querySelector(
-      "#builderSummary"
-    );
-
-
-  if (!summary) return;
-
-
-  if (
-    !state.builderSelections.length
-  ) {
-
-    summary.innerHTML = `
-
-      <p class="loading">
-        Nothing selected yet.
-      </p>
-
-    `;
-
-    return;
-
-  }
-
-
-  summary.innerHTML =
-    state.builderSelections
-      .map(selection => {
-
-        const product =
-          getProduct(
-            selection.productId
-          );
-
-        if (!product) return "";
-
-
-        return `
-
-          <div class="ingredient">
-
-            <label>
-
-              <input
-                type="checkbox"
-                class="builder-summary-check"
-                value="${product.id}"
-                checked
-              >
-
-              ${escapeHtml(
-                product.name
-              )}
-
-            </label>
-
-            <span>
-              GH₵${money(
-                product.price *
-                selection.quantity
-              )}
-            </span>
-
-          </div>
-
-        `;
-
-      })
-      .join("");
-
-
-  summary
-    .querySelectorAll(
-      ".builder-summary-check"
-    )
-    .forEach(input => {
-
-      input.addEventListener(
-        "change",
-        event => {
-
-          toggleBuilderItem(
-            event.target.value,
-            event.target.checked
-          );
-
-          syncBuilderCheckboxes();
-
-        }
-      );
-
-    });
-
-}
-
-
-/* =========================================================
-   RENDER MEAL GROUPS
-========================================================= */
-
-function renderMealGroups() {
+function renderMeals() {
 
   const select =
-    document.querySelector(
-      "#mealSelect"
-    );
+    document.querySelector("#mealSelect");
 
   if (!select) return;
 
@@ -1331,18 +1117,16 @@ function renderMealGroups() {
   select.innerHTML = `
 
     <option value="">
-      Choose a prepared meal
+      Select a collection
     </option>
 
-    ${state.mealGroups.map(
-      meal => `
+    ${state.meals.map(meal => `
 
-        <option value="${meal.id}">
-          ${escapeHtml(meal.name)}
-        </option>
+      <option value="${meal.id}">
+        ${escapeHtml(meal.name)}
+      </option>
 
-      `
-    ).join("")}
+    `).join("")}
 
   `;
 
@@ -1350,29 +1134,29 @@ function renderMealGroups() {
 
 
 /* =========================================================
-   RENDER MEAL INGREDIENTS
+   RENDER BUILDER ITEMS
 ========================================================= */
 
 function renderIngredients() {
 
   const select =
-    document.querySelector(
-      "#mealSelect"
-    );
+    document.querySelector("#mealSelect");
 
   const list =
-    document.querySelector(
-      "#ingredientList"
-    );
+    document.querySelector("#ingredientList");
+
+  const total =
+    document.querySelector("#platterTotal");
+
+  const addButton =
+    document.querySelector("#addPlatter");
 
 
-  if (!select || !list) {
-    return;
-  }
+  if (!select || !list) return;
 
 
   const meal =
-    state.mealGroups.find(
+    state.meals.find(
       item =>
         item.id === select.value
     );
@@ -1382,63 +1166,70 @@ function renderIngredients() {
 
     list.innerHTML = "";
 
+
+    if (total) {
+
+      total.textContent =
+        "0.00";
+
+    }
+
+
+    if (addButton) {
+
+      addButton.disabled =
+        true;
+
+    }
+
+
     return;
 
   }
 
 
   list.innerHTML =
-    meal.ingredients
-      .map(ingredient => {
+    meal.ingredients.map(
+      (ingredient, index) => `
 
-        const product =
-          getProduct(
-            ingredient.productId
-          );
+        <div class="ingredient">
 
-        if (!product) return "";
+          <label>
 
+            <input
+              type="checkbox"
+              class="ingredient-check"
+              value="${escapeHtml(
+                ingredient.productId
+              )}"
+              data-price="${ingredient.price}"
+              data-name="${escapeHtml(
+                ingredient.name
+              )}"
+              data-index="${index}"
+              ${
+                ingredient.defaultSelected
+                  ? "checked"
+                  : ""
+              }
+            >
 
-        const selected =
-          state.builderSelections.some(
-            item =>
-              item.productId ===
-              product.id
-          );
+            ${escapeHtml(
+              ingredient.name
+            )}
 
+          </label>
 
-        return `
+          <span>
+            GH₵${money(
+              ingredient.price
+            )}
+          </span>
 
-          <div class="ingredient">
+        </div>
 
-            <label>
-
-              <input
-                type="checkbox"
-                class="ingredient-check"
-                value="${product.id}"
-                ${selected ? "checked" : ""}
-              >
-
-              ${escapeHtml(
-                product.name
-              )}
-
-            </label>
-
-            <span>
-              GH₵${money(
-                product.price *
-                (ingredient.quantity || 1)
-              )}
-            </span>
-
-          </div>
-
-        `;
-
-      })
-      .join("");
+      `
+    ).join("");
 
 
   list
@@ -1449,189 +1240,84 @@ function renderIngredients() {
 
       input.addEventListener(
         "change",
-        event => {
-
-          toggleBuilderItem(
-            event.target.value,
-            event.target.checked
-          );
-
-          updateBuilderTotal();
-
-        }
+        updatePlatter
       );
 
     });
+
+
+  updatePlatter();
 
 }
 
 
 /* =========================================================
-   RENDER ALL BUILDER PRODUCTS
+   UPDATE BUILDER TOTAL
 ========================================================= */
 
-function renderBuilderProducts() {
+function updatePlatter() {
 
-  const container =
-    document.querySelector(
-      "#builderProducts"
+  const selected =
+    document.querySelectorAll(
+      ".ingredient-check:checked"
     );
 
 
-  if (!container) return;
+  let total = 0;
 
 
-  const grouped = {};
+  selected.forEach(item => {
+
+    total += Number(
+      item.dataset.price
+    );
+
+  });
 
 
-  state.products.forEach(
-    product => {
+  const totalElement =
+    document.querySelector(
+      "#platterTotal"
+    );
 
-      if (!grouped[product.category]) {
-
-        grouped[product.category] = [];
-
-      }
-
-      grouped[
-        product.category
-      ].push(product);
-
-    }
-  );
+  const addButton =
+    document.querySelector(
+      "#addPlatter"
+    );
 
 
-  container.innerHTML =
-    Object.entries(grouped)
-      .map(
-        ([category, categoryProducts]) => `
+  if (totalElement) {
 
-          <div class="builder-category">
+    totalElement.textContent =
+      money(total);
 
-            <h3>
-              ${escapeHtml(category)}
-            </h3>
-
-            <div class="ingredient-list">
-
-              ${categoryProducts
-                .map(product => {
-
-                  const selected =
-                    state.builderSelections.some(
-                      item =>
-                        item.productId ===
-                        product.id
-                    );
+  }
 
 
-                  return `
+  if (addButton) {
 
-                    <div class="ingredient">
+    addButton.disabled =
+      total <= 0;
 
-                      <label>
-
-                        <input
-                          type="checkbox"
-                          class="builder-product-check"
-                          value="${product.id}"
-                          ${
-                            selected
-                              ? "checked"
-                              : ""
-                          }
-                        >
-
-                        ${escapeHtml(
-                          product.name
-                        )}
-
-                      </label>
-
-                      <span>
-                        GH₵${money(
-                          product.price
-                        )}
-                      </span>
-
-                    </div>
-
-                  `;
-
-                })
-                .join("")}
-
-            </div>
-
-          </div>
-
-        `
-      )
-      .join("");
-
-
-  container
-    .querySelectorAll(
-      ".builder-product-check"
-    )
-    .forEach(input => {
-
-      input.addEventListener(
-        "change",
-        event => {
-
-          toggleBuilderItem(
-            event.target.value,
-            event.target.checked
-          );
-
-        }
-      );
-
-    });
+  }
 
 }
 
 
 /* =========================================================
-   MEAL SELECT
+   BUILDER SELECT CHANGE
 ========================================================= */
 
 document
   .querySelector("#mealSelect")
   ?.addEventListener(
     "change",
-    () => {
-
-      const meal =
-        state.mealGroups.find(
-          item =>
-            item.id ===
-            document.querySelector(
-              "#mealSelect"
-            )?.value
-        );
-
-
-      if (!meal) {
-
-        return;
-
-      }
-
-
-      loadMealIntoBuilder(
-        meal.id
-      );
-
-      renderIngredients();
-
-    }
+    renderIngredients
   );
 
 
 /* =========================================================
-   ADD CUSTOM BUILD TO CART
+   ADD CUSTOM COLLECTION TO CART
 ========================================================= */
 
 document
@@ -1640,63 +1326,58 @@ document
     "click",
     () => {
 
-      if (
-        !state.builderSelections.length
-      ) {
+      const mealId =
+        document.querySelector(
+          "#mealSelect"
+        )?.value;
+
+
+      const meal =
+        state.meals.find(
+          item =>
+            item.id === mealId
+        );
+
+
+      if (!meal) return;
+
+
+      const selected =
+        [
+          ...document.querySelectorAll(
+            ".ingredient-check:checked"
+          )
+        ].map(item => ({
+
+          productId:
+            item.value,
+
+          name:
+            item.dataset.name,
+
+          price:
+            Number(
+              item.dataset.price
+            )
+
+        }));
+
+
+      if (!selected.length) {
+
+        alert(
+          "Please select at least one item."
+        );
 
         return;
 
       }
 
 
-      const items =
-        state.builderSelections
-          .map(selection => {
-
-            const product =
-              getProduct(
-                selection.productId
-              );
-
-            if (!product) {
-              return null;
-            }
-
-
-            return {
-
-              productId:
-                product.id,
-
-              name:
-                product.name,
-
-              category:
-                product.category,
-
-              price:
-                Number(product.price),
-
-              quantity:
-                selection.quantity
-
-            };
-
-          })
-          .filter(Boolean);
-
-
-      if (!items.length) {
-        return;
-      }
-
-
-      const total =
-        items.reduce(
-          (sum, item) =>
-            sum +
-            item.price *
-            item.quantity,
+      const price =
+        selected.reduce(
+          (total, item) =>
+            total + item.price,
           0
         );
 
@@ -1707,24 +1388,18 @@ document
           `custom-${Date.now()}`,
 
         name:
-          "Custom Everything Build",
+          `Custom ${meal.name}`,
 
-        price:
-          total,
+        price,
 
-        qty:
-          1,
+        qty: 1,
 
         meta:
-          items
-            .map(
-              item =>
-                `${item.name} x${item.quantity}`
+          selected
+            .map(item =>
+              item.name
             )
-            .join(", "),
-
-        customItems:
-          items
+            .join(", ")
 
       });
 
@@ -1740,7 +1415,7 @@ document
 
 
 /* =========================================================
-   CART
+   CART STORAGE
 ========================================================= */
 
 function loadCart() {
@@ -1753,6 +1428,13 @@ function loadCart() {
           "ee_cart"
         ) || "[]"
       );
+
+
+    if (!Array.isArray(state.cart)) {
+
+      state.cart = [];
+
+    }
 
   } catch {
 
@@ -1782,7 +1464,11 @@ function saveCart() {
 function addProduct(id) {
 
   const product =
-    getProduct(id);
+    state.products.find(
+      item =>
+        item.id === id
+    );
+
 
   if (!product) return;
 
@@ -1809,10 +1495,11 @@ function addProduct(id) {
         product.name,
 
       price:
-        Number(product.price),
+        Number(
+          product.price
+        ),
 
-      qty:
-        1
+      qty: 1
 
     });
 
@@ -1857,8 +1544,7 @@ function renderCart() {
   const quantity =
     state.cart.reduce(
       (sum, item) =>
-        sum +
-        Number(item.qty),
+        sum + Number(item.qty || 0),
       0
     );
 
@@ -1885,8 +1571,7 @@ function renderCart() {
         </strong>
 
         <p>
-          Add something you love
-          to get started.
+          Add something you love to get started.
         </p>
 
       </div>
@@ -1910,6 +1595,7 @@ function renderCart() {
                   )}
                 </b>
 
+
                 ${
                   item.meta
                     ? `
@@ -1922,17 +1608,23 @@ function renderCart() {
                     : ""
                 }
 
+
                 <div>
+
                   GH₵${money(
-                    item.price *
-                    item.qty
+                    Number(item.price) *
+                    Number(item.qty)
                   )}
+
                 </div>
 
 
+                <!-- REMOVE ITEM -->
+
                 <button
                   class="remove-item"
-                  onclick="removeCartItem(${index})"
+                  type="button"
+                  onclick="removeItem(${index})"
                 >
                   Remove
                 </button>
@@ -1943,24 +1635,22 @@ function renderCart() {
               <div class="qty">
 
                 <button
-                  onclick="changeQty(
-                    ${index},
-                    -1
-                  )"
+                  type="button"
+                  onclick="changeQty(${index}, -1)"
                   aria-label="Decrease quantity"
                 >
                   −
                 </button>
 
+
                 <span>
                   ${item.qty}
                 </span>
 
+
                 <button
-                  onclick="changeQty(
-                    ${index},
-                    1
-                  )"
+                  type="button"
+                  onclick="changeQty(${index}, 1)"
                   aria-label="Increase quantity"
                 >
                   +
@@ -1981,8 +1671,10 @@ function renderCart() {
     state.cart.reduce(
       (sum, item) =>
         sum +
-        Number(item.price) *
-        Number(item.qty),
+        (
+          Number(item.price) *
+          Number(item.qty)
+        ),
       0
     );
 
@@ -2001,11 +1693,9 @@ function renderCart() {
    REMOVE CART ITEM
 ========================================================= */
 
-function removeCartItem(index) {
+function removeItem(index) {
 
-  if (!state.cart[index]) {
-    return;
-  }
+  if (!state.cart[index]) return;
 
 
   state.cart.splice(
@@ -2021,12 +1711,12 @@ function removeCartItem(index) {
 }
 
 
-window.removeCartItem =
-  removeCartItem;
+window.removeItem =
+  removeItem;
 
 
 /* =========================================================
-   CHANGE CART QUANTITY
+   CHANGE QUANTITY
 ========================================================= */
 
 function changeQty(
@@ -2034,9 +1724,7 @@ function changeQty(
   amount
 ) {
 
-  if (!state.cart[index]) {
-    return;
-  }
+  if (!state.cart[index]) return;
 
 
   state.cart[index].qty =
@@ -2085,16 +1773,20 @@ const drawerOverlay =
 
 function openCart() {
 
-  cartDrawer
-    ?.classList.add("open");
+  cartDrawer?.classList.add(
+    "open"
+  );
 
-  drawerOverlay
-    ?.classList.add("open");
+  drawerOverlay?.classList.add(
+    "open"
+  );
+
 
   cartDrawer?.setAttribute(
     "aria-hidden",
     "false"
   );
+
 
   document.body.style.overflow =
     "hidden";
@@ -2104,16 +1796,20 @@ function openCart() {
 
 function closeCart() {
 
-  cartDrawer
-    ?.classList.remove("open");
+  cartDrawer?.classList.remove(
+    "open"
+  );
 
-  drawerOverlay
-    ?.classList.remove("open");
+  drawerOverlay?.classList.remove(
+    "open"
+  );
+
 
   cartDrawer?.setAttribute(
     "aria-hidden",
     "true"
   );
+
 
   document.body.style.overflow =
     "";
@@ -2166,20 +1862,30 @@ function openCheckout() {
   }
 
 
-  modal
-    ?.classList.remove(
-      "hidden"
-    );
+  modal?.classList.remove(
+    "hidden"
+  );
+
+
+  modal?.setAttribute(
+    "aria-hidden",
+    "false"
+  );
 
 }
 
 
 function closeCheckout() {
 
-  modal
-    ?.classList.add(
-      "hidden"
-    );
+  modal?.classList.add(
+    "hidden"
+  );
+
+
+  modal?.setAttribute(
+    "aria-hidden",
+    "true"
+  );
 
 }
 
@@ -2205,7 +1911,8 @@ modal?.addEventListener(
   event => {
 
     if (
-      event.target === modal
+      event.target ===
+      modal
     ) {
 
       closeCheckout();
@@ -2217,7 +1924,7 @@ modal?.addEventListener(
 
 
 /* =========================================================
-   CHECKOUT → WHATSAPP
+   CHECKOUT FORM
 ========================================================= */
 
 document
@@ -2249,16 +1956,16 @@ document
       const customer = {
 
         name:
-          form.get("name"),
+          form.get("name") || "",
 
         phone:
-          form.get("phone"),
+          form.get("phone") || "",
 
         email:
-          form.get("email"),
+          form.get("email") || "",
 
         address:
-          form.get("address")
+          form.get("address") || ""
 
       };
 
@@ -2271,18 +1978,29 @@ document
       );
 
 
+      /* =====================================================
+         ORDER TOTAL
+      ====================================================== */
+
       const total =
         state.cart.reduce(
           (sum, item) =>
             sum +
-            Number(item.price) *
-            Number(item.qty),
+            (
+              Number(item.price) *
+              Number(item.qty)
+            ),
           0
         );
 
 
+      /* =====================================================
+         WHATSAPP MESSAGE
+      ====================================================== */
+
       let message =
         "Hello Everything Everything! 👋\n\n";
+
 
       message +=
         "I would like to place an order.\n\n";
@@ -2291,17 +2009,29 @@ document
       message +=
         "CUSTOMER DETAILS\n";
 
-      message +=
-        `Name: ${customer.name}\n`;
 
       message +=
-        `Phone: ${customer.phone}\n`;
+        "Name: " +
+        customer.name +
+        "\n";
+
 
       message +=
-        `Email: ${customer.email}\n`;
+        "Phone: " +
+        customer.phone +
+        "\n";
+
 
       message +=
-        `Delivery location: ${customer.address}\n\n`;
+        "Email: " +
+        customer.email +
+        "\n";
+
+
+      message +=
+        "Delivery location: " +
+        customer.address +
+        "\n\n";
 
 
       message +=
@@ -2314,8 +2044,10 @@ document
           message +=
             `${index + 1}. ${item.name}\n`;
 
+
           message +=
             `Quantity: ${item.qty}\n`;
+
 
           message +=
             `Price: GH₵${money(
@@ -2323,42 +2055,18 @@ document
             )} each\n`;
 
 
-          if (item.customItems) {
+          if (item.meta) {
 
             message +=
-              "Selected items:\n";
-
-
-            item.customItems
-              .forEach(
-                customItem => {
-
-                  message +=
-                    `- ${customItem.name}` +
-                    ` x${customItem.quantity}` +
-                    ` (${customItem.category})\n`;
-
-                }
-              );
-
-          }
-
-
-          if (
-            item.meta &&
-            !item.customItems
-          ) {
-
-            message +=
-              `Details: ${item.meta}\n`;
+              `Selected items: ${item.meta}\n`;
 
           }
 
 
           message +=
             `Subtotal: GH₵${money(
-              item.price *
-              item.qty
+              Number(item.price) *
+              Number(item.qty)
             )}\n\n`;
 
         }
@@ -2366,14 +2074,18 @@ document
 
 
       message +=
-        `TOTAL: GH₵${money(
-          total
-        )}\n\n`;
+        "TOTAL: GH₵" +
+        money(total) +
+        "\n\n";
 
 
       message +=
         "Please confirm my order and let me know the next steps. Thank you!";
 
+
+      /* =====================================================
+         WHATSAPP
+      ====================================================== */
 
       const whatsappNumber =
         "233547026348";
@@ -2417,9 +2129,7 @@ document
         )?.value.trim();
 
 
-      if (!email) {
-        return;
-      }
+      if (!email) return;
 
 
       localStorage.setItem(
@@ -2455,7 +2165,8 @@ document.addEventListener(
   event => {
 
     if (
-      event.key !== "Escape"
+      event.key !==
+      "Escape"
     ) {
 
       return;
@@ -2474,7 +2185,7 @@ document.addEventListener(
 
 
 /* =========================================================
-   INITIALIZE
+   INITIALIZE STORE
 ========================================================= */
 
 function initializeStore() {
@@ -2485,13 +2196,7 @@ function initializeStore() {
 
   renderProducts();
 
-  renderMealGroups();
-
-  renderIngredients();
-
-  renderBuilderProducts();
-
-  renderBuilderSummary();
+  renderMeals();
 
   renderCart();
 
