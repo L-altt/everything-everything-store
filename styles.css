@@ -61,23 +61,18 @@ button {
 :root {
   --black: #111111;
   --dark: #171717;
-
   --green: #075b35;
   --green-dark: #043b24;
-
   --orange: #f36b21;
 
   --cream: #fffdf8;
   --cream-dark: #f4eee5;
-
   --white: #ffffff;
 
   --text: #111111;
   --muted: #6b726d;
 
   --border: #e7e2d9;
-
-  --danger: #b3261e;
 
   --radius-sm: 10px;
   --radius-md: 18px;
@@ -98,7 +93,6 @@ button {
 .announcement-bar {
   background: var(--black);
   color: var(--white);
-
   min-height: 36px;
 
   display: flex;
@@ -113,9 +107,7 @@ button {
 .announcement-bar p {
   font-size: 11px;
   font-weight: 700;
-
   letter-spacing: .08em;
-
   text-transform: uppercase;
 }
 
@@ -127,11 +119,9 @@ button {
 .site-header {
   position: sticky;
   top: 0;
-
   z-index: 40;
 
   background: rgba(255, 253, 248, .92);
-
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
 
@@ -140,16 +130,13 @@ button {
 
 .header-inner {
   width: min(var(--container), 100%);
-
   min-height: 78px;
 
   margin: auto;
-
   padding: 0 28px;
 
   display: flex;
   align-items: center;
-
   gap: 40px;
 }
 
@@ -160,7 +147,6 @@ button {
 
 .brand {
   display: inline-flex;
-
   flex-direction: column;
 
   text-decoration: none;
@@ -174,17 +160,13 @@ button {
 
 .brand-small {
   font-size: 9px;
-
   font-weight: 900;
-
   letter-spacing: .28em;
 }
 
 .brand-large {
   font-size: 22px;
-
   font-weight: 950;
-
   letter-spacing: -.07em;
 }
 
@@ -195,9 +177,7 @@ button {
 
 .main-nav {
   display: flex;
-
   align-items: center;
-
   gap: 27px;
 
   margin-left: auto;
@@ -211,7 +191,6 @@ button {
   text-decoration: none;
 
   font-size: 13px;
-
   font-weight: 700;
 
   padding: 8px 0;
@@ -221,7 +200,6 @@ button {
   content: "";
 
   position: absolute;
-
   left: 0;
   bottom: 2px;
 
@@ -244,16 +222,13 @@ button {
 
 .header-actions {
   display: flex;
-
   align-items: center;
-
   gap: 9px;
 }
 
 .icon-btn,
 .menu-btn {
   border: 0;
-
   background: transparent;
 }
 
@@ -262,7 +237,6 @@ button {
   height: 42px;
 
   display: grid;
-
   place-items: center;
 
   border-radius: 50%;
@@ -276,23 +250,18 @@ button {
 
 .cart-btn {
   display: inline-flex;
-
   align-items: center;
-
   gap: 8px;
 
   border: 0;
-
   border-radius: 999px;
 
   padding: 10px 14px;
 
   background: var(--black);
-
   color: white;
 
   font-size: 12px;
-
   font-weight: 800;
 }
 
@@ -301,7 +270,6 @@ button {
   height: 21px;
 
   display: grid;
-
   place-items: center;
 
   border-radius: 50%;
@@ -323,9 +291,7 @@ button {
   display: none;
 
   flex-direction: column;
-
   align-items: center;
-
   justify-content: center;
 
   gap: 5px;
@@ -345,7 +311,6 @@ button {
 
 .search-overlay {
   position: fixed;
-
   inset: 0;
 
   z-index: 80;
@@ -353,15 +318,12 @@ button {
   background: rgba(17, 17, 17, .72);
 
   display: flex;
-
   justify-content: center;
-
   align-items: flex-start;
 
   padding: 100px 20px 30px;
 
   opacity: 0;
-
   visibility: hidden;
 
   transition: .25s ease;
@@ -369,7 +331,6 @@ button {
 
 .search-overlay.open {
   opacity: 1;
-
   visibility: visible;
 }
 
@@ -394,7 +355,6 @@ button {
   top: 15px;
 
   border: 0;
-
   background: transparent;
 
   font-size: 30px;
@@ -402,7 +362,6 @@ button {
 
 .search-box h2 {
   font-size: clamp(30px, 5vw, 48px);
-
   line-height: 1;
 
   letter-spacing: -.05em;
@@ -412,13 +371,11 @@ button {
 
 .search-input-wrap {
   display: flex;
-
   gap: 8px;
 }
 
 .search-input-wrap input {
   min-width: 0;
-
   flex: 1;
 
   border: 1px solid var(--border);
@@ -440,7 +397,6 @@ button {
   border: 0;
 
   background: var(--black);
-
   color: white;
 
   padding: 0 20px;
@@ -471,7 +427,6 @@ main {
   color: var(--orange);
 
   font-size: 10px;
-
   font-weight: 900;
 
   letter-spacing: .2em;
@@ -483,9 +438,7 @@ main {
 
 .section-head {
   display: flex;
-
   align-items: flex-end;
-
   justify-content: space-between;
 
   gap: 30px;
@@ -512,13 +465,11 @@ main {
 
 .centered {
   display: block;
-
   text-align: center;
 }
 
 .centered > p:last-child {
   margin-left: auto;
-
   margin-right: auto;
 }
 
@@ -531,13 +482,10 @@ main {
   min-height: 48px;
 
   display: inline-flex;
-
   align-items: center;
-
   justify-content: center;
 
   border: 0;
-
   border-radius: 999px;
 
   padding: 13px 22px;
@@ -545,7 +493,6 @@ main {
   text-decoration: none;
 
   font-size: 13px;
-
   font-weight: 800;
 
   transition:
@@ -560,7 +507,6 @@ main {
 
 .btn.primary {
   background: var(--black);
-
   color: white;
 }
 
@@ -570,7 +516,6 @@ main {
 
 .btn.secondary {
   background: var(--cream-dark);
-
   color: var(--black);
 }
 
@@ -580,7 +525,6 @@ main {
 
 .btn.light {
   background: white;
-
   color: var(--black);
 }
 
@@ -665,7 +609,6 @@ main {
   color: #606862;
 
   font-size: 11px;
-
   font-weight: 700;
 }
 
@@ -683,7 +626,6 @@ main {
 
 .hero-image-main {
   width: 100%;
-
   height: 560px;
 
   overflow: hidden;
@@ -708,7 +650,6 @@ main {
   position: absolute;
 
   left: -35px;
-
   bottom: 35px;
 
   width: 230px;
@@ -730,7 +671,6 @@ main {
   color: #aaa;
 
   font-size: 9px;
-
   font-weight: 800;
 
   letter-spacing: .2em;
@@ -791,7 +731,6 @@ main {
 
 .category-image {
   position: absolute;
-
   inset: 0;
 }
 
@@ -809,7 +748,6 @@ main {
   content: "";
 
   position: absolute;
-
   inset: 0;
 
   background:
@@ -883,7 +821,6 @@ main {
   padding: 9px 14px;
 
   font-size: 11px;
-
   font-weight: 700;
 
   cursor: pointer;
@@ -965,7 +902,6 @@ main {
   display: flex;
 
   align-items: center;
-
   justify-content: center;
 
   overflow: hidden;
@@ -975,7 +911,6 @@ main {
 
 .product-img img {
   width: 100%;
-
   height: 100%;
 
   transition: transform .5s ease;
@@ -1108,10 +1043,7 @@ main {
 
   max-width: none;
 
-  padding: 120px max(
-    28px,
-    calc((100% - var(--container)) / 2 + 28px)
-  );
+  padding: 120px max(28px, calc((100% - var(--container)) / 2 + 28px));
 
   display: grid;
 
@@ -1190,7 +1122,6 @@ main {
   margin-bottom: 18px;
 
   font-size: 12px;
-
   font-weight: 800;
 }
 
@@ -1252,7 +1183,6 @@ main {
   margin: 0;
 
   font-size: 12px;
-
   font-weight: 600;
 }
 
@@ -1307,7 +1237,6 @@ main {
   color: var(--orange);
 
   font-size: 10px;
-
   font-weight: 900;
 
   letter-spacing: .15em;
@@ -1595,10 +1524,7 @@ main {
 
   color: white;
 
-  padding:
-    80px
-    max(28px, calc((100% - var(--container)) / 2 + 28px))
-    25px;
+  padding: 80px max(28px, calc((100% - var(--container)) / 2 + 28px)) 25px;
 }
 
 .footer-main {
@@ -1700,8 +1626,7 @@ main {
 
   background: var(--cream);
 
-  box-shadow:
-    -20px 0 70px rgba(0, 0, 0, .18);
+  box-shadow: -20px 0 70px rgba(0, 0, 0, .18);
 
   transform: translateX(105%);
 
@@ -1788,55 +1713,7 @@ main {
   border-radius: 7px;
 
   background: white;
-
-  transition:
-    background .2s ease,
-    border-color .2s ease;
 }
-
-.qty button:hover {
-  background: var(--cream-dark);
-
-  border-color: #d6d0c7;
-}
-
-
-/* =========================================================
-   CART REMOVE BUTTON
-========================================================= */
-
-.remove-item {
-  display: inline-block;
-
-  margin-top: 8px;
-
-  padding: 0;
-
-  border: 0;
-
-  background: transparent;
-
-  color: var(--danger);
-
-  font-size: 11px;
-
-  font-weight: 700;
-
-  cursor: pointer;
-
-  transition: opacity .2s ease;
-}
-
-.remove-item:hover {
-  text-decoration: underline;
-
-  opacity: .8;
-}
-
-
-/* =========================================================
-   CART FOOTER
-========================================================= */
 
 .cart-footer {
   padding-top: 20px;
@@ -2026,7 +1903,6 @@ main {
   .hero-visual,
   .hero-image-main {
     min-height: 480px;
-
     height: 480px;
   }
 
@@ -2138,7 +2014,6 @@ main {
 
   .hero-floating-card {
     left: 18px;
-
     bottom: 20px;
 
     width: 200px;
@@ -2348,7 +2223,6 @@ main {
 
   .product button {
     padding: 10px;
-
     font-size: 11px;
   }
 
@@ -2380,14 +2254,6 @@ main {
 
   .modal-card {
     padding: 30px 20px;
-  }
-
-  .drawer {
-    padding: 22px 18px;
-  }
-
-  .cart-row {
-    gap: 8px;
   }
 
 }
