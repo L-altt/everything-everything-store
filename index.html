@@ -1,182 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
 <head>
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta
     name="description"
-    content="Everything Everything — groceries, clothing, jewelry, gifts and more."
+    content="Everything Everything — your one-stop shopping destination for groceries, clothing, jewelry, gifts and more."
   >
+
+  <meta name="theme-color" content="#111111">
 
   <title>Everything Everything</title>
 
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
-    rel="stylesheet"
-  >
-
-  <link
-    rel="stylesheet"
-    href="style.css"
-  >
-
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 
 <body>
 
-
-  <!-- =======================================================
+  <!-- =====================================================
        ANNOUNCEMENT BAR
-  ======================================================== -->
+  ====================================================== -->
 
   <div class="announcement-bar">
-
-    <p>
-      Everything you need. All in one place.
-    </p>
-
+    <p>Welcome to Everything Everything — Everything you need, all in one place.</p>
   </div>
 
 
+  <!-- =====================================================
+       HEADER / NAVIGATION
+  ====================================================== -->
 
-  <!-- =======================================================
-       HEADER
-  ======================================================== -->
-
-  <header class="site-header">
+  <header class="site-header" id="header">
 
     <div class="header-inner">
 
-
-      <!-- BRAND -->
-
-      <a
-        href="#home"
-        class="brand"
-        aria-label="Everything Everything home"
-      >
-
-        <span class="brand-small">
-          EVERYTHING
-        </span>
-
-        <span class="brand-large">
-          everything
-        </span>
-
+      <a class="brand" href="#home" aria-label="Everything Everything home">
+        <span class="brand-small">EVERYTHING</span>
+        <span class="brand-large">EVERYTHING</span>
       </a>
 
+      <nav class="main-nav" id="mainNav" aria-label="Main navigation">
 
-
-      <!-- NAVIGATION -->
-
-      <nav
-        class="main-nav"
-        id="mainNav"
-        aria-label="Main navigation"
-      >
-
-        <a href="#home">
-          Home
-        </a>
-
-        <a href="#categories">
-          Categories
-        </a>
-
-        <a href="#shop">
-          Shop
-        </a>
-
-        <a href="#build">
-          Build Your Own
-        </a>
-
-        <a href="#story">
-          Our Story
-        </a>
-
-        <a href="#contact">
-          Contact
-        </a>
+        <a href="#home">Home</a>
+        <a href="#shop">Shop</a>
+        <a href="#categories">Categories</a>
+        <a href="#platter">Build a Platter</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
 
       </nav>
 
-
-
-      <!-- HEADER ACTIONS -->
-
       <div class="header-actions">
-
-
-        <!-- SEARCH -->
 
         <button
           class="icon-btn search-btn"
           id="searchBtn"
-          type="button"
           aria-label="Search"
         >
-          ⌕
+          <span>⌕</span>
         </button>
-
-
-
-        <!-- CART -->
 
         <button
-          class="cart-btn"
           id="cartBtn"
-          type="button"
-          aria-label="Open basket"
+          class="cart-btn"
+          aria-label="Open shopping basket"
         >
-
-          <span>
-            Basket
-          </span>
-
-          <b id="cartCount">
-            0
-          </b>
-
+          <span>Basket</span>
+          <b id="cartCount">0</b>
         </button>
-
-
-
-        <!-- MOBILE MENU -->
 
         <button
           class="menu-btn"
           id="menuBtn"
-          type="button"
-          aria-label="Open navigation"
+          aria-label="Open menu"
           aria-expanded="false"
-          aria-controls="mainNav"
         >
-
           <span></span>
           <span></span>
           <span></span>
-
         </button>
 
       </div>
@@ -186,38 +88,25 @@
   </header>
 
 
-
-  <!-- =======================================================
+  <!-- =====================================================
        SEARCH OVERLAY
-  ======================================================== -->
+  ====================================================== -->
 
-  <div
-    class="search-overlay"
-    id="searchOverlay"
-    aria-hidden="true"
-  >
+  <div class="search-overlay" id="searchOverlay">
 
     <div class="search-box">
 
       <button
         class="search-close"
         id="searchClose"
-        type="button"
         aria-label="Close search"
       >
         ×
       </button>
 
+      <p class="eyebrow">SEARCH EVERYTHING</p>
 
-      <p class="eyebrow">
-        Find something
-      </p>
-
-
-      <h2>
-        What are you looking for?
-      </h2>
-
+      <h2>What are you looking for?</h2>
 
       <div class="search-input-wrap">
 
@@ -228,131 +117,83 @@
           autocomplete="off"
         >
 
-        <button
-          id="searchSubmit"
-          type="button"
-        >
-          Search
-        </button>
+        <button id="searchSubmit">Search</button>
 
       </div>
+
+      <div id="searchResults" class="search-results"></div>
 
     </div>
 
   </div>
 
 
-
   <main>
 
 
-
-    <!-- =====================================================
+    <!-- ===================================================
          HERO
-    ====================================================== -->
+    ==================================================== -->
 
-    <section
-      class="hero"
-      id="home"
-    >
+    <section id="home" class="hero">
 
       <div class="hero-content">
 
-        <p class="eyebrow">
-          Everything Everything
-        </p>
-
+        <p class="eyebrow">EVERYTHING EVERYTHING</p>
 
         <h1>
-
-          Everything
-          <span>
-            you need.
-          </span>
-
+          Everything you need.
+          <span>All in one place.</span>
         </h1>
 
-
         <p class="hero-description">
-
-          Discover a carefully selected collection of
-          everyday essentials, clothing, jewelry, gifts
-          and more — all brought together in one place.
-
+          Discover carefully selected products, delicious platters,
+          clothing, jewelry, gifts and more — all from one place.
         </p>
-
 
         <div class="hero-actions">
 
-          <a
-            href="#shop"
-            class="btn primary"
-          >
+          <a class="btn primary" href="#shop">
             Shop now
           </a>
 
-          <a
-            href="#build"
-            class="btn secondary"
-          >
-            Build your own
+          <a class="btn secondary" href="#platter">
+            Build a platter
           </a>
 
         </div>
 
-
         <div class="hero-trust">
 
-          <span>
-            Quality products
-          </span>
-
-          <span>
-            •
-          </span>
-
-          <span>
-            Easy ordering
-          </span>
-
-          <span>
-            •
-          </span>
-
-          <span>
-            Personal selection
-          </span>
+          <span>✓ Quality products</span>
+          <span>✓ Reliable delivery</span>
+          <span>✓ Secure checkout</span>
 
         </div>
 
       </div>
 
 
-
-      <!-- HERO IMAGE -->
-
       <div class="hero-visual">
 
         <div class="hero-image-main">
 
+          <!-- Replace with your real hero image -->
           <img
             src="assets/images/hero.jpg"
-            alt="Everything Everything collection"
-            loading="eager"
-            onerror="this.style.display='none';this.parentElement.classList.add('image-error')"
+            alt="Everything Everything featured products"
           >
 
         </div>
 
-
         <div class="hero-floating-card">
 
-          <span>
-            THE COLLECTION
-          </span>
+          <span>EVERYTHING</span>
 
           <strong>
-            A little bit of everything.
+            ONE PLACE.
+            <br>
+            EVERYTHING.
           </strong>
 
         </div>
@@ -362,342 +203,188 @@
     </section>
 
 
+    <!-- ===================================================
+         CATEGORY STRIP
+    ==================================================== -->
 
-    <!-- =====================================================
-         CATEGORIES
-    ====================================================== -->
+    <section id="categories" class="categories-section">
 
-    <section
-      class="categories-section"
-      id="categories"
-    >
+      <div class="section-head centered">
 
-      <div class="section">
+        <p class="eyebrow">EXPLORE</p>
 
-        <div class="section-head">
+        <h2>Shop by category</h2>
 
-          <div>
+        <p>
+          Find exactly what you're looking for.
+        </p>
 
-            <p class="eyebrow">
-              Explore
-            </p>
+      </div>
 
-            <h2>
-              Shop by category.
-            </h2>
 
-            <p>
-              Browse the different sides of Everything
-              Everything and find what fits you.
-            </p>
+      <div class="category-grid">
 
+        <a class="category-card" href="#shop" data-category="Groceries">
+
+          <div class="category-image">
+            <img
+              src="assets/images/category-groceries.jpg"
+              alt="Groceries"
+            >
           </div>
 
-        </div>
+          <div class="category-info">
+            <span>01</span>
+            <h3>Groceries</h3>
+            <p>Everyday essentials</p>
+          </div>
+
+        </a>
 
 
+        <a class="category-card" href="#shop" data-category="Clothing">
 
-        <div class="category-grid">
+          <div class="category-image">
+            <img
+              src="assets/images/category-clothing.jpg"
+              alt="Clothing"
+            >
+          </div>
 
+          <div class="category-info">
+            <span>02</span>
+            <h3>Clothing</h3>
+            <p>Style your way</p>
+          </div>
 
-          <!-- GROCERIES -->
-
-          <a
-            href="#shop"
-            class="category-card"
-            data-category="groceries"
-          >
-
-            <div class="category-image">
-
-              <img
-                src="assets/images/categories/groceries.jpg"
-                alt="Groceries"
-                loading="lazy"
-                onerror="this.style.display='none'"
-              >
-
-            </div>
-
-            <div class="category-info">
-
-              <span>
-                01
-              </span>
-
-              <h3>
-                Groceries
-              </h3>
-
-              <p>
-                Everyday essentials and ingredients.
-              </p>
-
-            </div>
-
-          </a>
+        </a>
 
 
+        <a class="category-card" href="#shop" data-category="Jewelry">
 
-          <!-- CLOTHING -->
+          <div class="category-image">
+            <img
+              src="assets/images/category-jewelry.jpg"
+              alt="Jewelry"
+            >
+          </div>
 
-          <a
-            href="#shop"
-            class="category-card"
-            data-category="clothing"
-          >
+          <div class="category-info">
+            <span>03</span>
+            <h3>Jewelry</h3>
+            <p>Pieces that stand out</p>
+          </div>
 
-            <div class="category-image">
-
-              <img
-                src="assets/images/categories/clothing.jpg"
-                alt="Clothing"
-                loading="lazy"
-                onerror="this.style.display='none'"
-              >
-
-            </div>
-
-            <div class="category-info">
-
-              <span>
-                02
-              </span>
-
-              <h3>
-                Clothing
-              </h3>
-
-              <p>
-                Pieces made for your everyday style.
-              </p>
-
-            </div>
-
-          </a>
+        </a>
 
 
+        <a class="category-card" href="#shop" data-category="Gifts">
 
-          <!-- JEWELRY -->
+          <div class="category-image">
+            <img
+              src="assets/images/category-gifts.jpg"
+              alt="Gifts"
+            >
+          </div>
 
-          <a
-            href="#shop"
-            class="category-card"
-            data-category="jewelry"
-          >
+          <div class="category-info">
+            <span>04</span>
+            <h3>Gifts</h3>
+            <p>Something special</p>
+          </div>
 
-            <div class="category-image">
-
-              <img
-                src="assets/images/categories/jewelry.jpg"
-                alt="Jewelry"
-                loading="lazy"
-                onerror="this.style.display='none'"
-              >
-
-            </div>
-
-            <div class="category-info">
-
-              <span>
-                03
-              </span>
-
-              <h3>
-                Jewelry
-              </h3>
-
-              <p>
-                Small details that make a statement.
-              </p>
-
-            </div>
-
-          </a>
-
-
-
-          <!-- GIFTS -->
-
-          <a
-            href="#shop"
-            class="category-card"
-            data-category="gifts"
-          >
-
-            <div class="category-image">
-
-              <img
-                src="assets/images/categories/gifts.jpg"
-                alt="Gifts"
-                loading="lazy"
-                onerror="this.style.display='none'"
-              >
-
-            </div>
-
-            <div class="category-info">
-
-              <span>
-                04
-              </span>
-
-              <h3>
-                Gifts
-              </h3>
-
-              <p>
-                Something special for someone special.
-              </p>
-
-            </div>
-
-          </a>
-
-        </div>
+        </a>
 
       </div>
 
     </section>
 
 
-
-    <!-- =====================================================
+    <!-- ===================================================
          SHOP
-    ====================================================== -->
+    ==================================================== -->
 
-    <section
-      class="section shop-section"
-      id="shop"
-    >
+    <section id="shop" class="section shop-section">
 
       <div class="section-head">
 
         <div>
 
-          <p class="eyebrow">
-            The store
-          </p>
+          <p class="eyebrow">OUR STORE</p>
 
-          <h2>
-            Shop everything.
-          </h2>
+          <h2>Shop everything</h2>
 
           <p>
-            Explore our sample collection. These products
-            can be replaced with your real products later.
+            Browse our collection and add your favourites to your basket.
           </p>
 
         </div>
 
-
-
-        <!-- FILTERS -->
-
-        <div
-          class="filters"
-          id="categoryFilters"
-        >
-          <!-- Generated by JavaScript -->
-        </div>
+        <div id="categoryFilters" class="filters"></div>
 
       </div>
 
 
-
-      <!-- SHOP TOOLBAR -->
-
       <div class="shop-toolbar">
 
         <span id="productCount">
-          0 products
+          Showing our products
         </span>
 
+        <select id="sortProducts" aria-label="Sort products">
 
-        <select
-          id="sortProducts"
-          aria-label="Sort products"
-        >
-
-          <option value="default">
-            Sort: Default
-          </option>
-
-          <option value="price-low">
-            Price: Low to High
-          </option>
-
-          <option value="price-high">
-            Price: High to Low
-          </option>
-
-          <option value="name">
-            Name
-          </option>
+          <option value="default">Sort by</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+          <option value="name">Name: A–Z</option>
 
         </select>
 
       </div>
 
 
+      <div id="productGrid" class="product-grid">
 
-      <!-- PRODUCT GRID -->
+        <div class="loading">
+          Loading products…
+        </div>
 
-      <div
-        class="product-grid"
-        id="productGrid"
-      >
-        <!-- Generated by JavaScript -->
       </div>
 
     </section>
 
 
-
-    <!-- =====================================================
-         PROMOTION
-    ====================================================== -->
+    <!-- ===================================================
+         FEATURED PROMOTION
+    ==================================================== -->
 
     <section class="promo-section">
 
       <div class="promo-content">
 
-        <p class="eyebrow">
-          More than a store
-        </p>
+        <p class="eyebrow">EVERYTHING IN ONE PLACE</p>
 
         <h2>
-
-          Find
-          <span>
-            your thing.
-          </span>
-
+          More than a store.
+          <span>It's Everything.</span>
         </h2>
 
         <p>
-          From something you need every day to something
-          you simply want to have, Everything Everything
-          brings different worlds together.
+          From everyday essentials to something special,
+          discover products made to fit every moment.
         </p>
 
-        <a
-          href="#build"
-          class="btn light"
-        >
-          Build your own
+        <a href="#shop" class="btn light">
+          Explore the store
         </a>
 
       </div>
-
 
       <div class="promo-image">
 
         <img
           src="assets/images/promo.jpg"
-          alt="Everything Everything products"
-          loading="lazy"
-          onerror="this.style.display='none'"
+          alt="Everything Everything collection"
         >
 
       </div>
@@ -705,87 +392,38 @@
     </section>
 
 
+    <!-- ===================================================
+         BUILD YOUR OWN PLATTER
+    ==================================================== -->
 
-    <!-- =====================================================
-         BUILD YOUR OWN
-    ====================================================== -->
-
-    <section
-      class="platter-section"
-      id="build"
-    >
-
-
-      <!-- INTRODUCTION -->
+    <section id="platter" class="section platter-section">
 
       <div class="platter-intro">
 
-        <p class="eyebrow">
-          Build your own
-        </p>
+        <p class="eyebrow">BUILD YOUR OWN</p>
 
-        <h2>
-          Create it exactly how you want it.
-        </h2>
+        <h2>Create your custom platter.</h2>
 
         <p>
-          Choose a collection or meal and customise
-          every individual item inside it. Nothing is
-          locked in — you can remove anything you don't want.
+          Choose your meal, select the ingredients you want,
+          customize your order and add it directly to your basket.
         </p>
-
 
         <div class="platter-benefits">
 
           <div>
-
-            <strong>
-              01
-            </strong>
-
-            <span>
-              Choose your collection
-            </span>
-
+            <strong>01</strong>
+            <span>Choose your meal</span>
           </div>
 
-
           <div>
-
-            <strong>
-              02
-            </strong>
-
-            <span>
-              Select the items you want
-            </span>
-
+            <strong>02</strong>
+            <span>Select ingredients</span>
           </div>
 
-
           <div>
-
-            <strong>
-              03
-            </strong>
-
-            <span>
-              Remove anything you don't need
-            </span>
-
-          </div>
-
-
-          <div>
-
-            <strong>
-              04
-            </strong>
-
-            <span>
-              Add your custom selection to your basket
-            </span>
-
+            <strong>03</strong>
+            <span>Enjoy your platter</span>
           </div>
 
         </div>
@@ -793,59 +431,24 @@
       </div>
 
 
-
-      <!-- BUILDER -->
-
       <div class="platter-box">
 
-        <p class="eyebrow">
-          Custom selection
-        </p>
+        <label>
+          <span>Choose a meal</span>
 
-
-        <label for="mealSelect">
-
-          <span>
-            Choose what you want to build
-          </span>
-
-
-          <select
-            id="mealSelect"
-          >
-
-            <option value="">
-              Select a collection
-            </option>
-
-            <!-- Generated by JavaScript -->
-
+          <select id="mealSelect">
+            <option value="">Select a meal</option>
           </select>
 
         </label>
 
 
+        <div id="ingredientList" class="ingredient-list"></div>
 
-        <!-- INGREDIENT / PRODUCT LIST -->
-
-        <div
-          class="ingredient-list"
-          id="ingredientList"
-        >
-
-          <!-- Generated by JavaScript -->
-
-        </div>
-
-
-
-        <!-- TOTAL -->
 
         <div class="platter-total">
 
-          <span>
-            Your total
-          </span>
+          <span>Total</span>
 
           <strong>
             GH₵<span id="platterTotal">0.00</span>
@@ -854,16 +457,12 @@
         </div>
 
 
-
-        <!-- ADD CUSTOM SELECTION -->
-
         <button
-          class="btn primary full"
           id="addPlatter"
-          type="button"
+          class="btn primary full"
           disabled
         >
-          Add to basket
+          Add platter to basket
         </button>
 
       </div>
@@ -871,137 +470,94 @@
     </section>
 
 
+    <!-- ===================================================
+         WHY SHOP WITH US
+    ==================================================== -->
 
-    <!-- =====================================================
-         BENEFITS
-    ====================================================== -->
-
-    <section
-      class="section benefits-section"
-    >
+    <section id="about" class="section benefits-section">
 
       <div class="section-head centered">
 
-        <div>
+        <p class="eyebrow">WHY EVERYTHING EVERYTHING</p>
 
-          <p class="eyebrow">
-            Why Everything Everything
-          </p>
+        <h2>Shopping made simple.</h2>
 
-          <h2>
-            Simple. Flexible. Yours.
-          </h2>
+        <p>
+          We make it easy to find what you need and get it delivered.
+        </p>
+
+      </div>
+
+
+      <div class="features">
+
+        <div class="feature-card">
+
+          <div class="feature-number">01</div>
+
+          <h3>Quality products</h3>
 
           <p>
-            We want shopping to feel straightforward,
-            personal and enjoyable.
+            Carefully selected products you can feel confident buying.
+          </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+          <div class="feature-number">02</div>
+
+          <h3>Reliable delivery</h3>
+
+          <p>
+            Your order is carefully prepared and delivered safely.
+          </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+          <div class="feature-number">03</div>
+
+          <h3>Easy shopping</h3>
+
+          <p>
+            Browse, add to your basket and checkout without the hassle.
+          </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+          <div class="feature-number">04</div>
+
+          <h3>Secure checkout</h3>
+
+          <p>
+            Pay securely and conveniently when completing your order.
           </p>
 
         </div>
 
       </div>
 
-
-
-      <div class="features">
-
-
-        <article class="feature-card">
-
-          <div class="feature-number">
-            01
-          </div>
-
-          <h3>
-            Variety
-          </h3>
-
-          <p>
-            Different categories and products brought
-            together in one store.
-          </p>
-
-        </article>
-
-
-
-        <article class="feature-card">
-
-          <div class="feature-number">
-            02
-          </div>
-
-          <h3>
-            Flexibility
-          </h3>
-
-          <p>
-            Build your own selection and choose only
-            the items you actually want.
-          </p>
-
-        </article>
-
-
-
-        <article class="feature-card">
-
-          <div class="feature-number">
-            03
-          </div>
-
-          <h3>
-            Convenience
-          </h3>
-
-          <p>
-            Add everything to one basket and send your
-            complete order directly to us.
-          </p>
-
-        </article>
-
-
-
-        <article class="feature-card">
-
-          <div class="feature-number">
-            04
-          </div>
-
-          <h3>
-            Personal
-          </h3>
-
-          <p>
-            Your order is yours. Mix categories,
-            customise collections and make it personal.
-          </p>
-
-        </article>
-
-      </div>
-
     </section>
 
 
+    <!-- ===================================================
+         BRAND STORY
+    ==================================================== -->
 
-    <!-- =====================================================
-         STORY
-    ====================================================== -->
-
-    <section
-      class="story-section"
-      id="story"
-    >
+    <section class="story-section">
 
       <div class="story-image">
 
         <img
-          src="assets/images/story.jpg"
+          src="assets/images/about.jpg"
           alt="Everything Everything"
-          loading="lazy"
-          onerror="this.style.display='none'"
         >
 
       </div>
@@ -1009,32 +565,26 @@
 
       <div class="story-content">
 
-        <p class="eyebrow">
-          Our story
-        </p>
+        <p class="eyebrow">OUR STORY</p>
 
         <h2>
-          One place for many things.
+          Everything you need,
+          brought together.
         </h2>
 
         <p>
-          Everything Everything was created around a
-          simple idea: why should finding different
-          things you need require visiting different
-          places?
+          Everything Everything was created around one simple idea:
+          make finding the things you need easier.
         </p>
 
         <p>
-          We bring everyday essentials, fashion,
-          accessories, gifts and more together under
-          one roof.
+          From everyday products to unique pieces and custom platters,
+          we're building a shopping experience where there's always
+          something worth discovering.
         </p>
 
-        <a
-          href="#contact"
-          class="btn primary"
-        >
-          Get in touch
+        <a href="#contact" class="btn secondary">
+          Learn more
         </a>
 
       </div>
@@ -1042,88 +592,61 @@
     </section>
 
 
-
-    <!-- =====================================================
+    <!-- ===================================================
          TESTIMONIALS
-    ====================================================== -->
+    ==================================================== -->
 
-    <section
-      class="section testimonials-section"
-    >
+    <section class="section testimonials-section">
 
       <div class="section-head centered">
 
-        <div>
+        <p class="eyebrow">CUSTOMER LOVE</p>
 
-          <p class="eyebrow">
-            Customer love
-          </p>
-
-          <h2>
-            What people say.
-          </h2>
-
-        </div>
+        <h2>What our customers say.</h2>
 
       </div>
 
 
-
       <div class="testimonial-grid">
 
-
         <article class="testimonial">
 
-          <div class="stars">
-            ★★★★★
-          </div>
+          <div class="stars">★★★★★</div>
 
           <p>
-            "I love the idea of being able to find
-            different things in one place."
+            “Everything was so easy from browsing to ordering.
+            I loved the experience.”
           </p>
 
-          <strong>
-            Sample Customer
-          </strong>
+          <strong>Customer</strong>
 
         </article>
 
 
-
         <article class="testimonial">
 
-          <div class="stars">
-            ★★★★★
-          </div>
+          <div class="stars">★★★★★</div>
 
           <p>
-            "The custom selection makes ordering exactly
-            what I want so much easier."
+            “The platter was exactly what I wanted and everything
+            arrived beautifully packed.”
           </p>
 
-          <strong>
-            Sample Customer
-          </strong>
+          <strong>Customer</strong>
 
         </article>
 
 
-
         <article class="testimonial">
 
-          <div class="stars">
-            ★★★★★
-          </div>
+          <div class="stars">★★★★★</div>
 
           <p>
-            "Everything feels simple and straightforward,
-            which is exactly what online shopping should be."
+            “I love having so many different things available
+            in one place.”
           </p>
 
-          <strong>
-            Sample Customer
-          </strong>
+          <strong>Customer</strong>
 
         </article>
 
@@ -1132,48 +655,38 @@
     </section>
 
 
-
-    <!-- =====================================================
+    <!-- ===================================================
          NEWSLETTER
-    ====================================================== -->
+    ==================================================== -->
 
     <section class="newsletter-section">
 
       <div>
 
-        <p class="eyebrow">
-          Stay connected
-        </p>
+        <p class="eyebrow">STAY CONNECTED</p>
 
         <h2>
-          Get the latest.
+          Don't miss what's next.
         </h2>
 
         <p>
-          New products, collections and updates.
+          Sign up for new products, offers and updates.
         </p>
 
       </div>
 
 
-      <form
-        class="newsletter-form"
-        id="newsletterForm"
-      >
+      <form id="newsletterForm" class="newsletter-form">
 
         <input
           type="email"
           id="newsletterEmail"
-          name="email"
           placeholder="Your email address"
-          autocomplete="email"
+          aria-label="Email address"
           required
         >
 
-        <button
-          type="submit"
-          class="btn light"
-        >
+        <button class="btn primary" type="submit">
           Subscribe
         </button>
 
@@ -1182,83 +695,41 @@
     </section>
 
 
-
-    <!-- =====================================================
+    <!-- ===================================================
          CONTACT
-    ====================================================== -->
+    ==================================================== -->
 
-    <section
-      class="section contact-section"
-      id="contact"
-    >
+    <section id="contact" class="section contact-section">
 
       <div>
 
-        <p class="eyebrow">
-          Contact
-        </p>
+        <p class="eyebrow">GET IN TOUCH</p>
 
-        <h2>
-          Let's talk.
-        </h2>
+        <h2>We're here to help.</h2>
 
         <p>
-          Have a question about a product, an order,
-          a custom selection or anything else?
+          Have a question about an order, product or delivery?
           Get in touch with us.
         </p>
 
       </div>
 
 
-
       <div class="contact-links">
 
-
-        <a
-          href="https://wa.me/233547026348"
-          target="_blank"
-          rel="noopener"
-        >
-
-          <span>
-            WhatsApp
-          </span>
-
-          <strong>
-            Message us →
-          </strong>
-
+        <a href="mailto:hello@everythingeverything.com">
+          <span>Email</span>
+          <strong>hello@everythingeverything.com</strong>
         </a>
 
-
-        <a
-          href="mailto:hello@everythingeverything.com"
-        >
-
-          <span>
-            Email
-          </span>
-
-          <strong>
-            hello@everythingeverything.com
-          </strong>
-
+        <a href="tel:+233000000000">
+          <span>Phone</span>
+          <strong>+233 00 000 0000</strong>
         </a>
 
-
-        <a
-          href="#shop"
-        >
-
-          <span>
-            Store
-          </span>
-
-          <strong>
-            Browse products →
-          </strong>
-
+        <a href="#">
+          <span>Instagram</span>
+          <strong>@everythingeverything</strong>
         </a>
 
       </div>
@@ -1268,43 +739,100 @@
   </main>
 
 
+  <!-- =====================================================
+       FOOTER
+  ====================================================== -->
 
-  <!-- =======================================================
+  <footer class="site-footer">
+
+    <div class="footer-main">
+
+      <div class="footer-brand">
+
+        <a class="brand footer-logo" href="#home">
+          <span class="brand-small">EVERYTHING</span>
+          <span class="brand-large">EVERYTHING</span>
+        </a>
+
+        <p>
+          Your one-stop shopping destination.
+        </p>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h3>Shop</h3>
+
+        <a href="#shop">All Products</a>
+        <a href="#categories">Categories</a>
+        <a href="#platter">Build a Platter</a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h3>Company</h3>
+
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h3>Help</h3>
+
+        <a href="#contact">Delivery</a>
+        <a href="#contact">Returns</a>
+        <a href="#contact">Support</a>
+
+      </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+      <span>
+        © 2026 Everything Everything. All rights reserved.
+      </span>
+
+      <span>
+        Made with care.
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =====================================================
        CART DRAWER
-  ======================================================== -->
-
-  <div
-    class="drawer-overlay"
-    id="drawerOverlay"
-  ></div>
-
+  ====================================================== -->
 
   <aside
-    class="drawer"
     id="cartDrawer"
+    class="drawer"
     aria-hidden="true"
-    aria-label="Shopping basket"
   >
 
     <div class="drawer-head">
 
       <div>
 
-        <p class="eyebrow">
-          Your selection
-        </p>
+        <p class="eyebrow">YOUR ORDER</p>
 
-        <h2>
-          Basket
-        </h2>
+        <h2>Your Basket</h2>
 
       </div>
 
-
       <button
-        class="drawer-close"
         id="closeCart"
-        type="button"
+        class="drawer-close"
         aria-label="Close basket"
       >
         ×
@@ -1313,29 +841,18 @@
     </div>
 
 
+    <div id="cartItems" class="cart-items">
 
-    <!-- CART ITEMS -->
-
-    <div
-      class="cart-items"
-      id="cartItems"
-    >
-
-      <!-- Generated by JavaScript -->
+      <!-- Cart items generated by JavaScript -->
 
     </div>
 
-
-
-    <!-- CART FOOTER -->
 
     <div class="cart-footer">
 
       <div class="cart-total">
 
-        <span>
-          Total
-        </span>
+        <span>Total</span>
 
         <strong>
           GH₵<span id="cartTotal">0.00</span>
@@ -1343,13 +860,11 @@
 
       </div>
 
-
       <button
-        class="btn primary full"
         id="checkoutBtn"
-        type="button"
+        class="btn primary full"
       >
-        Continue to checkout
+        Checkout
       </button>
 
     </div>
@@ -1357,126 +872,91 @@
   </aside>
 
 
-
-  <!-- =======================================================
-       CHECKOUT MODAL
-  ======================================================== -->
+  <!-- =====================================================
+       CART OVERLAY
+  ====================================================== -->
 
   <div
-    class="modal hidden"
+    id="drawerOverlay"
+    class="drawer-overlay"
+  ></div>
+
+
+  <!-- =====================================================
+       CHECKOUT MODAL
+  ====================================================== -->
+
+  <div
     id="modal"
-    aria-hidden="true"
+    class="modal hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="checkoutTitle"
   >
 
     <div class="modal-card">
 
-
       <button
-        class="modal-close"
         id="closeModal"
-        type="button"
+        class="modal-close"
         aria-label="Close checkout"
       >
         ×
       </button>
 
 
+      <p class="eyebrow">CHECKOUT</p>
 
-      <p class="eyebrow">
-        Checkout
-      </p>
-
-
-      <h2>
-        Tell us where to send it.
+      <h2 id="checkoutTitle">
+        Complete your order.
       </h2>
 
-
       <p class="modal-description">
-
-        Enter your details below. Your order will be
-        prepared and sent to us through WhatsApp for
-        confirmation.
-
+        Enter your delivery details to continue to secure payment.
       </p>
-
 
 
       <form id="checkoutForm">
 
-
-        <!-- NAME -->
-
         <label>
-
-          <span>
-            Full name
-          </span>
-
+          <span>Name</span>
           <input
-            type="text"
             name="name"
-            placeholder="Your full name"
+            type="text"
             autocomplete="name"
             required
           >
-
         </label>
 
 
-
-        <!-- PHONE -->
-
         <label>
-
-          <span>
-            Phone number
-          </span>
-
+          <span>Phone</span>
           <input
-            type="tel"
             name="phone"
-            placeholder="Your phone number"
+            type="tel"
             autocomplete="tel"
             required
           >
-
         </label>
 
 
-
-        <!-- EMAIL -->
-
         <label>
-
-          <span>
-            Email address
-          </span>
-
+          <span>Email</span>
           <input
-            type="email"
             name="email"
-            placeholder="Your email address"
+            type="email"
             autocomplete="email"
             required
           >
-
         </label>
 
 
-
-        <!-- ADDRESS -->
-
         <label>
-
-          <span>
-            Delivery location
-          </span>
+          <span>Delivery location</span>
 
           <textarea
             name="address"
             rows="4"
-            placeholder="Enter your delivery location"
             autocomplete="street-address"
             required
           ></textarea>
@@ -1484,179 +964,32 @@
         </label>
 
 
-
         <button
-          type="submit"
           class="btn primary full"
+          type="submit"
         >
-          Send order via WhatsApp
+          Continue to Payment
         </button>
 
-
-        <p
-          class="status"
-          id="checkoutStatus"
-        ></p>
-
       </form>
+
+
+      <p
+        id="checkoutStatus"
+        class="status"
+        aria-live="polite"
+      ></p>
 
     </div>
 
   </div>
 
 
-
-  <!-- =======================================================
-       FOOTER
-  ======================================================== -->
-
-  <footer class="site-footer">
-
-    <div class="footer-main">
-
-
-      <!-- FOOTER BRAND -->
-
-      <div class="footer-brand">
-
-        <a
-          href="#home"
-          class="brand footer-logo"
-        >
-
-          <span class="brand-small">
-            EVERYTHING
-          </span>
-
-          <span class="brand-large">
-            everything
-          </span>
-
-        </a>
-
-
-        <p>
-          Everything you need, brought together
-          in one place.
-        </p>
-
-      </div>
-
-
-
-      <!-- SHOP -->
-
-      <div class="footer-column">
-
-        <h3>
-          Shop
-        </h3>
-
-        <a href="#shop">
-          All products
-        </a>
-
-        <a href="#shop">
-          Groceries
-        </a>
-
-        <a href="#shop">
-          Clothing
-        </a>
-
-        <a href="#shop">
-          Jewelry
-        </a>
-
-        <a href="#shop">
-          Gifts
-        </a>
-
-      </div>
-
-
-
-      <!-- EXPLORE -->
-
-      <div class="footer-column">
-
-        <h3>
-          Explore
-        </h3>
-
-        <a href="#build">
-          Build Your Own
-        </a>
-
-        <a href="#story">
-          Our Story
-        </a>
-
-        <a href="#contact">
-          Contact
-        </a>
-
-      </div>
-
-
-
-      <!-- HELP -->
-
-      <div class="footer-column">
-
-        <h3>
-          Help
-        </h3>
-
-        <a
-          href="https://wa.me/233547026348"
-          target="_blank"
-          rel="noopener"
-        >
-          WhatsApp
-        </a>
-
-        <a
-          href="mailto:hello@everythingeverything.com"
-        >
-          Email
-        </a>
-
-        <a href="#shop">
-          Shop
-        </a>
-
-      </div>
-
-    </div>
-
-
-
-    <!-- FOOTER BOTTOM -->
-
-    <div class="footer-bottom">
-
-      <span>
-        © 2026 Everything Everything.
-        All rights reserved.
-      </span>
-
-      <span>
-        Made with purpose.
-      </span>
-
-    </div>
-
-  </footer>
-
-
-
-  <!-- =======================================================
+  <!-- =====================================================
        JAVASCRIPT
-  ======================================================== -->
+  ====================================================== -->
 
-  <script src="script.js"></script>
+  <script src="app.js"></script>
 
 </body>
-
 </html>
