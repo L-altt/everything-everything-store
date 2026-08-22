@@ -1,8 +1,6 @@
 /* =========================================================
    EVERYTHING EVERYTHING
    Store Application
-   Frontend Only
-   Cart + LocalStorage + WhatsApp
 ========================================================= */
 
 
@@ -11,6 +9,7 @@
 ========================================================= */
 
 const products = [
+
   {
     id: "product-1",
     name: "Featured Product",
@@ -74,6 +73,7 @@ const products = [
     price: 150,
     image: "assets/images/products/product-8.jpg"
   }
+
 ];
 
 
@@ -82,6 +82,7 @@ const products = [
 ========================================================= */
 
 const categories = [
+
   {
     name: "Groceries",
     slug: "groceries"
@@ -101,6 +102,7 @@ const categories = [
     name: "Gifts",
     slug: "gifts"
   }
+
 ];
 
 
@@ -109,11 +111,14 @@ const categories = [
 ========================================================= */
 
 const meals = [
+
   {
     id: "meal-1",
+
     name: "Breakfast Platter",
 
     ingredients: [
+
       {
         id: "bread",
         name: "Bread",
@@ -137,14 +142,19 @@ const meals = [
         name: "Tea",
         price: 8
       }
+
     ]
+
   },
+
 
   {
     id: "meal-2",
+
     name: "Lunch Platter",
 
     ingredients: [
+
       {
         id: "rice",
         name: "Rice",
@@ -168,14 +178,19 @@ const meals = [
         name: "Soft Drink",
         price: 10
       }
+
     ]
+
   },
+
 
   {
     id: "meal-3",
+
     name: "Special Platter",
 
     ingredients: [
+
       {
         id: "jollof",
         name: "Jollof Rice",
@@ -205,8 +220,11 @@ const meals = [
         name: "Soft Drink",
         price: 10
       }
+
     ]
+
   }
+
 ];
 
 
@@ -234,58 +252,32 @@ const state = {
 
 
 /* =========================================================
-   CONSTANTS
-========================================================= */
-
-const STORAGE_KEYS = {
-
-  cart: "ee_cart",
-
-  customer: "ee_customer",
-
-  newsletter: "ee_newsletter_email"
-
-};
-
-
-/*
-   WhatsApp number must be in international format
-   WITHOUT +, spaces or leading zero.
-*/
-
-const WHATSAPP_NUMBER = "233547026348";
-
-
-/* =========================================================
    HELPERS
 ========================================================= */
 
-function money(value) {
+const money = value => {
 
   return Number(value || 0).toFixed(2);
 
-}
+};
 
 
 function escapeHtml(value) {
 
   return String(value ?? "").replace(
     /[&<>"']/g,
+
     character => ({
+
       "&": "&amp;",
       "<": "&lt;",
       ">": "&gt;",
       '"': "&quot;",
       "'": "&#039;"
+
     })[character]
+
   );
-
-}
-
-
-function getElement(selector) {
-
-  return document.querySelector(selector);
 
 }
 
@@ -314,7 +306,7 @@ function productImage(image, name) {
       loading="lazy"
       onerror="
         this.style.display='none';
-        this.parentElement.classList.add('image-error');
+        this.parentElement.classList.add('image-error')
       "
     >
   `;
@@ -323,13 +315,13 @@ function productImage(image, name) {
 
 
 /* =========================================================
-   FILTERS
+   CATEGORY FILTERS
 ========================================================= */
 
 function renderFilters() {
 
   const element =
-    getElement("#categoryFilters");
+    document.querySelector("#categoryFilters");
 
   if (!element) return;
 
@@ -339,7 +331,6 @@ function renderFilters() {
     <button
       class="filter ${state.filter === "all" ? "active" : ""}"
       data-filter="all"
-      type="button"
     >
       All
     </button>
@@ -353,7 +344,6 @@ function renderFilters() {
             : ""
         }"
         data-filter="${escapeHtml(category.slug)}"
-        type="button"
       >
         ${escapeHtml(category.name)}
       </button>
@@ -392,7 +382,8 @@ function renderFilters() {
 
 function getFilteredProducts() {
 
-  let list = [...state.products];
+  let list =
+    [...state.products];
 
 
   /* CATEGORY */
@@ -444,34 +435,30 @@ function getFilteredProducts() {
 
   /* SORT */
 
-  switch (state.sort) {
+  if (state.sort === "price-low") {
 
-    case "price-low":
+    list.sort(
+      (a, b) => a.price - b.price
+    );
 
-      list.sort(
-        (a, b) => a.price - b.price
-      );
-
-      break;
+  }
 
 
-    case "price-high":
+  if (state.sort === "price-high") {
 
-      list.sort(
-        (a, b) => b.price - a.price
-      );
+    list.sort(
+      (a, b) => b.price - a.price
+    );
 
-      break;
+  }
 
 
-    case "name":
+  if (state.sort === "name") {
 
-      list.sort(
-        (a, b) =>
-          a.name.localeCompare(b.name)
-      );
-
-      break;
+    list.sort(
+      (a, b) =>
+        a.name.localeCompare(b.name)
+    );
 
   }
 
@@ -488,10 +475,10 @@ function getFilteredProducts() {
 function renderProducts() {
 
   const grid =
-    getElement("#productGrid");
+    document.querySelector("#productGrid");
 
   const count =
-    getElement("#productCount");
+    document.querySelector("#productCount");
 
 
   if (!grid) return;
@@ -505,7 +492,9 @@ function renderProducts() {
 
     count.textContent =
       `${list.length} product${
-        list.length === 1 ? "" : "s"
+        list.length === 1
+          ? ""
+          : "s"
       }`;
 
   }
@@ -517,7 +506,9 @@ function renderProducts() {
 
       <div class="loading">
 
-        <strong>No products found.</strong>
+        <strong>
+          No products found.
+        </strong>
 
         <p>
           Try another category or search.
@@ -535,10 +526,7 @@ function renderProducts() {
   grid.innerHTML =
     list.map(product => `
 
-      <article
-        class="product"
-        data-product-id="${escapeHtml(product.id)}"
-      >
+      <article class="product">
 
         <div class="product-img">
 
@@ -565,9 +553,9 @@ function renderProducts() {
           </p>
 
           <button
-            class="btn primary add-product-btn"
+            class="btn primary"
             type="button"
-            data-product-id="${escapeHtml(product.id)}"
+            onclick="addProduct('${product.id}')"
           >
             Add to basket
           </button>
@@ -578,28 +566,6 @@ function renderProducts() {
 
     `).join("");
 
-
-  /*
-     Event listeners instead of inline onclick.
-  */
-
-  grid
-    .querySelectorAll(".add-product-btn")
-    .forEach(button => {
-
-      button.addEventListener(
-        "click",
-        () => {
-
-          addProduct(
-            button.dataset.productId
-          );
-
-        }
-      );
-
-    });
-
 }
 
 
@@ -607,78 +573,65 @@ function renderProducts() {
    SORTING
 ========================================================= */
 
-function initializeSorting() {
-
-  const sort =
-    getElement("#sortProducts");
-
-  if (!sort) return;
+const sortProducts =
+  document.querySelector("#sortProducts");
 
 
-  sort.addEventListener(
-    "change",
-    event => {
+sortProducts?.addEventListener(
+  "change",
+  event => {
 
-      state.sort =
-        event.target.value;
+    state.sort =
+      event.target.value;
 
-      renderProducts();
+    renderProducts();
 
-    }
-  );
-
-}
+  }
+);
 
 
 /* =========================================================
    CATEGORY CARDS
 ========================================================= */
 
-function initializeCategoryCards() {
+document
+  .querySelectorAll(".category-card")
+  .forEach(card => {
 
-  document
-    .querySelectorAll(".category-card")
-    .forEach(card => {
+    card.addEventListener(
+      "click",
+      event => {
 
-      card.addEventListener(
-        "click",
-        event => {
-
-          event.preventDefault();
+        event.preventDefault();
 
 
-          const category =
-            card.dataset.category
-              ?.trim()
-              .toLowerCase();
+        const category =
+          card.dataset.category
+            ?.toLowerCase();
 
 
-          if (!category) return;
+        if (!category) return;
 
 
-          state.filter =
-            category;
-
-          state.search =
-            "";
+        state.filter =
+          category;
 
 
-          renderFilters();
+        renderFilters();
 
-          renderProducts();
+        renderProducts();
 
 
-          getElement("#shop")
-            ?.scrollIntoView({
-              behavior: "smooth"
-            });
+        document
+          .querySelector("#shop")
+          ?.scrollIntoView({
+            behavior: "smooth"
+          });
 
-        }
-      );
+      }
+    );
 
-    });
-
-}
+  });
 
 
 /* =========================================================
@@ -686,19 +639,19 @@ function initializeCategoryCards() {
 ========================================================= */
 
 const searchBtn =
-  getElement("#searchBtn");
+  document.querySelector("#searchBtn");
 
 const searchOverlay =
-  getElement("#searchOverlay");
+  document.querySelector("#searchOverlay");
 
 const searchClose =
-  getElement("#searchClose");
+  document.querySelector("#searchClose");
 
 const searchInput =
-  getElement("#searchInput");
+  document.querySelector("#searchInput");
 
 const searchSubmit =
-  getElement("#searchSubmit");
+  document.querySelector("#searchSubmit");
 
 
 function openSearch() {
@@ -720,32 +673,7 @@ function openSearch() {
 
 function closeSearch() {
 
-  searchOverlay
-    ?.classList.remove("open");
-
-}
-
-
-function performSearch() {
-
-  state.search =
-    searchInput?.value.trim() || "";
-
-  state.filter =
-    "all";
-
-
-  renderFilters();
-
-  renderProducts();
-
-  closeSearch();
-
-
-  getElement("#shop")
-    ?.scrollIntoView({
-      behavior: "smooth"
-    });
+  searchOverlay?.classList.remove("open");
 
 }
 
@@ -762,26 +690,48 @@ searchClose?.addEventListener(
 );
 
 
-searchSubmit?.addEventListener(
-  "click",
-  performSearch
-);
-
-
 searchOverlay?.addEventListener(
   "click",
   event => {
 
-    if (
-      event.target ===
-      searchOverlay
-    ) {
+    if (event.target === searchOverlay) {
 
       closeSearch();
 
     }
 
   }
+);
+
+
+function performSearch() {
+
+  state.search =
+    searchInput?.value.trim() || "";
+
+
+  state.filter = "all";
+
+
+  renderFilters();
+
+  renderProducts();
+
+  closeSearch();
+
+
+  document
+    .querySelector("#shop")
+    ?.scrollIntoView({
+      behavior: "smooth"
+    });
+
+}
+
+
+searchSubmit?.addEventListener(
+  "click",
+  performSearch
 );
 
 
@@ -810,60 +760,49 @@ searchInput?.addEventListener(
    MOBILE MENU
 ========================================================= */
 
-function initializeMobileMenu() {
+const menuBtn =
+  document.querySelector("#menuBtn");
 
-  const menuBtn =
-    getElement("#menuBtn");
-
-  const mainNav =
-    getElement("#mainNav");
+const mainNav =
+  document.querySelector("#mainNav");
 
 
-  if (!menuBtn || !mainNav) return;
+menuBtn?.addEventListener(
+  "click",
+  () => {
+
+    const open =
+      mainNav?.classList.toggle("open");
 
 
-  menuBtn.addEventListener(
-    "click",
-    () => {
+    menuBtn?.setAttribute(
+      "aria-expanded",
+      open ? "true" : "false"
+    );
 
-      const isOpen =
-        mainNav.classList.toggle("open");
-
-
-      menuBtn.setAttribute(
-        "aria-expanded",
-        isOpen
-          ? "true"
-          : "false"
-      );
-
-    }
-  );
+  }
+);
 
 
-  mainNav
-    .querySelectorAll("a")
-    .forEach(link => {
+mainNav
+  ?.querySelectorAll("a")
+  .forEach(link => {
 
-      link.addEventListener(
-        "click",
-        () => {
+    link.addEventListener(
+      "click",
+      () => {
 
-          mainNav.classList.remove(
-            "open"
-          );
+        mainNav.classList.remove("open");
 
-          menuBtn.setAttribute(
-            "aria-expanded",
-            "false"
-          );
+        menuBtn?.setAttribute(
+          "aria-expanded",
+          "false"
+        );
 
-        }
-      );
+      }
+    );
 
-    });
-
-}
+  });
 
 
 /* =========================================================
@@ -873,7 +812,8 @@ function initializeMobileMenu() {
 function renderMeals() {
 
   const select =
-    getElement("#mealSelect");
+    document.querySelector("#mealSelect");
+
 
   if (!select) return;
 
@@ -904,16 +844,16 @@ function renderMeals() {
 function renderIngredients() {
 
   const select =
-    getElement("#mealSelect");
+    document.querySelector("#mealSelect");
 
   const list =
-    getElement("#ingredientList");
+    document.querySelector("#ingredientList");
 
   const total =
-    getElement("#platterTotal");
+    document.querySelector("#platterTotal");
 
   const addButton =
-    getElement("#addPlatter");
+    document.querySelector("#addPlatter");
 
 
   if (!select || !list) return;
@@ -930,6 +870,7 @@ function renderIngredients() {
 
     list.innerHTML = "";
 
+
     if (total) {
 
       total.textContent =
@@ -937,12 +878,14 @@ function renderIngredients() {
 
     }
 
+
     if (addButton) {
 
       addButton.disabled =
         true;
 
     }
+
 
     return;
 
@@ -1003,7 +946,7 @@ function renderIngredients() {
 
 
 /* =========================================================
-   PLATTER — CALCULATE TOTAL
+   PLATTER TOTAL
 ========================================================= */
 
 function updatePlatter() {
@@ -1017,22 +960,24 @@ function updatePlatter() {
   let total = 0;
 
 
-  selected.forEach(
-    ingredient => {
+  selected.forEach(item => {
 
-      total += Number(
-        ingredient.dataset.price
-      );
+    total += Number(
+      item.dataset.price
+    );
 
-    }
-  );
+  });
 
 
   const totalElement =
-    getElement("#platterTotal");
+    document.querySelector(
+      "#platterTotal"
+    );
 
   const addButton =
-    getElement("#addPlatter");
+    document.querySelector(
+      "#addPlatter"
+    );
 
 
   if (totalElement) {
@@ -1053,96 +998,97 @@ function updatePlatter() {
 }
 
 
+document
+  .querySelector("#mealSelect")
+  ?.addEventListener(
+    "change",
+    renderIngredients
+  );
+
+
 /* =========================================================
-   ADD PLATTER
+   ADD PLATTER TO CART
 ========================================================= */
 
-function addPlatterToCart() {
+document
+  .querySelector("#addPlatter")
+  ?.addEventListener(
+    "click",
+    () => {
 
-  const select =
-    getElement("#mealSelect");
-
-
-  const meal =
-    state.meals.find(
-      item =>
-        item.id === select?.value
-    );
-
-
-  if (!meal) {
-
-    alert("Please select a meal.");
-
-    return;
-
-  }
+      const mealId =
+        document.querySelector(
+          "#mealSelect"
+        )?.value;
 
 
-  const selected =
-    [
-      ...document.querySelectorAll(
-        ".ingredient-check:checked"
-      )
-    ].map(input => ({
-
-      id: input.value,
-
-      name: input.dataset.name,
-
-      price: Number(
-        input.dataset.price
-      )
-
-    }));
+      const meal =
+        state.meals.find(
+          item =>
+            item.id === mealId
+        );
 
 
-  if (!selected.length) {
-
-    alert(
-      "Please select at least one ingredient."
-    );
-
-    return;
-
-  }
+      if (!meal) return;
 
 
-  const price =
-    selected.reduce(
-      (total, item) =>
-        total + item.price,
-      0
-    );
+      const selected =
+        [
+          ...document.querySelectorAll(
+            ".ingredient-check:checked"
+          )
+        ].map(item => ({
+
+          id: item.value,
+
+          name: item.dataset.name,
+
+          price: Number(
+            item.dataset.price
+          )
+
+        }));
 
 
-  state.cart.push({
-
-    id:
-      `platter-${Date.now()}`,
-
-    name:
-      `Custom ${meal.name}`,
-
-    price,
-
-    qty: 1,
-
-    meta:
-      selected
-        .map(item => item.name)
-        .join(", ")
-
-  });
+      if (!selected.length) return;
 
 
-  saveCart();
+      const price =
+        selected.reduce(
+          (total, item) =>
+            total + item.price,
+          0
+        );
 
-  renderCart();
 
-  openCart();
+      state.cart.push({
 
-}
+        id:
+          `platter-${Date.now()}`,
+
+        name:
+          `Custom ${meal.name}`,
+
+        price,
+
+        qty: 1,
+
+        meta:
+          selected
+            .map(item => item.name)
+            .join(", ")
+
+      });
+
+
+      saveCart();
+
+      renderCart();
+
+      openCart();
+
+    }
+  );
 
 
 /* =========================================================
@@ -1155,61 +1101,23 @@ function loadCart() {
 
     const saved =
       localStorage.getItem(
-        STORAGE_KEYS.cart
+        "ee_cart"
       );
 
 
-    if (!saved) {
-
-      state.cart = [];
-
-      return;
-
-    }
-
-
-    const parsed =
-      JSON.parse(saved);
-
-
-    if (!Array.isArray(parsed)) {
-
-      state.cart = [];
-
-      return;
-
-    }
-
-
     state.cart =
-      parsed.filter(item => {
+      saved
+        ? JSON.parse(saved)
+        : [];
 
-        return (
-          item &&
-          typeof item.id === "string" &&
-          typeof item.name === "string" &&
-          Number(item.price) >= 0 &&
-          Number(item.qty) > 0
-        );
 
-      }).map(item => ({
+    if (!Array.isArray(state.cart)) {
 
-        ...item,
+      state.cart = [];
 
-        price:
-          Number(item.price),
+    }
 
-        qty:
-          Number(item.qty)
-
-      }));
-
-  } catch (error) {
-
-    console.warn(
-      "Could not load cart:",
-      error
-    );
+  } catch {
 
     state.cart = [];
 
@@ -1218,27 +1126,12 @@ function loadCart() {
 }
 
 
-/* =========================================================
-   SAVE CART
-========================================================= */
-
 function saveCart() {
 
-  try {
-
-    localStorage.setItem(
-      STORAGE_KEYS.cart,
-      JSON.stringify(state.cart)
-    );
-
-  } catch (error) {
-
-    console.warn(
-      "Could not save cart:",
-      error
-    );
-
-  }
+  localStorage.setItem(
+    "ee_cart",
+    JSON.stringify(state.cart)
+  );
 
 }
 
@@ -1262,13 +1155,13 @@ function addProduct(id) {
   const existing =
     state.cart.find(
       item =>
-        item.id === product.id
+        item.id === id
     );
 
 
   if (existing) {
 
-    existing.qty += 1;
+    existing.qty++;
 
   } else {
 
@@ -1299,109 +1192,8 @@ function addProduct(id) {
 }
 
 
-/* =========================================================
-   CHANGE QUANTITY
-========================================================= */
-
-function changeQty(index, amount) {
-
-  const item =
-    state.cart[index];
-
-
-  if (!item) return;
-
-
-  item.qty += amount;
-
-
-  if (item.qty <= 0) {
-
-    state.cart.splice(
-      index,
-      1
-    );
-
-  }
-
-
-  saveCart();
-
-  renderCart();
-
-}
-
-
-/* =========================================================
-   REMOVE CART ITEM
-========================================================= */
-
-function removeCartItem(index) {
-
-  if (
-    index < 0 ||
-    index >= state.cart.length
-  ) {
-
-    return;
-
-  }
-
-
-  state.cart.splice(
-    index,
-    1
-  );
-
-
-  saveCart();
-
-  renderCart();
-
-}
-
-
-/* =========================================================
-   CART TOTAL
-========================================================= */
-
-function getCartTotal() {
-
-  return state.cart.reduce(
-    (total, item) => {
-
-      return (
-        total +
-        Number(item.price) *
-        Number(item.qty)
-      );
-
-    },
-    0
-  );
-
-}
-
-
-/* =========================================================
-   CART QUANTITY
-========================================================= */
-
-function getCartQuantity() {
-
-  return state.cart.reduce(
-    (total, item) => {
-
-      return (
-        total +
-        Number(item.qty)
-      );
-
-    },
-    0
-  );
-
-}
+window.addProduct =
+  addProduct;
 
 
 /* =========================================================
@@ -1411,25 +1203,41 @@ function getCartQuantity() {
 function renderCart() {
 
   const count =
-    getElement("#cartCount");
+    document.querySelector(
+      "#cartCount"
+    );
 
   const items =
-    getElement("#cartItems");
+    document.querySelector(
+      "#cartItems"
+    );
 
   const total =
-    getElement("#cartTotal");
+    document.querySelector(
+      "#cartTotal"
+    );
+
+
+  const quantity =
+    state.cart.reduce(
+      (sum, item) =>
+        sum + Number(item.qty),
+      0
+    );
 
 
   if (count) {
 
     count.textContent =
-      getCartQuantity();
+      quantity;
 
   }
 
 
   if (!items) return;
 
+
+  /* EMPTY CART */
 
   if (!state.cart.length) {
 
@@ -1450,7 +1258,12 @@ function renderCart() {
 
     `;
 
-  } else {
+  }
+
+
+  /* CART ITEMS */
+
+  else {
 
     items.innerHTML =
       state.cart.map(
@@ -1466,6 +1279,7 @@ function renderCart() {
                 )}
               </b>
 
+
               ${
                 item.meta
                   ? `
@@ -1478,17 +1292,21 @@ function renderCart() {
                   : ""
               }
 
+
               <div>
                 GH₵${money(
-                  item.price *
-                  item.qty
+                  Number(item.price) *
+                  Number(item.qty)
                 )}
               </div>
 
+
+              <!-- REMOVE BUTTON -->
+
               <button
-                class="remove-item"
                 type="button"
-                data-index="${index}"
+                class="remove-item"
+                onclick="removeItem(${index})"
               >
                 Remove
               </button>
@@ -1499,22 +1317,22 @@ function renderCart() {
             <div class="qty">
 
               <button
-                class="qty-decrease"
                 type="button"
-                data-index="${index}"
+                onclick="changeQty(${index}, -1)"
                 aria-label="Decrease quantity"
               >
                 −
               </button>
 
+
               <span>
                 ${item.qty}
               </span>
 
+
               <button
-                class="qty-increase"
                 type="button"
-                data-index="${index}"
+                onclick="changeQty(${index}, 1)"
                 aria-label="Increase quantity"
               >
                 +
@@ -1527,83 +1345,27 @@ function renderCart() {
         `
       ).join("");
 
-
-    /*
-       Quantity controls.
-    */
-
-    items
-      .querySelectorAll(
-        ".qty-decrease"
-      )
-      .forEach(button => {
-
-        button.addEventListener(
-          "click",
-          () => {
-
-            changeQty(
-              Number(button.dataset.index),
-              -1
-            );
-
-          }
-        );
-
-      });
-
-
-    items
-      .querySelectorAll(
-        ".qty-increase"
-      )
-      .forEach(button => {
-
-        button.addEventListener(
-          "click",
-          () => {
-
-            changeQty(
-              Number(button.dataset.index),
-              1
-            );
-
-          }
-        );
-
-      });
-
-
-    /*
-       Remove buttons.
-    */
-
-    items
-      .querySelectorAll(
-        ".remove-item"
-      )
-      .forEach(button => {
-
-        button.addEventListener(
-          "click",
-          () => {
-
-            removeCartItem(
-              Number(button.dataset.index)
-            );
-
-          }
-        );
-
-      });
-
   }
+
+
+  /* CART TOTAL */
+
+  const cartTotal =
+    state.cart.reduce(
+      (sum, item) =>
+        sum +
+        (
+          Number(item.price) *
+          Number(item.qty)
+        ),
+      0
+    );
 
 
   if (total) {
 
     total.textContent =
-      money(getCartTotal());
+      money(cartTotal);
 
   }
 
@@ -1611,23 +1373,95 @@ function renderCart() {
 
 
 /* =========================================================
+   CHANGE QUANTITY
+========================================================= */
+
+function changeQty(
+  index,
+  amount
+) {
+
+  if (!state.cart[index]) return;
+
+
+  state.cart[index].qty =
+    Number(state.cart[index].qty) +
+    Number(amount);
+
+
+  if (
+    state.cart[index].qty <= 0
+  ) {
+
+    state.cart.splice(
+      index,
+      1
+    );
+
+  }
+
+
+  saveCart();
+
+  renderCart();
+
+}
+
+
+window.changeQty =
+  changeQty;
+
+
+/* =========================================================
+   REMOVE CART ITEM
+========================================================= */
+
+function removeItem(index) {
+
+  if (!state.cart[index]) return;
+
+
+  state.cart.splice(
+    index,
+    1
+  );
+
+
+  saveCart();
+
+  renderCart();
+
+}
+
+
+window.removeItem =
+  removeItem;
+
+
+/* =========================================================
    CART DRAWER
 ========================================================= */
 
 const cartDrawer =
-  getElement("#cartDrawer");
+  document.querySelector(
+    "#cartDrawer"
+  );
 
 const drawerOverlay =
-  getElement("#drawerOverlay");
+  document.querySelector(
+    "#drawerOverlay"
+  );
 
 
 function openCart() {
 
-  cartDrawer
-    ?.classList.add("open");
+  cartDrawer?.classList.add(
+    "open"
+  );
 
-  drawerOverlay
-    ?.classList.add("open");
+  drawerOverlay?.classList.add(
+    "open"
+  );
 
 
   cartDrawer?.setAttribute(
@@ -1644,11 +1478,13 @@ function openCart() {
 
 function closeCart() {
 
-  cartDrawer
-    ?.classList.remove("open");
+  cartDrawer?.classList.remove(
+    "open"
+  );
 
-  drawerOverlay
-    ?.classList.remove("open");
+  drawerOverlay?.classList.remove(
+    "open"
+  );
 
 
   cartDrawer?.setAttribute(
@@ -1663,33 +1499,26 @@ function closeCart() {
 }
 
 
-/* =========================================================
-   CART EVENTS
-========================================================= */
-
-function initializeCart() {
-
-  getElement("#cartBtn")
-    ?.addEventListener(
-      "click",
-      openCart
-    );
+document
+  .querySelector("#cartBtn")
+  ?.addEventListener(
+    "click",
+    openCart
+  );
 
 
-  getElement("#closeCart")
-    ?.addEventListener(
-      "click",
-      closeCart
-    );
+document
+  .querySelector("#closeCart")
+  ?.addEventListener(
+    "click",
+    closeCart
+  );
 
 
-  drawerOverlay
-    ?.addEventListener(
-      "click",
-      closeCart
-    );
-
-}
+drawerOverlay?.addEventListener(
+  "click",
+  closeCart
+);
 
 
 /* =========================================================
@@ -1697,7 +1526,9 @@ function initializeCart() {
 ========================================================= */
 
 const modal =
-  getElement("#modal");
+  document.querySelector(
+    "#modal"
+  );
 
 
 function openCheckout() {
@@ -1713,224 +1544,62 @@ function openCheckout() {
   }
 
 
-  modal
-    ?.classList.remove("hidden");
+  modal?.classList.remove(
+    "hidden"
+  );
 
 }
 
 
 function closeCheckout() {
 
-  modal
-    ?.classList.add("hidden");
-
-}
-
-
-/* =========================================================
-   CHECKOUT EVENTS
-========================================================= */
-
-function initializeCheckout() {
-
-  getElement("#checkoutBtn")
-    ?.addEventListener(
-      "click",
-      openCheckout
-    );
-
-
-  getElement("#closeModal")
-    ?.addEventListener(
-      "click",
-      closeCheckout
-    );
-
-
-  modal?.addEventListener(
-    "click",
-    event => {
-
-      if (
-        event.target === modal
-      ) {
-
-        closeCheckout();
-
-      }
-
-    }
+  modal?.classList.add(
+    "hidden"
   );
 
 }
 
 
-/* =========================================================
-   CUSTOMER DETAILS
-========================================================= */
-
-function getCustomerDetails(form) {
-
-  const formData =
-    new FormData(form);
+document
+  .querySelector("#checkoutBtn")
+  ?.addEventListener(
+    "click",
+    openCheckout
+  );
 
 
-  return {
-
-    name:
-      String(
-        formData.get("name") || ""
-      ).trim(),
-
-    phone:
-      String(
-        formData.get("phone") || ""
-      ).trim(),
-
-    email:
-      String(
-        formData.get("email") || ""
-      ).trim(),
-
-    address:
-      String(
-        formData.get("address") || ""
-      ).trim()
-
-  };
-
-}
+document
+  .querySelector("#closeModal")
+  ?.addEventListener(
+    "click",
+    closeCheckout
+  );
 
 
-/* =========================================================
-   SAVE CUSTOMER
-========================================================= */
+modal?.addEventListener(
+  "click",
+  event => {
 
-function saveCustomer(customer) {
+    if (
+      event.target === modal
+    ) {
 
-  try {
+      closeCheckout();
 
-    localStorage.setItem(
-      STORAGE_KEYS.customer,
-      JSON.stringify(customer)
-    );
-
-  } catch (error) {
-
-    console.warn(
-      "Could not save customer:",
-      error
-    );
+    }
 
   }
-
-}
-
-
-/* =========================================================
-   BUILD WHATSAPP MESSAGE
-========================================================= */
-
-function buildWhatsAppMessage(
-  customer
-) {
-
-  const total =
-    getCartTotal();
-
-
-  let message =
-    "EVERYTHING EVERYTHING\n" +
-    "NEW ORDER\n" +
-    "━━━━━━━━━━━━━━━━━━\n\n";
-
-
-  message +=
-    "CUSTOMER DETAILS\n";
-
-
-  message +=
-    `Name: ${customer.name}\n`;
-
-  message +=
-    `Phone: ${customer.phone}\n`;
-
-  message +=
-    `Email: ${customer.email || "Not provided"}\n`;
-
-  message +=
-    `Delivery location: ${customer.address}\n\n`;
-
-
-  message +=
-    "ORDER DETAILS\n" +
-    "━━━━━━━━━━━━━━━━━━\n\n";
-
-
-  state.cart.forEach(
-    (item, index) => {
-
-      message +=
-        `${index + 1}. ${item.name}\n`;
-
-      message +=
-        `Quantity: ${item.qty}\n`;
-
-      message +=
-        `Price: GH₵${money(item.price)} each\n`;
-
-
-      if (item.meta) {
-
-        message +=
-          `Ingredients: ${item.meta}\n`;
-
-      }
-
-
-      message +=
-        `Subtotal: GH₵${money(
-          item.price *
-          item.qty
-        )}\n\n`;
-
-    }
-  );
-
-
-  message +=
-    "━━━━━━━━━━━━━━━━━━\n";
-
-  message +=
-    `TOTAL: GH₵${money(total)}\n\n`;
-
-  message +=
-    "Please confirm my order " +
-    "and let me know the next steps.\n\n";
-
-  message +=
-    "Thank you!";
-
-
-  return message;
-
-}
+);
 
 
 /* =========================================================
    CHECKOUT FORM
+   WHATSAPP ORDER
 ========================================================= */
 
-function initializeCheckoutForm() {
-
-  const form =
-    getElement("#checkoutForm");
-
-
-  if (!form) return;
-
-
-  form.addEventListener(
+document
+  .querySelector("#checkoutForm")
+  ?.addEventListener(
     "submit",
     event => {
 
@@ -1948,58 +1617,158 @@ function initializeCheckoutForm() {
       }
 
 
-      if (
-        !form.checkValidity()
-      ) {
-
-        form.reportValidity();
-
-        return;
-
-      }
-
-
-      const customer =
-        getCustomerDetails(form);
-
-
-      if (
-        !customer.name ||
-        !customer.phone ||
-        !customer.address
-      ) {
-
-        alert(
-          "Please complete your name, phone number and delivery location."
+      const form =
+        new FormData(
+          event.target
         );
 
-        return;
 
-      }
+      const customer = {
+
+        name:
+          form.get("name"),
+
+        phone:
+          form.get("phone"),
+
+        email:
+          form.get("email"),
+
+        address:
+          form.get("address")
+
+      };
 
 
-      saveCustomer(
-        customer
+      /* SAVE CUSTOMER DETAILS */
+
+      localStorage.setItem(
+        "ee_customer",
+        JSON.stringify(
+          customer
+        )
       );
 
 
-      const message =
-        buildWhatsAppMessage(
-          customer
+      /* ORDER TOTAL */
+
+      const total =
+        state.cart.reduce(
+          (sum, item) =>
+            sum +
+            (
+              Number(item.price) *
+              Number(item.qty)
+            ),
+          0
         );
 
 
-      const whatsappUrl =
-        `https://wa.me/${WHATSAPP_NUMBER}` +
-        `?text=${encodeURIComponent(message)}`;
+      /* BUILD MESSAGE */
 
+      let message =
+        "Hello Everything Everything! 👋\n\n" +
+        "I would like to place an order.\n\n";
+
+
+      message +=
+        "CUSTOMER DETAILS\n";
+
+
+      message +=
+        "Name: " +
+        customer.name +
+        "\n";
+
+
+      message +=
+        "Phone: " +
+        customer.phone +
+        "\n";
+
+
+      message +=
+        "Email: " +
+        customer.email +
+        "\n";
+
+
+      message +=
+        "Delivery location: " +
+        customer.address +
+        "\n\n";
+
+
+      message +=
+        "ORDER DETAILS\n";
+
+
+      state.cart.forEach(
+        (item, index) => {
+
+          message +=
+            `${index + 1}. ${item.name}\n`;
+
+
+          message +=
+            `Quantity: ${item.qty}\n`;
+
+
+          message +=
+            `Price: GH₵${money(
+              item.price
+            )} each\n`;
+
+
+          if (item.meta) {
+
+            message +=
+              `Ingredients: ${item.meta}\n`;
+
+          }
+
+
+          message +=
+            `Subtotal: GH₵${money(
+              Number(item.price) *
+              Number(item.qty)
+            )}\n\n`;
+
+        }
+      );
+
+
+      message +=
+        "TOTAL: GH₵" +
+        money(total) +
+        "\n\n";
+
+
+      message +=
+        "Please confirm my order and let me know the next steps. Thank you!";
+
+
+      /* WHATSAPP NUMBER */
+
+      const whatsappNumber =
+        "233547026348";
+
+
+      const whatsappUrl =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(
+          message
+        );
+
+
+      /* CLOSE CHECKOUT */
 
       closeCheckout();
 
 
-      /*
-         Open WhatsApp in the same tab.
-      */
+      /* OPEN WHATSAPP */
 
       window.location.href =
         whatsappUrl;
@@ -2007,70 +1776,39 @@ function initializeCheckoutForm() {
     }
   );
 
-}
-
 
 /* =========================================================
    NEWSLETTER
 ========================================================= */
 
-function initializeNewsletter() {
-
-  const form =
-    getElement("#newsletterForm");
-
-  if (!form) return;
-
-
-  form.addEventListener(
+document
+  .querySelector("#newsletterForm")
+  ?.addEventListener(
     "submit",
     event => {
 
       event.preventDefault();
 
 
-      const input =
-        getElement(
-          "#newsletterEmail"
-        );
-
-
       const email =
-        input?.value.trim() || "";
+        document
+          .querySelector(
+            "#newsletterEmail"
+          )
+          ?.value
+          .trim();
 
 
       if (!email) return;
 
 
-      if (
-        !input.checkValidity()
-      ) {
-
-        input.reportValidity();
-
-        return;
-
-      }
+      localStorage.setItem(
+        "ee_newsletter_email",
+        email
+      );
 
 
-      try {
-
-        localStorage.setItem(
-          STORAGE_KEYS.newsletter,
-          email
-        );
-
-      } catch (error) {
-
-        console.warn(
-          "Could not save newsletter email:",
-          error
-        );
-
-      }
-
-
-      form.innerHTML = `
+      event.target.innerHTML = `
 
         <p
           style="
@@ -2087,42 +1825,34 @@ function initializeNewsletter() {
     }
   );
 
-}
-
 
 /* =========================================================
-   KEYBOARD CONTROLS
+   KEYBOARD ESCAPE
 ========================================================= */
 
-function initializeKeyboardControls() {
+document.addEventListener(
+  "keydown",
+  event => {
 
-  document.addEventListener(
-    "keydown",
-    event => {
-
-      if (
-        event.key !== "Escape"
-      ) {
-
-        return;
-
-      }
-
-
-      closeSearch();
-
-      closeCart();
-
-      closeCheckout();
-
+    if (
+      event.key !== "Escape"
+    ) {
+      return;
     }
-  );
 
-}
+
+    closeSearch();
+
+    closeCart();
+
+    closeCheckout();
+
+  }
+);
 
 
 /* =========================================================
-   INITIALIZE
+   INITIALIZE STORE
 ========================================================= */
 
 function initializeStore() {
@@ -2137,55 +1867,7 @@ function initializeStore() {
 
   renderCart();
 
-
-  initializeSorting();
-
-  initializeCategoryCards();
-
-  initializeMobileMenu();
-
-  initializeCart();
-
-  initializeCheckout();
-
-  initializeCheckoutForm();
-
-  initializeNewsletter();
-
-  initializeKeyboardControls();
-
-
-  getElement("#mealSelect")
-    ?.addEventListener(
-      "change",
-      renderIngredients
-    );
-
-
-  getElement("#addPlatter")
-    ?.addEventListener(
-      "click",
-      addPlatterToCart
-    );
-
 }
 
 
-/* =========================================================
-   START STORE
-========================================================= */
-
-if (
-  document.readyState === "loading"
-) {
-
-  document.addEventListener(
-    "DOMContentLoaded",
-    initializeStore
-  );
-
-} else {
-
-  initializeStore();
-
-}
+initializeStore();
