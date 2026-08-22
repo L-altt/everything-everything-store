@@ -5,74 +5,286 @@
 ========================================================= */
 
 
-/* =========================================================
+/* ===/* =========================================================
    STORE DATA
+   SAMPLE PRODUCTS
 ========================================================= */
 
 const products = [
 
+  /* =======================================================
+     GROCERIES
+  ======================================================= */
+
   {
-    id: "product-1",
-    name: "Featured Product",
+    id: "grocery-rice",
+    name: "Premium Long Grain Rice",
+    category: "Groceries",
+    price: 85,
+    image: "assets/images/products/rice.jpg"
+  },
+
+  {
+    id: "grocery-oil",
+    name: "Cooking Oil",
+    category: "Groceries",
+    price: 45,
+    image: "assets/images/products/oil.jpg"
+  },
+
+  {
+    id: "grocery-tomatoes",
+    name: "Fresh Tomatoes",
     category: "Groceries",
     price: 25,
-    image: "assets/images/products/product-1.jpg"
+    image: "assets/images/products/tomatoes.jpg"
   },
 
   {
-    id: "product-2",
-    name: "Everyday Essentials",
+    id: "grocery-onions",
+    name: "Fresh Onions",
     category: "Groceries",
-    price: 40,
-    image: "assets/images/products/product-2.jpg"
+    price: 20,
+    image: "assets/images/products/onions.jpg"
   },
 
   {
-    id: "product-3",
-    name: "Signature Clothing",
+    id: "grocery-pepper",
+    name: "Fresh Pepper",
+    category: "Groceries",
+    price: 15,
+    image: "assets/images/products/pepper.jpg"
+  },
+
+  {
+    id: "grocery-chicken",
+    name: "Whole Chicken",
+    category: "Groceries",
+    price: 75,
+    image: "assets/images/products/chicken.jpg"
+  },
+
+  {
+    id: "grocery-beef",
+    name: "Fresh Beef",
+    category: "Groceries",
+    price: 65,
+    image: "assets/images/products/beef.jpg"
+  },
+
+  {
+    id: "grocery-plantain",
+    name: "Fresh Plantain",
+    category: "Groceries",
+    price: 30,
+    image: "assets/images/products/plantain.jpg"
+  },
+
+  {
+    id: "grocery-eggs",
+    name: "Farm Fresh Eggs",
+    category: "Groceries",
+    price: 35,
+    image: "assets/images/products/eggs.jpg"
+  },
+
+  {
+    id: "grocery-bread",
+    name: "Fresh Bread",
+    category: "Groceries",
+    price: 20,
+    image: "assets/images/products/bread.jpg"
+  },
+
+  {
+    id: "grocery-drink",
+    name: "Soft Drink",
+    category: "Groceries",
+    price: 12,
+    image: "assets/images/products/drink.jpg"
+  },
+
+  {
+    id: "grocery-water",
+    name: "Bottled Water",
+    category: "Groceries",
+    price: 6,
+    image: "assets/images/products/water.jpg"
+  },
+
+
+  /* =======================================================
+     CLOTHING
+  ======================================================= */
+
+  {
+    id: "clothing-tshirt",
+    name: "Classic Everyday T-Shirt",
+    category: "Clothing",
+    price: 120,
+    image: "assets/images/products/tshirt.jpg"
+  },
+
+  {
+    id: "clothing-shirt",
+    name: "Premium Casual Shirt",
     category: "Clothing",
     price: 180,
-    image: "assets/images/products/product-3.jpg"
+    image: "assets/images/products/shirt.jpg"
   },
 
   {
-    id: "product-4",
-    name: "Classic Jewelry",
-    category: "Jewelry",
-    price: 120,
-    image: "assets/images/products/product-4.jpg"
-  },
-
-  {
-    id: "product-5",
-    name: "Special Gift",
-    category: "Gifts",
-    price: 100,
-    image: "assets/images/products/product-5.jpg"
-  },
-
-  {
-    id: "product-6",
-    name: "Premium Collection",
+    id: "clothing-hoodie",
+    name: "Signature Hoodie",
     category: "Clothing",
     price: 250,
-    image: "assets/images/products/product-6.jpg"
+    image: "assets/images/products/hoodie.jpg"
   },
 
   {
-    id: "product-7",
-    name: "Everyday Jewelry",
+    id: "clothing-jeans",
+    name: "Classic Denim Jeans",
+    category: "Clothing",
+    price: 220,
+    image: "assets/images/products/jeans.jpg"
+  },
+
+  {
+    id: "clothing-dress",
+    name: "Elegant Everyday Dress",
+    category: "Clothing",
+    price: 280,
+    image: "assets/images/products/dress.jpg"
+  },
+
+  {
+    id: "clothing-skirt",
+    name: "Classic Women's Skirt",
+    category: "Clothing",
+    price: 190,
+    image: "assets/images/products/skirt.jpg"
+  },
+
+  {
+    id: "clothing-jacket",
+    name: "Premium Casual Jacket",
+    category: "Clothing",
+    price: 320,
+    image: "assets/images/products/jacket.jpg"
+  },
+
+  {
+    id: "clothing-trousers",
+    name: "Smart Casual Trousers",
+    category: "Clothing",
+    price: 210,
+    image: "assets/images/products/trousers.jpg"
+  },
+
+
+  /* =======================================================
+     JEWELRY
+  ======================================================= */
+
+  {
+    id: "jewelry-necklace",
+    name: "Classic Gold Necklace",
     category: "Jewelry",
-    price: 90,
-    image: "assets/images/products/product-7.jpg"
+    price: 350,
+    image: "assets/images/products/necklace.jpg"
   },
 
   {
-    id: "product-8",
-    name: "Gift Box",
+    id: "jewelry-bracelet",
+    name: "Elegant Bracelet",
+    category: "Jewelry",
+    price: 180,
+    image: "assets/images/products/bracelet.jpg"
+  },
+
+  {
+    id: "jewelry-earrings",
+    name: "Classic Earrings",
+    category: "Jewelry",
+    price: 150,
+    image: "assets/images/products/earrings.jpg"
+  },
+
+  {
+    id: "jewelry-ring",
+    name: "Signature Ring",
+    category: "Jewelry",
+    price: 220,
+    image: "assets/images/products/ring.jpg"
+  },
+
+  {
+    id: "jewelry-watch",
+    name: "Classic Wrist Watch",
+    category: "Jewelry",
+    price: 400,
+    image: "assets/images/products/watch.jpg"
+  },
+
+  {
+    id: "jewelry-chain",
+    name: "Classic Chain",
+    category: "Jewelry",
+    price: 280,
+    image: "assets/images/products/chain.jpg"
+  },
+
+
+  /* =======================================================
+     GIFTS
+  ======================================================= */
+
+  {
+    id: "gift-box",
+    name: "Premium Gift Box",
+    category: "Gifts",
+    price: 120,
+    image: "assets/images/products/gift-box.jpg"
+  },
+
+  {
+    id: "gift-hamper",
+    name: "Everything Gift Hamper",
+    category: "Gifts",
+    price: 300,
+    image: "assets/images/products/hamper.jpg"
+  },
+
+  {
+    id: "gift-candle",
+    name: "Luxury Scented Candle",
+    category: "Gifts",
+    price: 95,
+    image: "assets/images/products/candle.jpg"
+  },
+
+  {
+    id: "gift-mug",
+    name: "Signature Gift Mug",
+    category: "Gifts",
+    price: 65,
+    image: "assets/images/products/mug.jpg"
+  },
+
+  {
+    id: "gift-card",
+    name: "Personalized Gift Card",
+    category: "Gifts",
+    price: 30,
+    image: "assets/images/products/gift-card.jpg"
+  },
+
+  {
+    id: "gift-teddy",
+    name: "Classic Teddy Bear",
     category: "Gifts",
     price: 150,
-    image: "assets/images/products/product-8.jpg"
+    image: "assets/images/products/teddy.jpg"
   }
 
 ];
@@ -111,82 +323,210 @@ const categories = [
    BUILD A PLATTER / COLLECTIONS
 ========================================================= */
 
-/*
-   Each collection contains product IDs.
-
-   Every item starts SELECTED.
-
-   The customer can remove individual items
-   before adding the customized collection
-   to the basket.
-*/
-
 const platters = [
 
+  /* =======================================================
+     JOLLOF PLATTER
+  ======================================================= */
+
   {
-    id: "grocery-platter",
-    name: "Grocery Platter",
-    description: "Build your own grocery combination.",
+    id: "jollof-platter",
+
+    name: "Jollof Platter",
+
+    description:
+      "Choose the ingredients you want in your jollof meal.",
+
     items: [
-      "product-1",
-      "product-2"
+
+      "grocery-rice",
+      "grocery-oil",
+      "grocery-tomatoes",
+      "grocery-onions",
+      "grocery-pepper",
+      "grocery-chicken",
+      "grocery-plantain",
+      "grocery-drink"
+
     ]
+
   },
 
 
+  /* =======================================================
+     BREAKFAST PLATTER
+  ======================================================= */
+
   {
-    id: "fashion-platter",
+    id: "breakfast-platter",
+
+    name: "Breakfast Platter",
+
+    description:
+      "Build your breakfast exactly the way you like it.",
+
+    items: [
+
+      "grocery-bread",
+      "grocery-eggs",
+      "grocery-sausage",
+      "grocery-drink"
+
+    ]
+
+  },
+
+
+  /* =======================================================
+     GRILL PLATTER
+  ======================================================= */
+
+  {
+    id: "grill-platter",
+
+    name: "Grill Platter",
+
+    description:
+      "Create a customized grilled food combination.",
+
+    items: [
+
+      "grocery-chicken",
+      "grocery-beef",
+      "grocery-plantain",
+      "grocery-onions",
+      "grocery-pepper",
+      "grocery-drink"
+
+    ]
+
+  },
+
+
+  /* =======================================================
+     FASHION SET
+  ======================================================= */
+
+  {
+    id: "fashion-set",
+
     name: "Fashion Set",
-    description: "Create your own clothing combination.",
+
+    description:
+      "Combine clothing pieces into your own look.",
+
     items: [
-      "product-3",
-      "product-6"
+
+      "clothing-tshirt",
+      "clothing-jeans",
+      "clothing-jacket"
+
     ]
+
   },
 
 
+  /* =======================================================
+     WOMEN'S FASHION SET
+  ======================================================= */
+
   {
-    id: "jewelry-platter",
+    id: "women-fashion-set",
+
+    name: "Women's Fashion Set",
+
+    description:
+      "Create a complete women's fashion combination.",
+
+    items: [
+
+      "clothing-dress",
+      "clothing-skirt",
+      "clothing-jacket"
+
+    ]
+
+  },
+
+
+  /* =======================================================
+     JEWELRY SET
+  ======================================================= */
+
+  {
+    id: "jewelry-set",
+
     name: "Jewelry Set",
-    description: "Choose the jewelry pieces you want together.",
+
+    description:
+      "Build a jewelry combination from individual pieces.",
+
     items: [
-      "product-4",
-      "product-7"
+
+      "jewelry-necklace",
+      "jewelry-bracelet",
+      "jewelry-earrings",
+      "jewelry-ring"
+
     ]
+
   },
 
 
+  /* =======================================================
+     GIFT SET
+  ======================================================= */
+
   {
-    id: "gift-platter",
+    id: "gift-set",
+
     name: "Gift Set",
-    description: "Build a personalized gift combination.",
+
+    description:
+      "Create a personalized gift combination.",
+
     items: [
-      "product-5",
-      "product-8"
+
+      "gift-box",
+      "gift-candle",
+      "gift-mug",
+      "gift-card",
+      "gift-teddy"
+
     ]
+
   },
 
 
-  /*
-     This collection demonstrates that products
-     from completely different categories can
-     be combined together.
-  */
+  /* =======================================================
+     EVERYTHING COLLECTION
+  ======================================================= */
 
   {
-    id: "everything-platter",
+    id: "everything-collection",
+
     name: "Everything Collection",
-    description: "Combine products from across the store.",
+
+    description:
+      "Mix products from groceries, clothing, jewelry and gifts.",
+
     items: [
-      "product-1",
-      "product-2",
-      "product-3",
-      "product-4",
-      "product-5",
-      "product-6",
-      "product-7",
-      "product-8"
+
+      "grocery-rice",
+      "grocery-oil",
+      "grocery-chicken",
+
+      "clothing-tshirt",
+      "clothing-jeans",
+
+      "jewelry-necklace",
+      "jewelry-bracelet",
+
+      "gift-box",
+      "gift-candle"
+
     ]
+
   }
 
 ];
