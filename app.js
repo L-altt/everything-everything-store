@@ -1,216 +1,109 @@
 /* =========================================================
    EVERYTHING EVERYTHING
-   Store Application
+   STORE APPLICATION
 ========================================================= */
 
 
 /* =========================================================
-   STORE DATA
+   PRODUCT DATABASE
 ========================================================= */
 
 const products = [
 
-  /* ================= GROCERIES ================= */
-
   {
-    id: "grocery-1",
-    name: "Premium Basmati Rice",
+    id: "product-1",
+    name: "Everyday Essentials",
     category: "Groceries",
-    price: 85,
-    image: "assets/images/products/rice.jpg"
+    price: 25,
+    image: "assets/images/products/product-1.jpg"
   },
 
   {
-    id: "grocery-2",
-    name: "Golden Cooking Oil",
+    id: "product-2",
+    name: "Home & Pantry Selection",
     category: "Groceries",
-    price: 75,
-    image: "assets/images/products/oil.jpg"
+    price: 40,
+    image: "assets/images/products/product-2.jpg"
   },
 
   {
-    id: "grocery-3",
-    name: "Breakfast Cereal",
+    id: "product-3",
+    name: "Signature Everyday Wear",
+    category: "Clothing",
+    price: 180,
+    image: "assets/images/products/product-3.jpg"
+  },
+
+  {
+    id: "product-4",
+    name: "Classic Jewelry Piece",
+    category: "Jewelry",
+    price: 120,
+    image: "assets/images/products/product-4.jpg"
+  },
+
+  {
+    id: "product-5",
+    name: "Thoughtful Gift Set",
+    category: "Gifts",
+    price: 100,
+    image: "assets/images/products/product-5.jpg"
+  },
+
+  {
+    id: "product-6",
+    name: "Premium Collection",
+    category: "Clothing",
+    price: 250,
+    image: "assets/images/products/product-6.jpg"
+  },
+
+  {
+    id: "product-7",
+    name: "Everyday Jewelry",
+    category: "Jewelry",
+    price: 90,
+    image: "assets/images/products/product-7.jpg"
+  },
+
+  {
+    id: "product-8",
+    name: "Everything Gift Box",
+    category: "Gifts",
+    price: 150,
+    image: "assets/images/products/product-8.jpg"
+  },
+
+  {
+    id: "product-9",
+    name: "Fresh Kitchen Essentials",
     category: "Groceries",
     price: 55,
-    image: "assets/images/products/cereal.jpg"
+    image: "assets/images/products/product-9.jpg"
   },
 
   {
-    id: "grocery-4",
-    name: "Organic Honey",
-    category: "Groceries",
-    price: 65,
-    image: "assets/images/products/honey.jpg"
-  },
-
-  {
-    id: "grocery-5",
-    name: "Fresh Bread",
-    category: "Groceries",
-    price: 18,
-    image: "assets/images/products/bread.jpg"
-  },
-
-  {
-    id: "grocery-6",
-    name: "Mixed Fruit Basket",
-    category: "Groceries",
-    price: 120,
-    image: "assets/images/products/fruits.jpg"
-  },
-
-
-  /* ================= CLOTHING ================= */
-
-  {
-    id: "clothing-1",
-    name: "Essential Cotton Tee",
+    id: "product-10",
+    name: "Classic Statement Shirt",
     category: "Clothing",
-    price: 95,
-    image: "assets/images/products/tshirt.jpg"
-  },
-
-  {
-    id: "clothing-2",
-    name: "Classic Oversized Shirt",
-    category: "Clothing",
-    price: 145,
-    image: "assets/images/products/shirt.jpg"
-  },
-
-  {
-    id: "clothing-3",
-    name: "Everyday Hoodie",
-    category: "Clothing",
-    price: 220,
-    image: "assets/images/products/hoodie.jpg"
-  },
-
-  {
-    id: "clothing-4",
-    name: "Relaxed Trousers",
-    category: "Clothing",
-    price: 180,
-    image: "assets/images/products/trousers.jpg"
-  },
-
-  {
-    id: "clothing-5",
-    name: "Signature Dress",
-    category: "Clothing",
-    price: 250,
-    image: "assets/images/products/dress.jpg"
-  },
-
-  {
-    id: "clothing-6",
-    name: "Weekend Set",
-    category: "Clothing",
-    price: 290,
-    image: "assets/images/products/set.jpg"
-  },
-
-
-  /* ================= JEWELRY ================= */
-
-  {
-    id: "jewelry-1",
-    name: "Minimal Gold Necklace",
-    category: "Jewelry",
-    price: 180,
-    image: "assets/images/products/necklace.jpg"
-  },
-
-  {
-    id: "jewelry-2",
-    name: "Classic Bracelet",
-    category: "Jewelry",
-    price: 130,
-    image: "assets/images/products/bracelet.jpg"
-  },
-
-  {
-    id: "jewelry-3",
-    name: "Everyday Hoop Earrings",
-    category: "Jewelry",
-    price: 110,
-    image: "assets/images/products/earrings.jpg"
-  },
-
-  {
-    id: "jewelry-4",
-    name: "Signature Ring",
-    category: "Jewelry",
-    price: 150,
-    image: "assets/images/products/ring.jpg"
-  },
-
-  {
-    id: "jewelry-5",
-    name: "Pearl Detail Necklace",
-    category: "Jewelry",
-    price: 210,
-    image: "assets/images/products/pearl-necklace.jpg"
-  },
-
-  {
-    id: "jewelry-6",
-    name: "Layered Jewelry Set",
-    category: "Jewelry",
-    price: 275,
-    image: "assets/images/products/jewelry-set.jpg"
-  },
-
-
-  /* ================= GIFTS ================= */
-
-  {
-    id: "gift-1",
-    name: "The Good Morning Box",
-    category: "Gifts",
-    price: 160,
-    image: "assets/images/products/good-morning-box.jpg"
-  },
-
-  {
-    id: "gift-2",
-    name: "Self-Care Gift Box",
-    category: "Gifts",
-    price: 230,
-    image: "assets/images/products/self-care-box.jpg"
-  },
-
-  {
-    id: "gift-3",
-    name: "Birthday Gift Box",
-    category: "Gifts",
-    price: 250,
-    image: "assets/images/products/birthday-box.jpg"
-  },
-
-  {
-    id: "gift-4",
-    name: "Thank You Box",
-    category: "Gifts",
-    price: 180,
-    image: "assets/images/products/thank-you-box.jpg"
-  },
-
-  {
-    id: "gift-5",
-    name: "Premium Gift Basket",
-    category: "Gifts",
-    price: 350,
-    image: "assets/images/products/gift-basket.jpg"
-  },
-
-  {
-    id: "gift-6",
-    name: "Just Because Box",
-    category: "Gifts",
     price: 200,
-    image: "assets/images/products/just-because.jpg"
+    image: "assets/images/products/product-10.jpg"
+  },
+
+  {
+    id: "product-11",
+    name: "Minimal Gold Detail",
+    category: "Jewelry",
+    price: 135,
+    image: "assets/images/products/product-11.jpg"
+  },
+
+  {
+    id: "product-12",
+    name: "Celebration Gift Box",
+    category: "Gifts",
+    price: 175,
+    image: "assets/images/products/product-12.jpg"
   }
 
 ];
@@ -252,21 +145,19 @@ const categories = [
 const meals = [
 
   {
-    id: "breakfast",
-
+    id: "meal-1",
     name: "Breakfast Platter",
 
     ingredients: [
-
       {
         id: "bread",
-        name: "Fresh Bread",
-        price: 18
+        name: "Bread",
+        price: 10
       },
 
       {
-        id: "eggs",
-        name: "Two Eggs",
+        id: "egg",
+        name: "Eggs",
         price: 15
       },
 
@@ -277,169 +168,79 @@ const meals = [
       },
 
       {
-        id: "beans",
-        name: "Baked Beans",
-        price: 18
-      },
-
-      {
-        id: "fruit",
-        name: "Fresh Fruit",
-        price: 25
-      },
-
-      {
         id: "tea",
         name: "Tea",
-        price: 10
+        price: 8
       }
-
     ]
-
   },
 
-
   {
-    id: "lunch",
-
+    id: "meal-2",
     name: "Lunch Platter",
 
     ingredients: [
-
       {
         id: "rice",
-        name: "Jasmine Rice",
-        price: 25
+        name: "Rice",
+        price: 20
       },
 
       {
         id: "chicken",
-        name: "Grilled Chicken",
-        price: 40
+        name: "Chicken",
+        price: 35
       },
 
       {
         id: "salad",
-        name: "Fresh Salad",
-        price: 20
-      },
-
-      {
-        id: "plantain",
-        name: "Fried Plantain",
-        price: 20
+        name: "Salad",
+        price: 15
       },
 
       {
         id: "drink",
         name: "Soft Drink",
-        price: 12
+        price: 10
       }
-
     ]
-
   },
 
-
   {
-    id: "special",
-
+    id: "meal-3",
     name: "Special Platter",
 
     ingredients: [
-
       {
         id: "jollof",
         name: "Jollof Rice",
-        price: 30
+        price: 25
       },
 
       {
         id: "chicken-special",
         name: "Grilled Chicken",
-        price: 45
+        price: 40
       },
 
       {
-        id: "beef",
-        name: "Grilled Beef",
-        price: 50
-      },
-
-      {
-        id: "plantain-special",
+        id: "plantain",
         name: "Fried Plantain",
-        price: 20
+        price: 15
       },
 
       {
         id: "salad-special",
         name: "Fresh Salad",
-        price: 20
+        price: 15
       },
 
       {
         id: "drink-special",
         name: "Soft Drink",
-        price: 12
+        price: 10
       }
-
     ]
-
-  },
-
-
-  {
-    id: "premium",
-
-    name: "Premium Sharing Platter",
-
-    ingredients: [
-
-      {
-        id: "premium-rice",
-        name: "Jollof Rice",
-        price: 35
-      },
-
-      {
-        id: "premium-chicken",
-        name: "Grilled Chicken",
-        price: 50
-      },
-
-      {
-        id: "premium-beef",
-        name: "Grilled Beef",
-        price: 55
-      },
-
-      {
-        id: "premium-plantain",
-        name: "Fried Plantain",
-        price: 25
-      },
-
-      {
-        id: "premium-salad",
-        name: "Fresh Salad",
-        price: 25
-      },
-
-      {
-        id: "premium-fruit",
-        name: "Fresh Fruit",
-        price: 25
-      },
-
-      {
-        id: "premium-drinks",
-        name: "Two Soft Drinks",
-        price: 24
-      }
-
-    ]
-
   }
 
 ];
@@ -472,8 +273,11 @@ const state = {
    HELPERS
 ========================================================= */
 
-const money = value =>
-  Number(value || 0).toFixed(2);
+const money = value => {
+
+  return Number(value || 0).toFixed(2);
+
+};
 
 
 function escapeHtml(value) {
@@ -482,13 +286,11 @@ function escapeHtml(value) {
     /[&<>"']/g,
 
     character => ({
-
       "&": "&amp;",
       "<": "&lt;",
       ">": "&gt;",
       '"': "&quot;",
       "'": "&#039;"
-
     })[character]
 
   );
@@ -497,21 +299,10 @@ function escapeHtml(value) {
 
 
 /* =========================================================
-   IMAGE
+   PRODUCT IMAGE
 ========================================================= */
 
 function productImage(image, name) {
-
-  if (!image) {
-
-    return `
-      <div class="product-placeholder">
-        ${escapeHtml(name)}
-      </div>
-    `;
-
-  }
-
 
   return `
 
@@ -522,7 +313,7 @@ function productImage(image, name) {
       onerror="
         this.style.display='none';
         this.parentElement.classList.add('image-error');
-        this.parentElement.innerHTML='<div class=&quot;product-placeholder&quot;>${escapeHtml(name)}</div>';
+        this.parentElement.innerHTML += '<span>${escapeHtml(name)}</span>';
       "
     >
 
@@ -599,17 +390,18 @@ function renderFilters() {
 
 function getFilteredProducts() {
 
-  let list =
-    [...state.products];
+  let list = [...state.products];
 
 
   if (state.filter !== "all") {
 
-    list =
-      list.filter(product =>
-        product.category
-          .toLowerCase() === state.filter
-      );
+    list = list.filter(product =>
+
+      product.category
+        .toLowerCase() ===
+      state.filter
+
+    );
 
   }
 
@@ -618,24 +410,23 @@ function getFilteredProducts() {
 
     const query =
       state.search
-        .trim()
-        .toLowerCase();
+        .toLowerCase()
+        .trim();
 
 
-    list =
-      list.filter(product =>
+    list = list.filter(product =>
 
-        product.name
-          .toLowerCase()
-          .includes(query)
+      product.name
+        .toLowerCase()
+        .includes(query)
 
-        ||
+      ||
 
-        product.category
-          .toLowerCase()
-          .includes(query)
+      product.category
+        .toLowerCase()
+        .includes(query)
 
-      );
+    );
 
   }
 
@@ -680,7 +471,7 @@ function getFilteredProducts() {
 
 
 /* =========================================================
-   PRODUCTS
+   RENDER PRODUCTS
 ========================================================= */
 
 function renderProducts() {
@@ -702,8 +493,10 @@ function renderProducts() {
   if (count) {
 
     count.textContent =
-      `${list.length} product${
-        list.length === 1 ? "" : "s"
+      `${list.length} ${
+        list.length === 1
+          ? "product"
+          : "products"
       }`;
 
   }
@@ -720,7 +513,7 @@ function renderProducts() {
         </strong>
 
         <p>
-          Try another search or category.
+          Try another category or search term.
         </p>
 
       </div>
@@ -732,11 +525,13 @@ function renderProducts() {
   }
 
 
-  grid.innerHTML =
+  grid.innerHTML = list.map(
+    (product, index) => `
 
-    list.map(product => `
-
-      <article class="product">
+      <article
+        class="product"
+        data-product="${escapeHtml(product.id)}"
+      >
 
         <div class="product-img">
 
@@ -751,27 +546,20 @@ function renderProducts() {
         <div class="product-body">
 
           <small>
-            ${escapeHtml(
-              product.category
-            )}
+            ${escapeHtml(product.category)}
           </small>
 
-
           <h3>
-            ${escapeHtml(
-              product.name
-            )}
+            ${escapeHtml(product.name)}
           </h3>
-
 
           <p class="price">
             GH₵${money(product.price)}
           </p>
 
-
           <button
             class="btn primary"
-            onclick="addProduct('${product.id}')"
+            data-add-product="${escapeHtml(product.id)}"
           >
             Add to basket
           </button>
@@ -780,7 +568,26 @@ function renderProducts() {
 
       </article>
 
-    `).join("");
+    `
+  ).join("");
+
+
+  grid
+    .querySelectorAll("[data-add-product]")
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          addProduct(
+            button.dataset.addProduct
+          );
+
+        }
+      );
+
+    });
 
 }
 
@@ -816,9 +623,6 @@ document
       "click",
       event => {
 
-        event.preventDefault();
-
-
         const category =
           card.dataset.category
             ?.toLowerCase();
@@ -830,19 +634,21 @@ document
         state.filter =
           category;
 
-        state.search = "";
-
-
-        renderFilters();
-
-        renderProducts();
-
 
         document
           .querySelector("#shop")
           ?.scrollIntoView({
             behavior: "smooth"
           });
+
+
+        setTimeout(() => {
+
+          renderFilters();
+
+          renderProducts();
+
+        }, 250);
 
       }
     );
@@ -872,13 +678,16 @@ const searchSubmit =
 
 function openSearch() {
 
-  searchOverlay
-    ?.classList.add("open");
+  if (!searchOverlay) return;
 
+  searchOverlay.classList.add("open");
+
+  document.body.classList.add(
+    "no-scroll"
+  );
 
   setTimeout(
-    () =>
-      searchInput?.focus(),
+    () => searchInput?.focus(),
     100
   );
 
@@ -890,6 +699,18 @@ function closeSearch() {
   searchOverlay
     ?.classList.remove("open");
 
+  if (
+    !document.querySelector(
+      "#cartDrawer.open"
+    )
+  ) {
+
+    document.body.classList.remove(
+      "no-scroll"
+    );
+
+  }
+
 }
 
 
@@ -897,7 +718,6 @@ searchBtn?.addEventListener(
   "click",
   openSearch
 );
-
 
 searchClose?.addEventListener(
   "click",
@@ -910,8 +730,7 @@ searchOverlay?.addEventListener(
   event => {
 
     if (
-      event.target ===
-      searchOverlay
+      event.target === searchOverlay
     ) {
 
       closeSearch();
@@ -927,10 +746,7 @@ function performSearch() {
   state.search =
     searchInput?.value.trim() || "";
 
-
-  state.filter =
-    "all";
-
+  state.filter = "all";
 
   renderFilters();
 
@@ -964,7 +780,6 @@ searchInput?.addEventListener(
 
     }
 
-
     if (event.key === "Escape") {
 
       closeSearch();
@@ -991,16 +806,12 @@ menuBtn?.addEventListener(
   () => {
 
     const open =
-      mainNav.classList.toggle(
-        "open"
-      );
+      mainNav.classList.toggle("open");
 
 
     menuBtn.setAttribute(
       "aria-expanded",
-      open
-        ? "true"
-        : "false"
+      open ? "true" : "false"
     );
 
   }
@@ -1037,10 +848,7 @@ mainNav
 function renderMeals() {
 
   const select =
-    document.querySelector(
-      "#mealSelect"
-    );
-
+    document.querySelector("#mealSelect");
 
   if (!select) return;
 
@@ -1067,35 +875,25 @@ function renderMeals() {
 function renderIngredients() {
 
   const select =
-    document.querySelector(
-      "#mealSelect"
-    );
+    document.querySelector("#mealSelect");
 
   const list =
-    document.querySelector(
-      "#ingredientList"
-    );
+    document.querySelector("#ingredientList");
 
   const total =
-    document.querySelector(
-      "#platterTotal"
-    );
+    document.querySelector("#platterTotal");
 
-  const button =
-    document.querySelector(
-      "#addPlatter"
-    );
+  const addButton =
+    document.querySelector("#addPlatter");
 
 
-  if (!select || !list)
-    return;
+  if (!select || !list) return;
 
 
   const meal =
     state.meals.find(
       item =>
-        item.id ===
-        select.value
+        item.id === select.value
     );
 
 
@@ -1103,16 +901,19 @@ function renderIngredients() {
 
     list.innerHTML = "";
 
+    if (total) {
 
-    if (total)
       total.textContent =
         "0.00";
 
+    }
 
-    if (button)
-      button.disabled =
+    if (addButton) {
+
+      addButton.disabled =
         true;
 
+    }
 
     return;
 
@@ -1120,9 +921,8 @@ function renderIngredients() {
 
 
   list.innerHTML =
-
-    meal.ingredients
-      .map(ingredient => `
+    meal.ingredients.map(
+      ingredient => `
 
         <div class="ingredient">
 
@@ -1144,7 +944,6 @@ function renderIngredients() {
 
           </label>
 
-
           <span>
             GH₵${money(
               ingredient.price
@@ -1153,8 +952,8 @@ function renderIngredients() {
 
         </div>
 
-      `)
-      .join("");
+      `
+    ).join("");
 
 
   list
@@ -1189,10 +988,9 @@ function updatePlatter() {
 
   selected.forEach(item => {
 
-    total +=
-      Number(
-        item.dataset.price
-      );
+    total += Number(
+      item.dataset.price
+    );
 
   });
 
@@ -1202,7 +1000,7 @@ function updatePlatter() {
       "#platterTotal"
     );
 
-  const button =
+  const addButton =
     document.querySelector(
       "#addPlatter"
     );
@@ -1216,10 +1014,13 @@ function updatePlatter() {
   }
 
 
-  if (button) {
+  if (addButton) {
 
-    button.disabled =
+    addButton.disabled =
       total <= 0;
+
+    addButton.style.opacity =
+      total <= 0 ? ".5" : "1";
 
   }
 
@@ -1245,18 +1046,15 @@ document
     () => {
 
       const mealId =
-        document
-          .querySelector(
-            "#mealSelect"
-          )
-          ?.value;
+        document.querySelector(
+          "#mealSelect"
+        )?.value;
 
 
       const meal =
         state.meals.find(
           item =>
-            item.id ===
-            mealId
+            item.id === mealId
         );
 
 
@@ -1264,13 +1062,11 @@ document
 
 
       const selected =
-
         [
           ...document.querySelectorAll(
             ".ingredient-check:checked"
           )
-        ]
-        .map(item => ({
+        ].map(item => ({
 
           id:
             item.value,
@@ -1286,14 +1082,13 @@ document
         }));
 
 
-      if (!selected.length)
-        return;
+      if (!selected.length) return;
 
 
       const price =
         selected.reduce(
-          (sum, item) =>
-            sum + item.price,
+          (total, item) =>
+            total + item.price,
           0
         );
 
@@ -1312,9 +1107,7 @@ document
 
         meta:
           selected
-            .map(item =>
-              item.name
-            )
+            .map(item => item.name)
             .join(", ")
 
       });
@@ -1338,25 +1131,12 @@ function loadCart() {
 
   try {
 
-    const saved =
-      localStorage.getItem(
-        "ee_cart"
-      );
-
-
     state.cart =
-      saved
-        ? JSON.parse(saved)
-        : [];
-
-
-    if (!Array.isArray(
-      state.cart
-    )) {
-
-      state.cart = [];
-
-    }
+      JSON.parse(
+        localStorage.getItem(
+          "ee_cart"
+        ) || "[]"
+      );
 
   } catch {
 
@@ -1404,7 +1184,7 @@ function addProduct(id) {
 
   if (existing) {
 
-    existing.qty++;
+    existing.qty += 1;
 
   } else {
 
@@ -1417,9 +1197,7 @@ function addProduct(id) {
         product.name,
 
       price:
-        Number(
-          product.price
-        ),
+        Number(product.price),
 
       qty: 1
 
@@ -1442,7 +1220,7 @@ window.addProduct =
 
 
 /* =========================================================
-   RENDER CART
+   CART RENDER
 ========================================================= */
 
 function renderCart() {
@@ -1465,9 +1243,8 @@ function renderCart() {
 
   const quantity =
     state.cart.reduce(
-      (sum, item) =>
-        sum +
-        Number(item.qty),
+      (sum,item) =>
+        sum + Number(item.qty),
       0
     );
 
@@ -1480,8 +1257,7 @@ function renderCart() {
   }
 
 
-  if (!items)
-    return;
+  if (!items) return;
 
 
   if (!state.cart.length) {
@@ -1506,87 +1282,98 @@ function renderCart() {
   } else {
 
     items.innerHTML =
+      state.cart.map(
+        (item,index) => `
 
-      state.cart
-        .map(
-          (item, index) => `
+          <div class="cart-row">
 
-            <div class="cart-row">
+            <div>
+
+              <b>
+                ${escapeHtml(
+                  item.name
+                )}
+              </b>
+
+              ${
+                item.meta
+                  ? `
+                    <small>
+                      ${escapeHtml(
+                        item.meta
+                      )}
+                    </small>
+                  `
+                  : ""
+              }
 
               <div>
-
-                <b>
-                  ${escapeHtml(
-                    item.name
-                  )}
-                </b>
-
-
-                ${
-                  item.meta
-                    ? `
-                      <small>
-                        ${escapeHtml(
-                          item.meta
-                        )}
-                      </small>
-                    `
-                    : ""
-                }
-
-
-                <div>
-                  GH₵${money(
-                    item.price *
-                    item.qty
-                  )}
-                </div>
-
-              </div>
-
-
-              <div class="qty">
-
-                <button
-                  onclick="changeQty(
-                    ${index},
-                    -1
-                  )"
-                  aria-label="Decrease quantity"
-                >
-                  −
-                </button>
-
-
-                <span>
-                  ${item.qty}
-                </span>
-
-
-                <button
-                  onclick="changeQty(
-                    ${index},
-                    1
-                  )"
-                  aria-label="Increase quantity"
-                >
-                  +
-                </button>
-
+                GH₵${money(
+                  item.price *
+                  item.qty
+                )}
               </div>
 
             </div>
 
-          `
-        )
-        .join("");
+            <div class="qty">
+
+              <button
+                data-qty-index="${index}"
+                data-qty-change="-1"
+              >
+                −
+              </button>
+
+              <span>
+                ${item.qty}
+              </span>
+
+              <button
+                data-qty-index="${index}"
+                data-qty-change="1"
+              >
+                +
+              </button>
+
+            </div>
+
+          </div>
+
+        `
+      ).join("");
+
+
+    items
+      .querySelectorAll(
+        "[data-qty-index]"
+      )
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            changeQty(
+              Number(
+                button.dataset.qtyIndex
+              ),
+              Number(
+                button.dataset.qtyChange
+              )
+            );
+
+          }
+        );
+
+      });
 
   }
 
 
   const cartTotal =
     state.cart.reduce(
-      (sum, item) =>
+      (sum,item) =>
         sum +
         Number(item.price) *
         Number(item.qty),
@@ -1605,7 +1392,7 @@ function renderCart() {
 
 
 /* =========================================================
-   CHANGE QUANTITY
+   QUANTITY
 ========================================================= */
 
 function changeQty(
@@ -1613,12 +1400,10 @@ function changeQty(
   amount
 ) {
 
-  if (!state.cart[index])
-    return;
+  if (!state.cart[index]) return;
 
 
-  state.cart[index].qty +=
-    amount;
+  state.cart[index].qty += amount;
 
 
   if (
@@ -1662,24 +1447,20 @@ const drawerOverlay =
 function openCart() {
 
   cartDrawer
-    ?.classList.add(
-      "open"
-    );
+    ?.classList.add("open");
 
   drawerOverlay
-    ?.classList.add(
-      "open"
+    ?.classList.add("open");
+
+  cartDrawer
+    ?.setAttribute(
+      "aria-hidden",
+      "false"
     );
 
-
-  cartDrawer?.setAttribute(
-    "aria-hidden",
-    "false"
+  document.body.classList.add(
+    "no-scroll"
   );
-
-
-  document.body.style.overflow =
-    "hidden";
 
 }
 
@@ -1687,24 +1468,20 @@ function openCart() {
 function closeCart() {
 
   cartDrawer
-    ?.classList.remove(
-      "open"
-    );
+    ?.classList.remove("open");
 
   drawerOverlay
-    ?.classList.remove(
-      "open"
+    ?.classList.remove("open");
+
+  cartDrawer
+    ?.setAttribute(
+      "aria-hidden",
+      "true"
     );
 
-
-  cartDrawer?.setAttribute(
-    "aria-hidden",
-    "true"
+  document.body.classList.remove(
+    "no-scroll"
   );
-
-
-  document.body.style.overflow =
-    "";
 
 }
 
@@ -1725,10 +1502,11 @@ document
   );
 
 
-drawerOverlay?.addEventListener(
-  "click",
-  closeCart
-);
+drawerOverlay
+  ?.addEventListener(
+    "click",
+    closeCart
+  );
 
 
 /* =========================================================
@@ -1793,8 +1571,7 @@ modal?.addEventListener(
   event => {
 
     if (
-      event.target ===
-      modal
+      event.target === modal
     ) {
 
       closeCheckout();
@@ -1806,7 +1583,7 @@ modal?.addEventListener(
 
 
 /* =========================================================
-   WHATSAPP CHECKOUT
+   CHECKOUT → WHATSAPP
 ========================================================= */
 
 document
@@ -1838,24 +1615,16 @@ document
       const customer = {
 
         name:
-          String(
-            form.get("name") || ""
-          ),
+          form.get("name"),
 
         phone:
-          String(
-            form.get("phone") || ""
-          ),
+          form.get("phone"),
 
         email:
-          String(
-            form.get("email") || ""
-          ),
+          form.get("email"),
 
         address:
-          String(
-            form.get("address") || ""
-          )
+          form.get("address")
 
       };
 
@@ -1870,7 +1639,7 @@ document
 
       const total =
         state.cart.reduce(
-          (sum, item) =>
+          (sum,item) =>
             sum +
             Number(item.price) *
             Number(item.qty),
@@ -1879,51 +1648,38 @@ document
 
 
       let message =
-        "Hello Everything Everything! 👋\n\n";
-
-
-      message +=
+        "Hello Everything Everything! 👋\n\n" +
         "I would like to place an order.\n\n";
 
 
       message +=
         "CUSTOMER DETAILS\n";
 
-
       message +=
         `Name: ${customer.name}\n`;
-
 
       message +=
         `Phone: ${customer.phone}\n`;
 
-
-      if (customer.email) {
-
-        message +=
-          `Email: ${customer.email}\n`;
-
-      }
-
+      message +=
+        `Email: ${customer.email}\n`;
 
       message +=
         `Delivery location: ${customer.address}\n\n`;
 
 
       message +=
-        "ORDER DETAILS\n\n";
+        "ORDER DETAILS\n";
 
 
       state.cart.forEach(
-        (item, index) => {
+        (item,index) => {
 
           message +=
             `${index + 1}. ${item.name}\n`;
 
-
           message +=
             `Quantity: ${item.qty}\n`;
-
 
           message +=
             `Price: GH₵${money(
@@ -1934,7 +1690,7 @@ document
           if (item.meta) {
 
             message +=
-              `Selection: ${item.meta}\n`;
+              `Ingredients: ${item.meta}\n`;
 
           }
 
@@ -1950,10 +1706,7 @@ document
 
 
       message +=
-        `TOTAL: GH₵${money(
-          total
-        )}\n\n`;
-
+        `TOTAL: GH₵${money(total)}\n\n`;
 
       message +=
         "Please confirm my order and let me know the next steps. Thank you!";
@@ -1964,18 +1717,12 @@ document
 
 
       const whatsappUrl =
-        "https://wa.me/" +
-        whatsappNumber +
-        "?text=" +
-        encodeURIComponent(
-          message
-        );
+        `https://wa.me/${whatsappNumber}?text=${
+          encodeURIComponent(message)
+        }`;
 
 
       closeCheckout();
-
-      closeCart();
-
 
       window.location.href =
         whatsappUrl;
@@ -1997,18 +1744,13 @@ document
       event.preventDefault();
 
 
-      const input =
+      const email =
         document.querySelector(
           "#newsletterEmail"
-        );
+        )?.value.trim();
 
 
-      const email =
-        input?.value.trim();
-
-
-      if (!email)
-        return;
+      if (!email) return;
 
 
       localStorage.setItem(
@@ -2022,11 +1764,11 @@ document
         <p
           style="
             color:white;
-            font-weight:800;
+            font-weight:900;
             padding:12px 0;
           "
         >
-          Thanks for subscribing!
+          ✓ You're on the list.
         </p>
 
       `;
@@ -2036,7 +1778,7 @@ document
 
 
 /* =========================================================
-   ESCAPE
+   ESCAPE KEY
 ========================================================= */
 
 document.addEventListener(
@@ -2044,13 +1786,8 @@ document.addEventListener(
   event => {
 
     if (
-      event.key !==
-      "Escape"
-    ) {
-
-      return;
-
-    }
+      event.key !== "Escape"
+    ) return;
 
 
     closeSearch();
