@@ -1,6 +1,8 @@
 /* =========================================================
    EVERYTHING EVERYTHING
    Store Application
+   Frontend Only
+   Cart + LocalStorage + WhatsApp
 ========================================================= */
 
 
@@ -109,7 +111,6 @@ const categories = [
 const meals = [
   {
     id: "meal-1",
-
     name: "Breakfast Platter",
 
     ingredients: [
@@ -139,10 +140,8 @@ const meals = [
     ]
   },
 
-
   {
     id: "meal-2",
-
     name: "Lunch Platter",
 
     ingredients: [
@@ -172,10 +171,8 @@ const meals = [
     ]
   },
 
-
   {
     id: "meal-3",
-
     name: "Special Platter",
 
     ingredients: [
@@ -237,21 +234,43 @@ const state = {
 
 
 /* =========================================================
+   CONSTANTS
+========================================================= */
+
+const STORAGE_KEYS = {
+
+  cart: "ee_cart",
+
+  customer: "ee_customer",
+
+  newsletter: "ee_newsletter_email"
+
+};
+
+
+/*
+   WhatsApp number must be in international format
+   WITHOUT +, spaces or leading zero.
+*/
+
+const WHATSAPP_NUMBER = "233547026348";
+
+
+/* =========================================================
    HELPERS
 ========================================================= */
 
-const money = value => {
+function money(value) {
 
   return Number(value || 0).toFixed(2);
 
-};
+}
 
 
 function escapeHtml(value) {
 
   return String(value ?? "").replace(
     /[&<>"']/g,
-
     character => ({
       "&": "&amp;",
       "<": "&lt;",
@@ -259,14 +278,20 @@ function escapeHtml(value) {
       '"': "&quot;",
       "'": "&#039;"
     })[character]
-
   );
 
 }
 
 
+function getElement(selector) {
+
+  return document.querySelector(selector);
+
+}
+
+
 /* =========================================================
-   PRODUCT IMAGE FALLBACK
+   PRODUCT IMAGE
 ========================================================= */
 
 function productImage(image, name) {
@@ -281,12 +306,16 @@ function productImage(image, name) {
 
   }
 
+
   return `
     <img
-      src="${image}"
+      src="${escapeHtml(image)}"
       alt="${escapeHtml(name)}"
       loading="lazy"
-      onerror="this.style.display='none';this.parentElement.classList.add('image-error')"
+      onerror="
+        this.style.display='none';
+        this.parentElement.classList.add('image-error');
+      "
     >
   `;
 
@@ -294,12 +323,13 @@ function productImage(image, name) {
 
 
 /* =========================================================
-   CATEGORY FILTERS
+   FILTERS
 ========================================================= */
 
 function renderFilters() {
 
-  const element = document.querySelector("#categoryFilters");
+  const element =
+    getElement("#categoryFilters");
 
   if (!element) return;
 
@@ -307,8 +337,9 @@ function renderFilters() {
   element.innerHTML = `
 
     <button
-      class="filter active"
+      class="filter ${state.filter === "all" ? "active" : ""}"
       data-filter="all"
+      type="button"
     >
       All
     </button>
@@ -316,8 +347,13 @@ function renderFilters() {
     ${state.categories.map(category => `
 
       <button
-        class="filter"
-        data-filter="${category.slug}"
+        class="filter ${
+          state.filter === category.slug
+            ? "active"
+            : ""
+        }"
+        data-filter="${escapeHtml(category.slug)}"
+        type="button"
       >
         ${escapeHtml(category.name)}
       </button>
@@ -327,29 +363,31 @@ function renderFilters() {
   `;
 
 
-  element.querySelectorAll(".filter").forEach(button => {
+  element
+    .querySelectorAll(".filter")
+    .forEach(button => {
 
-    button.addEventListener("click", () => {
+      button.addEventListener(
+        "click",
+        () => {
 
-      element
-        .querySelectorAll(".filter")
-        .forEach(item => item.classList.remove("active"));
+          state.filter =
+            button.dataset.filter;
 
-      button.classList.add("active");
+          renderFilters();
 
-      state.filter = button.dataset.filter;
+          renderProducts();
 
-      renderProducts();
+        }
+      );
 
     });
-
-  });
 
 }
 
 
 /* =========================================================
-   GET FILTERED PRODUCTS
+   FILTER PRODUCTS
 ========================================================= */
 
 function getFilteredProducts() {
@@ -363,7 +401,10 @@ function getFilteredProducts() {
 
     list = list.filter(product => {
 
-      return product.category.toLowerCase() === state.filter;
+      return (
+        product.category.toLowerCase() ===
+        state.filter.toLowerCase()
+      );
 
     });
 
@@ -374,13 +415,26 @@ function getFilteredProducts() {
 
   if (state.search.trim()) {
 
-    const query = state.search.toLowerCase();
+    const query =
+      state.search
+        .trim()
+        .toLowerCase();
+
 
     list = list.filter(product => {
 
       return (
-        product.name.toLowerCase().includes(query) ||
-        product.category.toLowerCase().includes(query)
+
+        product.name
+          .toLowerCase()
+          .includes(query)
+
+        ||
+
+        product.category
+          .toLowerCase()
+          .includes(query)
+
       );
 
     });
@@ -390,23 +444,34 @@ function getFilteredProducts() {
 
   /* SORT */
 
-  if (state.sort === "price-low") {
+  switch (state.sort) {
 
-    list.sort((a, b) => a.price - b.price);
+    case "price-low":
 
-  }
+      list.sort(
+        (a, b) => a.price - b.price
+      );
 
-  if (state.sort === "price-high") {
+      break;
 
-    list.sort((a, b) => b.price - a.price);
 
-  }
+    case "price-high":
 
-  if (state.sort === "name") {
+      list.sort(
+        (a, b) => b.price - a.price
+      );
 
-    list.sort((a, b) =>
-      a.name.localeCompare(b.name)
-    );
+      break;
+
+
+    case "name":
+
+      list.sort(
+        (a, b) =>
+          a.name.localeCompare(b.name)
+      );
+
+      break;
 
   }
 
@@ -422,20 +487,26 @@ function getFilteredProducts() {
 
 function renderProducts() {
 
-  const grid = document.querySelector("#productGrid");
+  const grid =
+    getElement("#productGrid");
 
-  const count = document.querySelector("#productCount");
+  const count =
+    getElement("#productCount");
+
 
   if (!grid) return;
 
 
-  const list = getFilteredProducts();
+  const list =
+    getFilteredProducts();
 
 
   if (count) {
 
     count.textContent =
-      `${list.length} product${list.length === 1 ? "" : "s"}`;
+      `${list.length} product${
+        list.length === 1 ? "" : "s"
+      }`;
 
   }
 
@@ -461,46 +532,73 @@ function renderProducts() {
   }
 
 
-  grid.innerHTML = list.map(product => `
+  grid.innerHTML =
+    list.map(product => `
 
-    <article class="product">
+      <article
+        class="product"
+        data-product-id="${escapeHtml(product.id)}"
+      >
 
-      <div class="product-img">
+        <div class="product-img">
 
-        ${productImage(
-          product.image,
-          product.name
-        )}
+          ${productImage(
+            product.image,
+            product.name
+          )}
 
-      </div>
+        </div>
 
 
-      <div class="product-body">
+        <div class="product-body">
 
-        <small>
-          ${escapeHtml(product.category)}
-        </small>
+          <small>
+            ${escapeHtml(product.category)}
+          </small>
 
-        <h3>
-          ${escapeHtml(product.name)}
-        </h3>
+          <h3>
+            ${escapeHtml(product.name)}
+          </h3>
 
-        <p class="price">
-          GH₵${money(product.price)}
-        </p>
+          <p class="price">
+            GH₵${money(product.price)}
+          </p>
 
-        <button
-          class="btn primary"
-          onclick="addProduct('${product.id}')"
-        >
-          Add to basket
-        </button>
+          <button
+            class="btn primary add-product-btn"
+            type="button"
+            data-product-id="${escapeHtml(product.id)}"
+          >
+            Add to basket
+          </button>
 
-      </div>
+        </div>
 
-    </article>
+      </article>
 
-  `).join("");
+    `).join("");
+
+
+  /*
+     Event listeners instead of inline onclick.
+  */
+
+  grid
+    .querySelectorAll(".add-product-btn")
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        () => {
+
+          addProduct(
+            button.dataset.productId
+          );
+
+        }
+      );
+
+    });
 
 }
 
@@ -509,18 +607,25 @@ function renderProducts() {
    SORTING
 ========================================================= */
 
-const sortProducts =
-  document.querySelector("#sortProducts");
+function initializeSorting() {
 
-if (sortProducts) {
+  const sort =
+    getElement("#sortProducts");
 
-  sortProducts.addEventListener("change", event => {
+  if (!sort) return;
 
-    state.sort = event.target.value;
 
-    renderProducts();
+  sort.addEventListener(
+    "change",
+    event => {
 
-  });
+      state.sort =
+        event.target.value;
+
+      renderProducts();
+
+    }
+  );
 
 }
 
@@ -529,56 +634,51 @@ if (sortProducts) {
    CATEGORY CARDS
 ========================================================= */
 
-document
-  .querySelectorAll(".category-card")
-  .forEach(card => {
+function initializeCategoryCards() {
 
-    card.addEventListener("click", event => {
+  document
+    .querySelectorAll(".category-card")
+    .forEach(card => {
 
-      const category =
-        card.dataset.category?.toLowerCase();
+      card.addEventListener(
+        "click",
+        event => {
 
-      if (!category) return;
-
-
-      state.filter = category;
+          event.preventDefault();
 
 
-      document
-        .querySelector("#shop")
-        ?.scrollIntoView({
-          behavior: "smooth"
-        });
+          const category =
+            card.dataset.category
+              ?.trim()
+              .toLowerCase();
 
 
-      setTimeout(() => {
+          if (!category) return;
 
-        renderFilters();
 
-        const filterButton =
-          document.querySelector(
-            `.filter[data-filter="${category}"]`
-          );
+          state.filter =
+            category;
 
-        if (filterButton) {
+          state.search =
+            "";
 
-          document
-            .querySelectorAll(".filter")
-            .forEach(button =>
-              button.classList.remove("active")
-            );
 
-          filterButton.classList.add("active");
+          renderFilters();
+
+          renderProducts();
+
+
+          getElement("#shop")
+            ?.scrollIntoView({
+              behavior: "smooth"
+            });
 
         }
-
-        renderProducts();
-
-      }, 300);
+      );
 
     });
 
-  });
+}
 
 
 /* =========================================================
@@ -586,26 +686,28 @@ document
 ========================================================= */
 
 const searchBtn =
-  document.querySelector("#searchBtn");
+  getElement("#searchBtn");
 
 const searchOverlay =
-  document.querySelector("#searchOverlay");
+  getElement("#searchOverlay");
 
 const searchClose =
-  document.querySelector("#searchClose");
+  getElement("#searchClose");
 
 const searchInput =
-  document.querySelector("#searchInput");
+  getElement("#searchInput");
 
 const searchSubmit =
-  document.querySelector("#searchSubmit");
+  getElement("#searchSubmit");
 
 
 function openSearch() {
 
   if (!searchOverlay) return;
 
+
   searchOverlay.classList.add("open");
+
 
   setTimeout(() => {
 
@@ -618,7 +720,32 @@ function openSearch() {
 
 function closeSearch() {
 
-  searchOverlay?.classList.remove("open");
+  searchOverlay
+    ?.classList.remove("open");
+
+}
+
+
+function performSearch() {
+
+  state.search =
+    searchInput?.value.trim() || "";
+
+  state.filter =
+    "all";
+
+
+  renderFilters();
+
+  renderProducts();
+
+  closeSearch();
+
+
+  getElement("#shop")
+    ?.scrollIntoView({
+      behavior: "smooth"
+    });
 
 }
 
@@ -628,49 +755,33 @@ searchBtn?.addEventListener(
   openSearch
 );
 
+
 searchClose?.addEventListener(
   "click",
   closeSearch
 );
 
 
-searchOverlay?.addEventListener("click", event => {
-
-  if (event.target === searchOverlay) {
-
-    closeSearch();
-
-  }
-
-});
-
-
-function performSearch() {
-
-  state.search =
-    searchInput?.value.trim() || "";
-
-  state.filter = "all";
-
-  renderFilters();
-
-  renderProducts();
-
-  closeSearch();
-
-
-  document
-    .querySelector("#shop")
-    ?.scrollIntoView({
-      behavior: "smooth"
-    });
-
-}
-
-
 searchSubmit?.addEventListener(
   "click",
   performSearch
+);
+
+
+searchOverlay?.addEventListener(
+  "click",
+  event => {
+
+    if (
+      event.target ===
+      searchOverlay
+    ) {
+
+      closeSearch();
+
+    }
+
+  }
 );
 
 
@@ -683,6 +794,7 @@ searchInput?.addEventListener(
       performSearch();
 
     }
+
 
     if (event.key === "Escape") {
 
@@ -698,50 +810,70 @@ searchInput?.addEventListener(
    MOBILE MENU
 ========================================================= */
 
-const menuBtn =
-  document.querySelector("#menuBtn");
+function initializeMobileMenu() {
 
-const mainNav =
-  document.querySelector("#mainNav");
+  const menuBtn =
+    getElement("#menuBtn");
+
+  const mainNav =
+    getElement("#mainNav");
 
 
-menuBtn?.addEventListener("click", () => {
+  if (!menuBtn || !mainNav) return;
 
-  const open =
-    mainNav.classList.toggle("open");
 
-  menuBtn.setAttribute(
-    "aria-expanded",
-    open ? "true" : "false"
+  menuBtn.addEventListener(
+    "click",
+    () => {
+
+      const isOpen =
+        mainNav.classList.toggle("open");
+
+
+      menuBtn.setAttribute(
+        "aria-expanded",
+        isOpen
+          ? "true"
+          : "false"
+      );
+
+    }
   );
 
-});
 
+  mainNav
+    .querySelectorAll("a")
+    .forEach(link => {
 
-mainNav?.querySelectorAll("a").forEach(link => {
+      link.addEventListener(
+        "click",
+        () => {
 
-  link.addEventListener("click", () => {
+          mainNav.classList.remove(
+            "open"
+          );
 
-    mainNav.classList.remove("open");
+          menuBtn.setAttribute(
+            "aria-expanded",
+            "false"
+          );
 
-    menuBtn?.setAttribute(
-      "aria-expanded",
-      "false"
-    );
+        }
+      );
 
-  });
+    });
 
-});
+}
 
 
 /* =========================================================
-   PLATTER
+   PLATTER — MEALS
 ========================================================= */
 
 function renderMeals() {
 
   const select =
-    document.querySelector("#mealSelect");
+    getElement("#mealSelect");
 
   if (!select) return;
 
@@ -754,7 +886,7 @@ function renderMeals() {
 
     ${state.meals.map(meal => `
 
-      <option value="${meal.id}">
+      <option value="${escapeHtml(meal.id)}">
         ${escapeHtml(meal.name)}
       </option>
 
@@ -765,19 +897,23 @@ function renderMeals() {
 }
 
 
+/* =========================================================
+   PLATTER — INGREDIENTS
+========================================================= */
+
 function renderIngredients() {
 
   const select =
-    document.querySelector("#mealSelect");
+    getElement("#mealSelect");
 
   const list =
-    document.querySelector("#ingredientList");
+    getElement("#ingredientList");
 
   const total =
-    document.querySelector("#platterTotal");
+    getElement("#platterTotal");
 
   const addButton =
-    document.querySelector("#addPlatter");
+    getElement("#addPlatter");
 
 
   if (!select || !list) return;
@@ -785,7 +921,8 @@ function renderIngredients() {
 
   const meal =
     state.meals.find(
-      item => item.id === select.value
+      item =>
+        item.id === select.value
     );
 
 
@@ -794,11 +931,17 @@ function renderIngredients() {
     list.innerHTML = "";
 
     if (total) {
-      total.textContent = "0.00";
+
+      total.textContent =
+        "0.00";
+
     }
 
     if (addButton) {
-      addButton.disabled = true;
+
+      addButton.disabled =
+        true;
+
     }
 
     return;
@@ -806,37 +949,44 @@ function renderIngredients() {
   }
 
 
-  list.innerHTML = meal.ingredients.map(
-    ingredient => `
+  list.innerHTML =
+    meal.ingredients.map(
+      ingredient => `
 
-      <div class="ingredient">
+        <div class="ingredient">
 
-        <label>
+          <label>
 
-          <input
-            type="checkbox"
-            class="ingredient-check"
-            value="${ingredient.id}"
-            data-price="${ingredient.price}"
-            data-name="${escapeHtml(ingredient.name)}"
-          >
+            <input
+              type="checkbox"
+              class="ingredient-check"
+              value="${escapeHtml(ingredient.id)}"
+              data-price="${ingredient.price}"
+              data-name="${escapeHtml(ingredient.name)}"
+            >
 
-          ${escapeHtml(ingredient.name)}
+            ${escapeHtml(
+              ingredient.name
+            )}
 
-        </label>
+          </label>
 
-        <span>
-          GH₵${money(ingredient.price)}
-        </span>
+          <span>
+            GH₵${money(
+              ingredient.price
+            )}
+          </span>
 
-      </div>
+        </div>
 
-    `
-  ).join("");
+      `
+    ).join("");
 
 
   list
-    .querySelectorAll(".ingredient-check")
+    .querySelectorAll(
+      ".ingredient-check"
+    )
     .forEach(input => {
 
       input.addEventListener(
@@ -852,6 +1002,10 @@ function renderIngredients() {
 }
 
 
+/* =========================================================
+   PLATTER — CALCULATE TOTAL
+========================================================= */
+
 function updatePlatter() {
 
   const selected =
@@ -863,20 +1017,22 @@ function updatePlatter() {
   let total = 0;
 
 
-  selected.forEach(item => {
+  selected.forEach(
+    ingredient => {
 
-    total += Number(
-      item.dataset.price
-    );
+      total += Number(
+        ingredient.dataset.price
+      );
 
-  });
+    }
+  );
 
 
   const totalElement =
-    document.querySelector("#platterTotal");
+    getElement("#platterTotal");
 
   const addButton =
-    document.querySelector("#addPlatter");
+    getElement("#addPlatter");
 
 
   if (totalElement) {
@@ -897,103 +1053,163 @@ function updatePlatter() {
 }
 
 
-document
-  .querySelector("#mealSelect")
-  ?.addEventListener(
-    "change",
-    renderIngredients
-  );
-
-
 /* =========================================================
    ADD PLATTER
 ========================================================= */
 
-document
-  .querySelector("#addPlatter")
-  ?.addEventListener("click", () => {
+function addPlatterToCart() {
 
-    const mealId =
-      document.querySelector("#mealSelect")?.value;
-
-    const meal =
-      state.meals.find(
-        item => item.id === mealId
-      );
+  const select =
+    getElement("#mealSelect");
 
 
-    if (!meal) return;
+  const meal =
+    state.meals.find(
+      item =>
+        item.id === select?.value
+    );
 
 
-    const selected =
-      [...document.querySelectorAll(
+  if (!meal) {
+
+    alert("Please select a meal.");
+
+    return;
+
+  }
+
+
+  const selected =
+    [
+      ...document.querySelectorAll(
         ".ingredient-check:checked"
-      )].map(item => ({
+      )
+    ].map(input => ({
 
-        id: item.value,
+      id: input.value,
 
-        name: item.dataset.name,
+      name: input.dataset.name,
 
-        price: Number(
-          item.dataset.price
-        )
+      price: Number(
+        input.dataset.price
+      )
 
-      }));
-
-
-    if (!selected.length) return;
+    }));
 
 
-    const price =
-      selected.reduce(
-        (total, item) =>
-          total + item.price,
-        0
-      );
+  if (!selected.length) {
+
+    alert(
+      "Please select at least one ingredient."
+    );
+
+    return;
+
+  }
 
 
-    state.cart.push({
+  const price =
+    selected.reduce(
+      (total, item) =>
+        total + item.price,
+      0
+    );
 
-      id: `platter-${Date.now()}`,
 
-      name: `Custom ${meal.name}`,
+  state.cart.push({
 
-      price,
+    id:
+      `platter-${Date.now()}`,
 
-      qty: 1,
+    name:
+      `Custom ${meal.name}`,
 
-      meta: selected
+    price,
+
+    qty: 1,
+
+    meta:
+      selected
         .map(item => item.name)
         .join(", ")
-
-    });
-
-
-    saveCart();
-
-    renderCart();
-
-    openCart();
 
   });
 
 
+  saveCart();
+
+  renderCart();
+
+  openCart();
+
+}
+
+
 /* =========================================================
-   CART
+   CART STORAGE
 ========================================================= */
 
 function loadCart() {
 
   try {
 
-    state.cart =
-      JSON.parse(
-        localStorage.getItem(
-          "ee_cart"
-        ) || "[]"
+    const saved =
+      localStorage.getItem(
+        STORAGE_KEYS.cart
       );
 
-  } catch {
+
+    if (!saved) {
+
+      state.cart = [];
+
+      return;
+
+    }
+
+
+    const parsed =
+      JSON.parse(saved);
+
+
+    if (!Array.isArray(parsed)) {
+
+      state.cart = [];
+
+      return;
+
+    }
+
+
+    state.cart =
+      parsed.filter(item => {
+
+        return (
+          item &&
+          typeof item.id === "string" &&
+          typeof item.name === "string" &&
+          Number(item.price) >= 0 &&
+          Number(item.qty) > 0
+        );
+
+      }).map(item => ({
+
+        ...item,
+
+        price:
+          Number(item.price),
+
+        qty:
+          Number(item.qty)
+
+      }));
+
+  } catch (error) {
+
+    console.warn(
+      "Could not load cart:",
+      error
+    );
 
     state.cart = [];
 
@@ -1002,21 +1218,41 @@ function loadCart() {
 }
 
 
+/* =========================================================
+   SAVE CART
+========================================================= */
+
 function saveCart() {
 
-  localStorage.setItem(
-    "ee_cart",
-    JSON.stringify(state.cart)
-  );
+  try {
+
+    localStorage.setItem(
+      STORAGE_KEYS.cart,
+      JSON.stringify(state.cart)
+    );
+
+  } catch (error) {
+
+    console.warn(
+      "Could not save cart:",
+      error
+    );
+
+  }
 
 }
 
+
+/* =========================================================
+   ADD PRODUCT
+========================================================= */
 
 function addProduct(id) {
 
   const product =
     state.products.find(
-      item => item.id === id
+      item =>
+        item.id === id
     );
 
 
@@ -1025,25 +1261,27 @@ function addProduct(id) {
 
   const existing =
     state.cart.find(
-      item => item.id === id
+      item =>
+        item.id === product.id
     );
 
 
   if (existing) {
 
-    existing.qty++;
+    existing.qty += 1;
 
   } else {
 
     state.cart.push({
 
-      id: product.id,
+      id:
+        product.id,
 
-      name: product.name,
+      name:
+        product.name,
 
-      price: Number(
-        product.price
-      ),
+      price:
+        Number(product.price),
 
       qty: 1
 
@@ -1061,7 +1299,109 @@ function addProduct(id) {
 }
 
 
-window.addProduct = addProduct;
+/* =========================================================
+   CHANGE QUANTITY
+========================================================= */
+
+function changeQty(index, amount) {
+
+  const item =
+    state.cart[index];
+
+
+  if (!item) return;
+
+
+  item.qty += amount;
+
+
+  if (item.qty <= 0) {
+
+    state.cart.splice(
+      index,
+      1
+    );
+
+  }
+
+
+  saveCart();
+
+  renderCart();
+
+}
+
+
+/* =========================================================
+   REMOVE CART ITEM
+========================================================= */
+
+function removeCartItem(index) {
+
+  if (
+    index < 0 ||
+    index >= state.cart.length
+  ) {
+
+    return;
+
+  }
+
+
+  state.cart.splice(
+    index,
+    1
+  );
+
+
+  saveCart();
+
+  renderCart();
+
+}
+
+
+/* =========================================================
+   CART TOTAL
+========================================================= */
+
+function getCartTotal() {
+
+  return state.cart.reduce(
+    (total, item) => {
+
+      return (
+        total +
+        Number(item.price) *
+        Number(item.qty)
+      );
+
+    },
+    0
+  );
+
+}
+
+
+/* =========================================================
+   CART QUANTITY
+========================================================= */
+
+function getCartQuantity() {
+
+  return state.cart.reduce(
+    (total, item) => {
+
+      return (
+        total +
+        Number(item.qty)
+      );
+
+    },
+    0
+  );
+
+}
 
 
 /* =========================================================
@@ -1071,27 +1411,19 @@ window.addProduct = addProduct;
 function renderCart() {
 
   const count =
-    document.querySelector("#cartCount");
+    getElement("#cartCount");
 
   const items =
-    document.querySelector("#cartItems");
+    getElement("#cartItems");
 
   const total =
-    document.querySelector("#cartTotal");
-
-
-  const quantity =
-    state.cart.reduce(
-      (sum, item) =>
-        sum + item.qty,
-      0
-    );
+    getElement("#cartTotal");
 
 
   if (count) {
 
     count.textContent =
-      quantity;
+      getCartQuantity();
 
   }
 
@@ -1105,10 +1437,13 @@ function renderCart() {
 
       <div class="loading">
 
-        <strong>Your basket is empty.</strong>
+        <strong>
+          Your basket is empty.
+        </strong>
 
         <p>
-          Add something you love to get started.
+          Add something you love
+          to get started.
         </p>
 
       </div>
@@ -1126,14 +1461,20 @@ function renderCart() {
             <div>
 
               <b>
-                ${escapeHtml(item.name)}
+                ${escapeHtml(
+                  item.name
+                )}
               </b>
 
               ${
                 item.meta
-                  ? `<small>
-                      ${escapeHtml(item.meta)}
-                    </small>`
+                  ? `
+                    <small>
+                      ${escapeHtml(
+                        item.meta
+                      )}
+                    </small>
+                  `
                   : ""
               }
 
@@ -1144,13 +1485,23 @@ function renderCart() {
                 )}
               </div>
 
+              <button
+                class="remove-item"
+                type="button"
+                data-index="${index}"
+              >
+                Remove
+              </button>
+
             </div>
 
 
             <div class="qty">
 
               <button
-                onclick="changeQty(${index}, -1)"
+                class="qty-decrease"
+                type="button"
+                data-index="${index}"
                 aria-label="Decrease quantity"
               >
                 −
@@ -1161,7 +1512,9 @@ function renderCart() {
               </span>
 
               <button
-                onclick="changeQty(${index}, 1)"
+                class="qty-increase"
+                type="button"
+                data-index="${index}"
                 aria-label="Increase quantity"
               >
                 +
@@ -1174,56 +1527,87 @@ function renderCart() {
         `
       ).join("");
 
+
+    /*
+       Quantity controls.
+    */
+
+    items
+      .querySelectorAll(
+        ".qty-decrease"
+      )
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            changeQty(
+              Number(button.dataset.index),
+              -1
+            );
+
+          }
+        );
+
+      });
+
+
+    items
+      .querySelectorAll(
+        ".qty-increase"
+      )
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            changeQty(
+              Number(button.dataset.index),
+              1
+            );
+
+          }
+        );
+
+      });
+
+
+    /*
+       Remove buttons.
+    */
+
+    items
+      .querySelectorAll(
+        ".remove-item"
+      )
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            removeCartItem(
+              Number(button.dataset.index)
+            );
+
+          }
+        );
+
+      });
+
   }
-
-
-  const cartTotal =
-    state.cart.reduce(
-      (sum, item) =>
-        sum +
-        item.price *
-        item.qty,
-      0
-    );
 
 
   if (total) {
 
     total.textContent =
-      money(cartTotal);
+      money(getCartTotal());
 
   }
 
 }
-
-
-/* =========================================================
-   CHANGE CART QUANTITY
-========================================================= */
-
-function changeQty(index, amount) {
-
-  if (!state.cart[index]) return;
-
-
-  state.cart[index].qty += amount;
-
-
-  if (state.cart[index].qty <= 0) {
-
-    state.cart.splice(index, 1);
-
-  }
-
-
-  saveCart();
-
-  renderCart();
-
-}
-
-
-window.changeQty = changeQty;
 
 
 /* =========================================================
@@ -1231,22 +1615,26 @@ window.changeQty = changeQty;
 ========================================================= */
 
 const cartDrawer =
-  document.querySelector("#cartDrawer");
+  getElement("#cartDrawer");
 
 const drawerOverlay =
-  document.querySelector("#drawerOverlay");
+  getElement("#drawerOverlay");
 
 
 function openCart() {
 
-  cartDrawer?.classList.add("open");
+  cartDrawer
+    ?.classList.add("open");
 
-  drawerOverlay?.classList.add("open");
+  drawerOverlay
+    ?.classList.add("open");
+
 
   cartDrawer?.setAttribute(
     "aria-hidden",
     "false"
   );
+
 
   document.body.style.overflow =
     "hidden";
@@ -1256,14 +1644,18 @@ function openCart() {
 
 function closeCart() {
 
-  cartDrawer?.classList.remove("open");
+  cartDrawer
+    ?.classList.remove("open");
 
-  drawerOverlay?.classList.remove("open");
+  drawerOverlay
+    ?.classList.remove("open");
+
 
   cartDrawer?.setAttribute(
     "aria-hidden",
     "true"
   );
+
 
   document.body.style.overflow =
     "";
@@ -1271,26 +1663,33 @@ function closeCart() {
 }
 
 
-document
-  .querySelector("#cartBtn")
-  ?.addEventListener(
-    "click",
-    openCart
-  );
+/* =========================================================
+   CART EVENTS
+========================================================= */
+
+function initializeCart() {
+
+  getElement("#cartBtn")
+    ?.addEventListener(
+      "click",
+      openCart
+    );
 
 
-document
-  .querySelector("#closeCart")
-  ?.addEventListener(
-    "click",
-    closeCart
-  );
+  getElement("#closeCart")
+    ?.addEventListener(
+      "click",
+      closeCart
+    );
 
 
-drawerOverlay?.addEventListener(
-  "click",
-  closeCart
-);
+  drawerOverlay
+    ?.addEventListener(
+      "click",
+      closeCart
+    );
+
+}
 
 
 /* =========================================================
@@ -1298,74 +1697,240 @@ drawerOverlay?.addEventListener(
 ========================================================= */
 
 const modal =
-  document.querySelector("#modal");
+  getElement("#modal");
 
 
 function openCheckout() {
 
   if (!state.cart.length) {
 
-    alert("Your basket is empty.");
+    alert(
+      "Your basket is empty."
+    );
 
     return;
 
   }
 
-  modal?.classList.remove("hidden");
+
+  modal
+    ?.classList.remove("hidden");
 
 }
 
 
 function closeCheckout() {
 
-  modal?.classList.add("hidden");
+  modal
+    ?.classList.add("hidden");
 
 }
 
 
-/* OPEN CHECKOUT */
+/* =========================================================
+   CHECKOUT EVENTS
+========================================================= */
 
-document
-  .querySelector("#checkoutBtn")
-  ?.addEventListener(
+function initializeCheckout() {
+
+  getElement("#checkoutBtn")
+    ?.addEventListener(
+      "click",
+      openCheckout
+    );
+
+
+  getElement("#closeModal")
+    ?.addEventListener(
+      "click",
+      closeCheckout
+    );
+
+
+  modal?.addEventListener(
     "click",
-    openCheckout
-  );
+    event => {
 
+      if (
+        event.target === modal
+      ) {
 
-/* CLOSE CHECKOUT */
+        closeCheckout();
 
-document
-  .querySelector("#closeModal")
-  ?.addEventListener(
-    "click",
-    closeCheckout
-  );
-
-
-/* CLOSE WHEN CLICKING OUTSIDE MODAL */
-
-modal?.addEventListener(
-  "click",
-  event => {
-
-    if (event.target === modal) {
-
-      closeCheckout();
+      }
 
     }
+  );
+
+}
+
+
+/* =========================================================
+   CUSTOMER DETAILS
+========================================================= */
+
+function getCustomerDetails(form) {
+
+  const formData =
+    new FormData(form);
+
+
+  return {
+
+    name:
+      String(
+        formData.get("name") || ""
+      ).trim(),
+
+    phone:
+      String(
+        formData.get("phone") || ""
+      ).trim(),
+
+    email:
+      String(
+        formData.get("email") || ""
+      ).trim(),
+
+    address:
+      String(
+        formData.get("address") || ""
+      ).trim()
+
+  };
+
+}
+
+
+/* =========================================================
+   SAVE CUSTOMER
+========================================================= */
+
+function saveCustomer(customer) {
+
+  try {
+
+    localStorage.setItem(
+      STORAGE_KEYS.customer,
+      JSON.stringify(customer)
+    );
+
+  } catch (error) {
+
+    console.warn(
+      "Could not save customer:",
+      error
+    );
 
   }
-);
+
+}
+
+
+/* =========================================================
+   BUILD WHATSAPP MESSAGE
+========================================================= */
+
+function buildWhatsAppMessage(
+  customer
+) {
+
+  const total =
+    getCartTotal();
+
+
+  let message =
+    "EVERYTHING EVERYTHING\n" +
+    "NEW ORDER\n" +
+    "━━━━━━━━━━━━━━━━━━\n\n";
+
+
+  message +=
+    "CUSTOMER DETAILS\n";
+
+
+  message +=
+    `Name: ${customer.name}\n`;
+
+  message +=
+    `Phone: ${customer.phone}\n`;
+
+  message +=
+    `Email: ${customer.email || "Not provided"}\n`;
+
+  message +=
+    `Delivery location: ${customer.address}\n\n`;
+
+
+  message +=
+    "ORDER DETAILS\n" +
+    "━━━━━━━━━━━━━━━━━━\n\n";
+
+
+  state.cart.forEach(
+    (item, index) => {
+
+      message +=
+        `${index + 1}. ${item.name}\n`;
+
+      message +=
+        `Quantity: ${item.qty}\n`;
+
+      message +=
+        `Price: GH₵${money(item.price)} each\n`;
+
+
+      if (item.meta) {
+
+        message +=
+          `Ingredients: ${item.meta}\n`;
+
+      }
+
+
+      message +=
+        `Subtotal: GH₵${money(
+          item.price *
+          item.qty
+        )}\n\n`;
+
+    }
+  );
+
+
+  message +=
+    "━━━━━━━━━━━━━━━━━━\n";
+
+  message +=
+    `TOTAL: GH₵${money(total)}\n\n`;
+
+  message +=
+    "Please confirm my order " +
+    "and let me know the next steps.\n\n";
+
+  message +=
+    "Thank you!";
+
+
+  return message;
+
+}
 
 
 /* =========================================================
    CHECKOUT FORM
 ========================================================= */
 
-document
-  .querySelector("#checkoutForm")
-  ?.addEventListener(
+function initializeCheckoutForm() {
+
+  const form =
+    getElement("#checkoutForm");
+
+
+  if (!form) return;
+
+
+  form.addEventListener(
     "submit",
     event => {
 
@@ -1374,149 +1939,67 @@ document
 
       if (!state.cart.length) {
 
-        alert("Your basket is empty.");
+        alert(
+          "Your basket is empty."
+        );
 
         return;
 
       }
 
 
-      const form =
-        new FormData(event.target);
+      if (
+        !form.checkValidity()
+      ) {
+
+        form.reportValidity();
+
+        return;
+
+      }
 
 
-      const customer = {
-
-        name:
-          form.get("name"),
-
-        phone:
-          form.get("phone"),
-
-        email:
-          form.get("email"),
-
-        address:
-          form.get("address")
-
-      };
+      const customer =
+        getCustomerDetails(form);
 
 
-      /* SAVE CUSTOMER DETAILS */
+      if (
+        !customer.name ||
+        !customer.phone ||
+        !customer.address
+      ) {
 
-      localStorage.setItem(
-        "ee_customer",
-        JSON.stringify(customer)
+        alert(
+          "Please complete your name, phone number and delivery location."
+        );
+
+        return;
+
+      }
+
+
+      saveCustomer(
+        customer
       );
 
 
-      /* =====================================================
-         CALCULATE ORDER TOTAL
-      ====================================================== */
-
-      const total =
-        state.cart.reduce(
-          (sum, item) =>
-            sum +
-            (Number(item.price) * Number(item.qty)),
-          0
+      const message =
+        buildWhatsAppMessage(
+          customer
         );
 
 
-      /* =====================================================
-         BUILD WHATSAPP MESSAGE
-      ====================================================== */
-
-      let message =
-        "Hello Everything Everything! 👋\n\n" +
-        "I would like to place an order.\n\n";
-
-
-      message += "CUSTOMER DETAILS\n";
-
-      message +=
-        "Name: " +
-        customer.name +
-        "\n";
-
-      message +=
-        "Phone: " +
-        customer.phone +
-        "\n";
-
-      message +=
-        "Email: " +
-        customer.email +
-        "\n";
-
-      message +=
-        "Delivery location: " +
-        customer.address +
-        "\n\n";
-
-
-      message += "ORDER DETAILS\n";
-
-
-      state.cart.forEach((item, index) => {
-
-        message +=
-          `${index + 1}. ${item.name}\n`;
-
-        message +=
-          `Quantity: ${item.qty}\n`;
-
-        message +=
-          `Price: GH₵${money(item.price)} each\n`;
-
-
-        if (item.meta) {
-
-          message +=
-            `Ingredients: ${item.meta}\n`;
-
-        }
-
-
-        message +=
-          `Subtotal: GH₵${money(
-            item.price * item.qty
-          )}\n\n`;
-
-      });
-
-
-      message +=
-        "TOTAL: GH₵" +
-        money(total) +
-        "\n\n";
-
-
-      message +=
-        "Please confirm my order and let me know the next steps. Thank you!";
-
-
-      /* =====================================================
-         WHATSAPP
-      ====================================================== */
-
-      const whatsappNumber =
-        "233547026348";
-
-
       const whatsappUrl =
-        "https://wa.me/" +
-        whatsappNumber +
-        "?text=" +
-        encodeURIComponent(message);
+        `https://wa.me/${WHATSAPP_NUMBER}` +
+        `?text=${encodeURIComponent(message)}`;
 
-
-      /* CLOSE MODAL */
 
       closeCheckout();
 
 
-      /* OPEN WHATSAPP */
+      /*
+         Open WhatsApp in the same tab.
+      */
 
       window.location.href =
         whatsappUrl;
@@ -1524,36 +2007,70 @@ document
     }
   );
 
+}
+
 
 /* =========================================================
    NEWSLETTER
 ========================================================= */
 
-document
-  .querySelector("#newsletterForm")
-  ?.addEventListener(
+function initializeNewsletter() {
+
+  const form =
+    getElement("#newsletterForm");
+
+  if (!form) return;
+
+
+  form.addEventListener(
     "submit",
     event => {
 
       event.preventDefault();
 
 
-      const email =
-        document.querySelector(
+      const input =
+        getElement(
           "#newsletterEmail"
-        )?.value.trim();
+        );
+
+
+      const email =
+        input?.value.trim() || "";
 
 
       if (!email) return;
 
 
-      localStorage.setItem(
-        "ee_newsletter_email",
-        email
-      );
+      if (
+        !input.checkValidity()
+      ) {
+
+        input.reportValidity();
+
+        return;
+
+      }
 
 
-      event.target.innerHTML = `
+      try {
+
+        localStorage.setItem(
+          STORAGE_KEYS.newsletter,
+          email
+        );
+
+      } catch (error) {
+
+        console.warn(
+          "Could not save newsletter email:",
+          error
+        );
+
+      }
+
+
+      form.innerHTML = `
 
         <p
           style="
@@ -1570,27 +2087,38 @@ document
     }
   );
 
+}
+
 
 /* =========================================================
-   KEYBOARD ESCAPE
+   KEYBOARD CONTROLS
 ========================================================= */
 
-document.addEventListener(
-  "keydown",
-  event => {
+function initializeKeyboardControls() {
 
-    if (event.key !== "Escape") {
-      return;
+  document.addEventListener(
+    "keydown",
+    event => {
+
+      if (
+        event.key !== "Escape"
+      ) {
+
+        return;
+
+      }
+
+
+      closeSearch();
+
+      closeCart();
+
+      closeCheckout();
+
     }
+  );
 
-    closeSearch();
-
-    closeCart();
-
-    closeCheckout();
-
-  }
-);
+}
 
 
 /* =========================================================
@@ -1609,7 +2137,55 @@ function initializeStore() {
 
   renderCart();
 
+
+  initializeSorting();
+
+  initializeCategoryCards();
+
+  initializeMobileMenu();
+
+  initializeCart();
+
+  initializeCheckout();
+
+  initializeCheckoutForm();
+
+  initializeNewsletter();
+
+  initializeKeyboardControls();
+
+
+  getElement("#mealSelect")
+    ?.addEventListener(
+      "change",
+      renderIngredients
+    );
+
+
+  getElement("#addPlatter")
+    ?.addEventListener(
+      "click",
+      addPlatterToCart
+    );
+
 }
 
 
-initializeStore();
+/* =========================================================
+   START STORE
+========================================================= */
+
+if (
+  document.readyState === "loading"
+) {
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    initializeStore
+  );
+
+} else {
+
+  initializeStore();
+
+}
