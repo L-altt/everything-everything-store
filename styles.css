@@ -1,7 +1,6 @@
 /* =========================================================
    EVERYTHING EVERYTHING
    Main Stylesheet
-   Cream + Green + Orange + Black
 ========================================================= */
 
 
@@ -46,12 +45,12 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
-button {
-  cursor: pointer;
-}
-
 a {
   color: inherit;
+}
+
+button {
+  cursor: pointer;
 }
 
 
@@ -67,7 +66,6 @@ a {
   --green-dark: #043b24;
 
   --orange: #f36b21;
-  --orange-light: #f7a36f;
 
   --cream: #fffdf8;
   --cream-dark: #f4eee5;
@@ -79,6 +77,8 @@ a {
 
   --border: #e7e2d9;
 
+  --danger: #b3261e;
+
   --radius-sm: 10px;
   --radius-md: 18px;
   --radius-lg: 28px;
@@ -86,11 +86,8 @@ a {
 
   --container: 1240px;
 
-  --shadow-sm:
-    0 8px 25px rgba(0, 0, 0, .05);
-
-  --shadow-md:
-    0 20px 60px rgba(0, 0, 0, .08);
+  --shadow-sm: 0 8px 25px rgba(0, 0, 0, .05);
+  --shadow-md: 0 20px 60px rgba(0, 0, 0, .08);
 }
 
 
@@ -99,6 +96,9 @@ a {
 ========================================================= */
 
 .announcement-bar {
+  background: var(--black);
+  color: var(--white);
+
   min-height: 36px;
 
   display: flex;
@@ -107,17 +107,15 @@ a {
 
   padding: 8px 20px;
 
-  background: var(--black);
-  color: var(--white);
-
   text-align: center;
 }
 
 .announcement-bar p {
   font-size: 11px;
-  font-weight: 800;
+  font-weight: 700;
 
   letter-spacing: .08em;
+
   text-transform: uppercase;
 }
 
@@ -129,9 +127,10 @@ a {
 .site-header {
   position: sticky;
   top: 0;
+
   z-index: 40;
 
-  background: rgba(255, 253, 248, .94);
+  background: rgba(255, 253, 248, .92);
 
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
@@ -145,6 +144,7 @@ a {
   min-height: 78px;
 
   margin: auto;
+
   padding: 0 28px;
 
   display: flex;
@@ -160,6 +160,7 @@ a {
 
 .brand {
   display: inline-flex;
+
   flex-direction: column;
 
   text-decoration: none;
@@ -173,6 +174,7 @@ a {
 
 .brand-small {
   font-size: 9px;
+
   font-weight: 900;
 
   letter-spacing: .28em;
@@ -180,6 +182,7 @@ a {
 
 .brand-large {
   font-size: 22px;
+
   font-weight: 950;
 
   letter-spacing: -.07em;
@@ -192,6 +195,7 @@ a {
 
 .main-nav {
   display: flex;
+
   align-items: center;
 
   gap: 27px;
@@ -202,14 +206,15 @@ a {
 .main-nav a {
   position: relative;
 
-  padding: 8px 0;
-
   color: var(--black);
 
   text-decoration: none;
 
   font-size: 13px;
+
   font-weight: 700;
+
+  padding: 8px 0;
 }
 
 .main-nav a::after {
@@ -221,9 +226,9 @@ a {
   bottom: 2px;
 
   width: 0;
-  height: 2px;
+  height: 1px;
 
-  background: var(--orange);
+  background: var(--black);
 
   transition: width .25s ease;
 }
@@ -239,6 +244,7 @@ a {
 
 .header-actions {
   display: flex;
+
   align-items: center;
 
   gap: 9px;
@@ -247,6 +253,7 @@ a {
 .icon-btn,
 .menu-btn {
   border: 0;
+
   background: transparent;
 }
 
@@ -255,13 +262,12 @@ a {
   height: 42px;
 
   display: grid;
+
   place-items: center;
 
   border-radius: 50%;
 
   font-size: 27px;
-
-  color: var(--black);
 }
 
 .icon-btn:hover {
@@ -270,24 +276,24 @@ a {
 
 .cart-btn {
   display: inline-flex;
+
   align-items: center;
 
   gap: 8px;
 
   border: 0;
+
   border-radius: 999px;
 
   padding: 10px 14px;
 
   background: var(--black);
-  color: var(--white);
+
+  color: white;
 
   font-size: 12px;
-  font-weight: 800;
-}
 
-.cart-btn:hover {
-  background: var(--green);
+  font-weight: 800;
 }
 
 .cart-btn b {
@@ -295,20 +301,19 @@ a {
   height: 21px;
 
   display: grid;
+
   place-items: center;
 
   border-radius: 50%;
 
   background: var(--orange);
 
-  color: var(--white);
-
   font-size: 10px;
 }
 
 
 /* =========================================================
-   MOBILE MENU
+   MOBILE MENU BUTTON
 ========================================================= */
 
 .menu-btn {
@@ -318,7 +323,9 @@ a {
   display: none;
 
   flex-direction: column;
+
   align-items: center;
+
   justify-content: center;
 
   gap: 5px;
@@ -338,19 +345,23 @@ a {
 
 .search-overlay {
   position: fixed;
+
   inset: 0;
 
   z-index: 80;
 
+  background: rgba(17, 17, 17, .72);
+
   display: flex;
+
   justify-content: center;
+
   align-items: flex-start;
 
   padding: 100px 20px 30px;
 
-  background: rgba(17, 17, 17, .72);
-
   opacity: 0;
+
   visibility: hidden;
 
   transition: .25s ease;
@@ -358,6 +369,7 @@ a {
 
 .search-overlay.open {
   opacity: 1;
+
   visibility: visible;
 }
 
@@ -366,11 +378,11 @@ a {
 
   width: min(720px, 100%);
 
-  padding: 40px;
-
   background: var(--cream);
 
   border-radius: var(--radius-lg);
+
+  padding: 40px;
 
   box-shadow: var(--shadow-md);
 }
@@ -378,26 +390,24 @@ a {
 .search-close {
   position: absolute;
 
-  top: 15px;
   right: 20px;
+  top: 15px;
 
   border: 0;
 
   background: transparent;
 
-  color: var(--black);
-
   font-size: 30px;
 }
 
 .search-box h2 {
-  margin-bottom: 25px;
-
   font-size: clamp(30px, 5vw, 48px);
 
   line-height: 1;
 
   letter-spacing: -.05em;
+
+  margin-bottom: 25px;
 }
 
 .search-input-wrap {
@@ -408,14 +418,16 @@ a {
 
 .search-input-wrap input {
   min-width: 0;
+
   flex: 1;
 
-  padding: 15px;
-
   border: 1px solid var(--border);
+
+  background: white;
+
   border-radius: 10px;
 
-  background: var(--white);
+  padding: 15px;
 
   outline: none;
 }
@@ -425,20 +437,17 @@ a {
 }
 
 .search-input-wrap button {
+  border: 0;
+
+  background: var(--black);
+
+  color: white;
+
   padding: 0 20px;
 
-  border: 0;
   border-radius: 10px;
 
-  background: var(--green);
-
-  color: var(--white);
-
   font-weight: 800;
-}
-
-.search-input-wrap button:hover {
-  background: var(--green-dark);
 }
 
 
@@ -459,21 +468,24 @@ main {
 }
 
 .eyebrow {
-  margin-bottom: 13px;
-
   color: var(--orange);
 
   font-size: 10px;
+
   font-weight: 900;
 
   letter-spacing: .2em;
 
   text-transform: uppercase;
+
+  margin-bottom: 13px;
 }
 
 .section-head {
   display: flex;
+
   align-items: flex-end;
+
   justify-content: space-between;
 
   gap: 30px;
@@ -491,11 +503,11 @@ main {
 }
 
 .section-head > div:first-child > p:last-child {
-  max-width: 520px;
+  color: var(--muted);
 
   margin-top: 15px;
 
-  color: var(--muted);
+  max-width: 520px;
 }
 
 .centered {
@@ -506,6 +518,7 @@ main {
 
 .centered > p:last-child {
   margin-left: auto;
+
   margin-right: auto;
 }
 
@@ -518,17 +531,21 @@ main {
   min-height: 48px;
 
   display: inline-flex;
+
   align-items: center;
+
   justify-content: center;
 
-  padding: 13px 22px;
-
   border: 0;
+
   border-radius: 999px;
+
+  padding: 13px 22px;
 
   text-decoration: none;
 
   font-size: 13px;
+
   font-weight: 800;
 
   transition:
@@ -543,7 +560,8 @@ main {
 
 .btn.primary {
   background: var(--black);
-  color: var(--white);
+
+  color: white;
 }
 
 .btn.primary:hover {
@@ -552,6 +570,7 @@ main {
 
 .btn.secondary {
   background: var(--cream-dark);
+
   color: var(--black);
 }
 
@@ -560,13 +579,9 @@ main {
 }
 
 .btn.light {
-  background: var(--white);
-  color: var(--black);
-}
+  background: white;
 
-.btn.light:hover {
-  background: var(--orange);
-  color: var(--white);
+  color: var(--black);
 }
 
 .btn.full {
@@ -581,9 +596,10 @@ main {
 .hero {
   width: min(var(--container), 100%);
 
+  margin: auto;
+
   min-height: calc(100vh - 114px);
 
-  margin: auto;
   padding: 80px 28px;
 
   display: grid;
@@ -602,13 +618,13 @@ main {
 .hero h1 {
   max-width: 760px;
 
-  margin-bottom: 27px;
-
   font-size: clamp(52px, 7vw, 94px);
 
   line-height: .9;
 
   letter-spacing: -.075em;
+
+  margin-bottom: 27px;
 }
 
 .hero h1 span {
@@ -649,6 +665,7 @@ main {
   color: #606862;
 
   font-size: 11px;
+
   font-weight: 700;
 }
 
@@ -658,12 +675,15 @@ main {
   min-height: 560px;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 }
 
 .hero-image-main {
   width: 100%;
+
   height: 560px;
 
   overflow: hidden;
@@ -688,6 +708,7 @@ main {
   position: absolute;
 
   left: -35px;
+
   bottom: 35px;
 
   width: 230px;
@@ -697,29 +718,28 @@ main {
   border-radius: 22px;
 
   background: var(--black);
-  color: var(--white);
 
-  box-shadow:
-    0 25px 50px rgba(0, 0, 0, .2);
+  color: white;
+
+  box-shadow: 0 25px 50px rgba(0, 0, 0, .2);
 }
 
 .hero-floating-card span {
   display: block;
 
-  margin-bottom: 14px;
-
   color: #aaa;
 
   font-size: 9px;
+
   font-weight: 800;
 
   letter-spacing: .2em;
+
+  margin-bottom: 14px;
 }
 
 .hero-floating-card strong {
   display: block;
-
-  color: var(--white);
 
   font-size: 27px;
 
@@ -738,11 +758,7 @@ main {
 
   background: var(--black);
 
-  color: var(--white);
-}
-
-.categories-section .eyebrow {
-  color: var(--orange-light);
+  color: white;
 }
 
 .category-grid {
@@ -758,23 +774,24 @@ main {
 }
 
 .category-card {
-  position: relative;
-
   min-height: 390px;
+
+  position: relative;
 
   overflow: hidden;
 
   border-radius: 22px;
 
-  background: #222;
-
-  color: var(--white);
+  color: white;
 
   text-decoration: none;
+
+  background: #222;
 }
 
 .category-image {
   position: absolute;
+
   inset: 0;
 }
 
@@ -792,12 +809,13 @@ main {
   content: "";
 
   position: absolute;
+
   inset: 0;
 
   background:
     linear-gradient(
       to top,
-      rgba(0, 0, 0, .78),
+      rgba(0, 0, 0, .75),
       rgba(0, 0, 0, 0) 60%
     );
 }
@@ -813,17 +831,15 @@ main {
 }
 
 .category-info span {
-  color: var(--orange-light);
-
   font-size: 10px;
+
+  color: #ddd;
 
   letter-spacing: .15em;
 }
 
 .category-info h3 {
   margin-top: 5px;
-
-  color: var(--white);
 
   font-size: 28px;
 
@@ -843,8 +859,6 @@ main {
 
 .shop-section {
   padding-top: 120px;
-
-  background: var(--cream);
 }
 
 .filters {
@@ -858,35 +872,40 @@ main {
 }
 
 .filter {
-  padding: 9px 14px;
-
   border: 1px solid var(--border);
-  border-radius: 999px;
 
-  background: var(--white);
+  background: white;
 
   color: var(--black);
 
+  border-radius: 999px;
+
+  padding: 9px 14px;
+
   font-size: 11px;
+
   font-weight: 700;
+
+  cursor: pointer;
 
   transition: .2s ease;
 }
 
 .filter:hover,
 .filter.active {
-  border-color: var(--green);
+  background: var(--black);
 
-  background: var(--green);
+  color: white;
 
-  color: var(--white);
+  border-color: var(--black);
 }
 
 .shop-toolbar {
   display: flex;
 
-  align-items: center;
   justify-content: space-between;
+
+  align-items: center;
 
   margin-bottom: 18px;
 
@@ -896,18 +915,15 @@ main {
 }
 
 .shop-toolbar select {
+  border: 1px solid var(--border);
+
+  background: white;
+
   padding: 9px 12px;
 
-  border: 1px solid var(--border);
   border-radius: 8px;
 
-  background: var(--white);
-
   outline: none;
-}
-
-.shop-toolbar select:focus {
-  border-color: var(--green);
 }
 
 
@@ -927,9 +943,10 @@ main {
   overflow: hidden;
 
   border: 1px solid var(--border);
+
   border-radius: 18px;
 
-  background: var(--white);
+  background: white;
 
   transition:
     transform .25s ease,
@@ -946,16 +963,19 @@ main {
   aspect-ratio: 1 / 1;
 
   display: flex;
+
   align-items: center;
+
   justify-content: center;
 
   overflow: hidden;
 
-  background: var(--cream-dark);
+  background: #f1eee7;
 }
 
 .product-img img {
   width: 100%;
+
   height: 100%;
 
   transition: transform .5s ease;
@@ -973,6 +993,7 @@ main {
   color: var(--orange);
 
   font-size: 9px;
+
   font-weight: 900;
 
   letter-spacing: .14em;
@@ -982,8 +1003,6 @@ main {
 
 .product h3 {
   margin: 7px 0;
-
-  color: var(--black);
 
   font-size: 17px;
 
@@ -996,6 +1015,7 @@ main {
   color: var(--green);
 
   font-size: 14px;
+
   font-weight: 900;
 }
 
@@ -1027,27 +1047,27 @@ main {
 
   background: var(--green);
 
-  color: var(--white);
+  color: white;
 }
 
 .promo-content {
   display: flex;
 
   flex-direction: column;
+
   justify-content: center;
+
   align-items: flex-start;
 
   padding: 70px;
 }
 
 .promo-content .eyebrow {
-  color: var(--orange-light);
+  color: #f7a36f;
 }
 
 .promo-content h2 {
   max-width: 570px;
-
-  color: var(--white);
 
   font-size: clamp(45px, 6vw, 75px);
 
@@ -1080,16 +1100,18 @@ main {
 
 
 /* =========================================================
-   BUILD YOUR OWN / PLATTER
+   PLATTER
 ========================================================= */
 
 .platter-section {
   width: 100%;
+
   max-width: none;
 
-  padding:
-    120px
-    max(28px, calc((100% - var(--container)) / 2 + 28px));
+  padding: 120px max(
+    28px,
+    calc((100% - var(--container)) / 2 + 28px)
+  );
 
   display: grid;
 
@@ -1106,16 +1128,14 @@ main {
 
 .platter-intro h2 {
   max-width: 620px;
-
-  color: var(--black);
 }
 
 .platter-intro > p:not(.eyebrow) {
   max-width: 570px;
 
-  margin-top: 22px;
-
   color: var(--muted);
+
+  margin-top: 22px;
 }
 
 .platter-benefits {
@@ -1130,6 +1150,7 @@ main {
 
 .platter-benefits div {
   display: flex;
+
   align-items: center;
 
   gap: 18px;
@@ -1146,8 +1167,9 @@ main {
 }
 
 .platter-benefits span {
-  font-size: 13px;
   font-weight: 700;
+
+  font-size: 13px;
 }
 
 .platter-box {
@@ -1155,9 +1177,9 @@ main {
 
   padding: 34px;
 
-  border-radius: 25px;
-
   background: var(--cream);
+
+  border-radius: 25px;
 
   box-shadow: var(--shadow-sm);
 }
@@ -1168,6 +1190,7 @@ main {
   margin-bottom: 18px;
 
   font-size: 12px;
+
   font-weight: 800;
 }
 
@@ -1185,9 +1208,10 @@ main {
   padding: 13px;
 
   border: 1px solid var(--border);
+
   border-radius: 10px;
 
-  background: var(--white);
+  background: white;
 
   outline: none;
 }
@@ -1210,6 +1234,7 @@ main {
   display: flex;
 
   align-items: center;
+
   justify-content: space-between;
 
   gap: 12px;
@@ -1217,26 +1242,25 @@ main {
   padding: 13px;
 
   border: 1px solid var(--border);
+
   border-radius: 10px;
 
-  background: var(--white);
+  background: white;
 }
 
 .ingredient label {
   margin: 0;
 
   font-size: 12px;
-  font-weight: 600;
-}
 
-.ingredient input {
-  accent-color: var(--green);
+  font-weight: 600;
 }
 
 .platter-total {
   display: flex;
 
   align-items: center;
+
   justify-content: space-between;
 
   padding: 18px 0;
@@ -1247,8 +1271,6 @@ main {
 }
 
 .platter-total strong {
-  color: var(--green);
-
   font-size: 20px;
 }
 
@@ -1259,8 +1281,6 @@ main {
 
 .benefits-section {
   padding-bottom: 120px;
-
-  background: var(--cream);
 }
 
 .features {
@@ -1277,30 +1297,30 @@ main {
   padding: 30px;
 
   border: 1px solid var(--border);
+
   border-radius: 20px;
 
-  background: var(--white);
+  background: white;
 }
 
 .feature-number {
-  margin-bottom: 50px;
-
   color: var(--orange);
 
   font-size: 10px;
+
   font-weight: 900;
 
   letter-spacing: .15em;
+
+  margin-bottom: 50px;
 }
 
 .feature-card h3 {
-  margin-bottom: 8px;
-
-  color: var(--black);
-
   font-size: 20px;
 
   letter-spacing: -.03em;
+
+  margin-bottom: 8px;
 }
 
 .feature-card p {
@@ -1327,7 +1347,7 @@ main {
 
   border-radius: var(--radius-xl);
 
-  background: var(--cream-dark);
+  background: #eee7dc;
 }
 
 .story-image {
@@ -1342,7 +1362,9 @@ main {
   display: flex;
 
   flex-direction: column;
+
   justify-content: center;
+
   align-items: flex-start;
 
   padding: 70px;
@@ -1350,8 +1372,6 @@ main {
 
 .story-content h2 {
   max-width: 570px;
-
-  color: var(--black);
 
   font-size: clamp(42px, 5vw, 65px);
 
@@ -1395,29 +1415,30 @@ main {
   padding: 30px;
 
   border: 1px solid var(--border);
+
   border-radius: 20px;
 
-  background: var(--white);
+  background: white;
 }
 
 .stars {
-  margin-bottom: 25px;
-
   color: var(--orange);
 
   letter-spacing: .12em;
 
   font-size: 12px;
+
+  margin-bottom: 25px;
 }
 
 .testimonial p {
   min-height: 90px;
 
-  margin-bottom: 25px;
-
   font-size: 15px;
 
   line-height: 1.6;
+
+  margin-bottom: 25px;
 }
 
 .testimonial strong {
@@ -1443,6 +1464,7 @@ main {
   display: flex;
 
   align-items: center;
+
   justify-content: space-between;
 
   gap: 50px;
@@ -1451,16 +1473,14 @@ main {
 
   background: var(--black);
 
-  color: var(--white);
+  color: white;
 }
 
 .newsletter-section .eyebrow {
-  color: var(--orange-light);
+  color: #f7a36f;
 }
 
 .newsletter-section h2 {
-  color: var(--white);
-
   font-size: clamp(38px, 5vw, 60px);
 
   line-height: .95;
@@ -1469,9 +1489,9 @@ main {
 }
 
 .newsletter-section p:last-child {
-  margin-top: 12px;
-
   color: #aaa;
+
+  margin-top: 12px;
 }
 
 .newsletter-form {
@@ -1484,22 +1504,20 @@ main {
 
 .newsletter-form input {
   min-width: 0;
+
   flex: 1;
 
-  padding: 14px 18px;
-
   border: 1px solid #444;
+
   border-radius: 999px;
 
   background: #222;
 
-  color: var(--white);
+  color: white;
+
+  padding: 14px 18px;
 
   outline: none;
-}
-
-.newsletter-form input:focus {
-  border-color: var(--orange);
 }
 
 .newsletter-form input::placeholder {
@@ -1508,16 +1526,6 @@ main {
 
 .newsletter-form .btn {
   flex-shrink: 0;
-}
-
-.newsletter-form .btn.primary {
-  background: var(--orange);
-}
-
-.newsletter-form .btn.primary:hover {
-  background: var(--white);
-
-  color: var(--black);
 }
 
 
@@ -1536,9 +1544,9 @@ main {
 .contact-section > div:first-child p:last-child {
   max-width: 500px;
 
-  margin-top: 20px;
-
   color: var(--muted);
+
+  margin-top: 20px;
 }
 
 .contact-links {
@@ -1561,10 +1569,6 @@ main {
   text-decoration: none;
 }
 
-.contact-links a:hover strong {
-  color: var(--green);
-}
-
 .contact-links span {
   color: var(--muted);
 
@@ -1576,8 +1580,6 @@ main {
 }
 
 .contact-links strong {
-  color: var(--black);
-
   font-size: 13px;
 
   text-align: right;
@@ -1589,14 +1591,14 @@ main {
 ========================================================= */
 
 .site-footer {
+  background: var(--black);
+
+  color: white;
+
   padding:
     80px
     max(28px, calc((100% - var(--container)) / 2 + 28px))
     25px;
-
-  background: var(--black);
-
-  color: var(--white);
 }
 
 .footer-main {
@@ -1610,15 +1612,15 @@ main {
 }
 
 .footer-logo {
-  margin-bottom: 18px;
+  color: white;
 
-  color: var(--white);
+  margin-bottom: 18px;
 }
 
 .footer-brand p {
-  max-width: 250px;
-
   color: #888;
+
+  max-width: 250px;
 
   font-size: 13px;
 }
@@ -1627,6 +1629,7 @@ main {
   display: flex;
 
   flex-direction: column;
+
   align-items: flex-start;
 
   gap: 11px;
@@ -1653,7 +1656,7 @@ main {
 }
 
 .footer-column a:hover {
-  color: var(--orange);
+  color: white;
 }
 
 .footer-bottom {
@@ -1690,6 +1693,7 @@ main {
   height: 100dvh;
 
   display: flex;
+
   flex-direction: column;
 
   padding: 28px;
@@ -1711,8 +1715,9 @@ main {
 .drawer-head {
   display: flex;
 
-  align-items: flex-start;
   justify-content: space-between;
+
+  align-items: flex-start;
 
   padding-bottom: 20px;
 
@@ -1720,8 +1725,6 @@ main {
 }
 
 .drawer-head h2 {
-  color: var(--black);
-
   font-size: 30px;
 
   line-height: 1;
@@ -1736,8 +1739,6 @@ main {
   border: 0;
 
   background: transparent;
-
-  color: var(--black);
 
   font-size: 30px;
 }
@@ -1765,9 +1766,9 @@ main {
 .cart-row small {
   display: block;
 
-  margin-top: 3px;
-
   color: var(--muted);
+
+  margin-top: 3px;
 }
 
 .qty {
@@ -1783,17 +1784,20 @@ main {
   height: 28px;
 
   border: 1px solid var(--border);
+
   border-radius: 7px;
 
-  background: var(--white);
+  background: white;
+
+  transition:
+    background .2s ease,
+    border-color .2s ease;
 }
 
 .qty button:hover {
-  border-color: var(--green);
+  background: var(--cream-dark);
 
-  background: var(--green);
-
-  color: var(--white);
+  border-color: #d6d0c7;
 }
 
 
@@ -1802,6 +1806,8 @@ main {
 ========================================================= */
 
 .remove-item {
+  display: inline-block;
+
   margin-top: 8px;
 
   padding: 0;
@@ -1810,16 +1816,21 @@ main {
 
   background: transparent;
 
-  color: #b3261e;
+  color: var(--danger);
 
   font-size: 11px;
+
   font-weight: 700;
 
   cursor: pointer;
+
+  transition: opacity .2s ease;
 }
 
 .remove-item:hover {
   text-decoration: underline;
+
+  opacity: .8;
 }
 
 
@@ -1834,8 +1845,9 @@ main {
 .cart-total {
   display: flex;
 
-  align-items: center;
   justify-content: space-between;
+
+  align-items: center;
 
   padding: 18px 0;
 
@@ -1843,8 +1855,6 @@ main {
 }
 
 .cart-total strong {
-  color: var(--green);
-
   font-size: 20px;
 }
 
@@ -1863,6 +1873,7 @@ main {
   background: rgba(0, 0, 0, .5);
 
   opacity: 0;
+
   visibility: hidden;
 
   transition: .25s ease;
@@ -1918,8 +1929,6 @@ main {
 }
 
 .modal-card h2 {
-  color: var(--black);
-
   font-size: 40px;
 
   line-height: .95;
@@ -1928,9 +1937,9 @@ main {
 }
 
 .modal-description {
-  margin: 15px 0 25px;
-
   color: var(--muted);
+
+  margin: 15px 0 25px;
 }
 
 .modal-close {
@@ -1946,8 +1955,6 @@ main {
 
   background: transparent;
 
-  color: var(--black);
-
   font-size: 30px;
 }
 
@@ -1957,6 +1964,7 @@ main {
   margin-bottom: 15px;
 
   font-size: 12px;
+
   font-weight: 800;
 }
 
@@ -1983,7 +1991,7 @@ main {
 
 
 /* =========================================================
-   LOADING / EMPTY STATES
+   LOADING
 ========================================================= */
 
 .loading {
@@ -1994,50 +2002,6 @@ main {
   color: var(--muted);
 
   text-align: center;
-}
-
-.loading strong {
-  display: block;
-
-  margin-bottom: 5px;
-
-  color: var(--black);
-}
-
-
-/* =========================================================
-   IMAGE FALLBACK
-========================================================= */
-
-.product-placeholder {
-  width: 100%;
-  height: 100%;
-
-  min-height: 200px;
-
-  display: grid;
-
-  place-items: center;
-
-  padding: 25px;
-
-  background:
-    linear-gradient(
-      135deg,
-      var(--cream-dark),
-      #e4eee7
-    );
-
-  color: var(--green);
-
-  text-align: center;
-
-  font-size: 13px;
-  font-weight: 800;
-}
-
-.product-img.image-error {
-  background: var(--cream-dark);
 }
 
 
@@ -2062,6 +2026,7 @@ main {
   .hero-visual,
   .hero-image-main {
     min-height: 480px;
+
     height: 480px;
   }
 
@@ -2084,6 +2049,7 @@ main {
   .platter-section {
     gap: 45px;
   }
+
 }
 
 
@@ -2103,12 +2069,14 @@ main {
     position: absolute;
 
     top: 100%;
+
     left: 0;
     right: 0;
 
     display: none;
 
     flex-direction: column;
+
     align-items: stretch;
 
     gap: 0;
@@ -2170,6 +2138,7 @@ main {
 
   .hero-floating-card {
     left: 18px;
+
     bottom: 20px;
 
     width: 200px;
@@ -2189,14 +2158,14 @@ main {
     margin-top: 25px;
   }
 
-  .categories-section {
-    padding: 80px 0;
-  }
-
   .category-grid {
     grid-template-columns: 1fr 1fr;
 
     padding: 0 18px;
+  }
+
+  .categories-section {
+    padding: 80px 0;
   }
 
   .category-card {
@@ -2290,6 +2259,7 @@ main {
 
     gap: 45px 25px;
   }
+
 }
 
 
@@ -2383,9 +2353,9 @@ main {
   }
 
   .shop-toolbar {
-    flex-direction: column;
-
     align-items: flex-start;
+
+    flex-direction: column;
 
     gap: 10px;
   }
@@ -2415,6 +2385,11 @@ main {
   .drawer {
     padding: 22px 18px;
   }
+
+  .cart-row {
+    gap: 8px;
+  }
+
 }
 
 
