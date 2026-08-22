@@ -89,6 +89,14 @@ const products = [
   },
 
   {
+  id: "grocery-sausage",
+  name: "Breakfast Sausage",
+  category: "Groceries",
+  price: 30,
+  image: "assets/images/products/sausage.jpg"
+  },
+   
+  {
     id: "grocery-bread",
     name: "Fresh Bread",
     category: "Groceries",
