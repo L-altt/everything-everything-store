@@ -9,69 +9,210 @@
 ========================================================= */
 
 const products = [
+
+  /* ================= GROCERIES ================= */
+
   {
-    id: "product-1",
-    name: "Featured Product",
+    id: "grocery-1",
+    name: "Premium Basmati Rice",
     category: "Groceries",
-    price: 25,
-    image: "assets/images/products/product-1.jpg"
+    price: 85,
+    image: "assets/images/products/rice.jpg"
   },
 
   {
-    id: "product-2",
-    name: "Everyday Essentials",
+    id: "grocery-2",
+    name: "Golden Cooking Oil",
     category: "Groceries",
-    price: 40,
-    image: "assets/images/products/product-2.jpg"
+    price: 75,
+    image: "assets/images/products/oil.jpg"
   },
 
   {
-    id: "product-3",
-    name: "Signature Clothing",
+    id: "grocery-3",
+    name: "Breakfast Cereal",
+    category: "Groceries",
+    price: 55,
+    image: "assets/images/products/cereal.jpg"
+  },
+
+  {
+    id: "grocery-4",
+    name: "Organic Honey",
+    category: "Groceries",
+    price: 65,
+    image: "assets/images/products/honey.jpg"
+  },
+
+  {
+    id: "grocery-5",
+    name: "Fresh Bread",
+    category: "Groceries",
+    price: 18,
+    image: "assets/images/products/bread.jpg"
+  },
+
+  {
+    id: "grocery-6",
+    name: "Mixed Fruit Basket",
+    category: "Groceries",
+    price: 120,
+    image: "assets/images/products/fruits.jpg"
+  },
+
+
+  /* ================= CLOTHING ================= */
+
+  {
+    id: "clothing-1",
+    name: "Essential Cotton Tee",
+    category: "Clothing",
+    price: 95,
+    image: "assets/images/products/tshirt.jpg"
+  },
+
+  {
+    id: "clothing-2",
+    name: "Classic Oversized Shirt",
+    category: "Clothing",
+    price: 145,
+    image: "assets/images/products/shirt.jpg"
+  },
+
+  {
+    id: "clothing-3",
+    name: "Everyday Hoodie",
+    category: "Clothing",
+    price: 220,
+    image: "assets/images/products/hoodie.jpg"
+  },
+
+  {
+    id: "clothing-4",
+    name: "Relaxed Trousers",
     category: "Clothing",
     price: 180,
-    image: "assets/images/products/product-3.jpg"
+    image: "assets/images/products/trousers.jpg"
   },
 
   {
-    id: "product-4",
-    name: "Classic Jewelry",
-    category: "Jewelry",
-    price: 120,
-    image: "assets/images/products/product-4.jpg"
-  },
-
-  {
-    id: "product-5",
-    name: "Special Gift",
-    category: "Gifts",
-    price: 100,
-    image: "assets/images/products/product-5.jpg"
-  },
-
-  {
-    id: "product-6",
-    name: "Premium Collection",
+    id: "clothing-5",
+    name: "Signature Dress",
     category: "Clothing",
     price: 250,
-    image: "assets/images/products/product-6.jpg"
+    image: "assets/images/products/dress.jpg"
   },
 
   {
-    id: "product-7",
-    name: "Everyday Jewelry",
+    id: "clothing-6",
+    name: "Weekend Set",
+    category: "Clothing",
+    price: 290,
+    image: "assets/images/products/set.jpg"
+  },
+
+
+  /* ================= JEWELRY ================= */
+
+  {
+    id: "jewelry-1",
+    name: "Minimal Gold Necklace",
     category: "Jewelry",
-    price: 90,
-    image: "assets/images/products/product-7.jpg"
+    price: 180,
+    image: "assets/images/products/necklace.jpg"
   },
 
   {
-    id: "product-8",
-    name: "Gift Box",
-    category: "Gifts",
+    id: "jewelry-2",
+    name: "Classic Bracelet",
+    category: "Jewelry",
+    price: 130,
+    image: "assets/images/products/bracelet.jpg"
+  },
+
+  {
+    id: "jewelry-3",
+    name: "Everyday Hoop Earrings",
+    category: "Jewelry",
+    price: 110,
+    image: "assets/images/products/earrings.jpg"
+  },
+
+  {
+    id: "jewelry-4",
+    name: "Signature Ring",
+    category: "Jewelry",
     price: 150,
-    image: "assets/images/products/product-8.jpg"
+    image: "assets/images/products/ring.jpg"
+  },
+
+  {
+    id: "jewelry-5",
+    name: "Pearl Detail Necklace",
+    category: "Jewelry",
+    price: 210,
+    image: "assets/images/products/pearl-necklace.jpg"
+  },
+
+  {
+    id: "jewelry-6",
+    name: "Layered Jewelry Set",
+    category: "Jewelry",
+    price: 275,
+    image: "assets/images/products/jewelry-set.jpg"
+  },
+
+
+  /* ================= GIFTS ================= */
+
+  {
+    id: "gift-1",
+    name: "The Good Morning Box",
+    category: "Gifts",
+    price: 160,
+    image: "assets/images/products/good-morning-box.jpg"
+  },
+
+  {
+    id: "gift-2",
+    name: "Self-Care Gift Box",
+    category: "Gifts",
+    price: 230,
+    image: "assets/images/products/self-care-box.jpg"
+  },
+
+  {
+    id: "gift-3",
+    name: "Birthday Gift Box",
+    category: "Gifts",
+    price: 250,
+    image: "assets/images/products/birthday-box.jpg"
+  },
+
+  {
+    id: "gift-4",
+    name: "Thank You Box",
+    category: "Gifts",
+    price: 180,
+    image: "assets/images/products/thank-you-box.jpg"
+  },
+
+  {
+    id: "gift-5",
+    name: "Premium Gift Basket",
+    category: "Gifts",
+    price: 350,
+    image: "assets/images/products/gift-basket.jpg"
+  },
+
+  {
+    id: "gift-6",
+    name: "Just Because Box",
+    category: "Gifts",
+    price: 200,
+    image: "assets/images/products/just-because.jpg"
   }
+
 ];
 
 
@@ -80,6 +221,7 @@ const products = [
 ========================================================= */
 
 const categories = [
+
   {
     name: "Groceries",
     slug: "groceries"
@@ -99,29 +241,32 @@ const categories = [
     name: "Gifts",
     slug: "gifts"
   }
+
 ];
 
 
 /* =========================================================
-   PLATTER MEALS
+   PLATTERS
 ========================================================= */
 
 const meals = [
+
   {
-    id: "meal-1",
+    id: "breakfast",
 
     name: "Breakfast Platter",
 
     ingredients: [
+
       {
         id: "bread",
-        name: "Bread",
-        price: 10
+        name: "Fresh Bread",
+        price: 18
       },
 
       {
-        id: "egg",
-        name: "Eggs",
+        id: "eggs",
+        name: "Two Eggs",
         price: 15
       },
 
@@ -132,89 +277,176 @@ const meals = [
       },
 
       {
-        id: "tea",
-        name: "Tea",
-        price: 8
-      }
-    ]
-  },
-
-
-  {
-    id: "meal-2",
-
-    name: "Lunch Platter",
-
-    ingredients: [
-      {
-        id: "rice",
-        name: "Rice",
-        price: 20
+        id: "beans",
+        name: "Baked Beans",
+        price: 18
       },
 
       {
-        id: "chicken",
-        name: "Chicken",
-        price: 35
-      },
-
-      {
-        id: "salad",
-        name: "Salad",
-        price: 15
-      },
-
-      {
-        id: "drink",
-        name: "Soft Drink",
-        price: 10
-      }
-    ]
-  },
-
-
-  {
-    id: "meal-3",
-
-    name: "Special Platter",
-
-    ingredients: [
-      {
-        id: "jollof",
-        name: "Jollof Rice",
+        id: "fruit",
+        name: "Fresh Fruit",
         price: 25
       },
 
       {
-        id: "chicken-special",
+        id: "tea",
+        name: "Tea",
+        price: 10
+      }
+
+    ]
+
+  },
+
+
+  {
+    id: "lunch",
+
+    name: "Lunch Platter",
+
+    ingredients: [
+
+      {
+        id: "rice",
+        name: "Jasmine Rice",
+        price: 25
+      },
+
+      {
+        id: "chicken",
         name: "Grilled Chicken",
         price: 40
       },
 
       {
+        id: "salad",
+        name: "Fresh Salad",
+        price: 20
+      },
+
+      {
         id: "plantain",
         name: "Fried Plantain",
-        price: 15
+        price: 20
+      },
+
+      {
+        id: "drink",
+        name: "Soft Drink",
+        price: 12
+      }
+
+    ]
+
+  },
+
+
+  {
+    id: "special",
+
+    name: "Special Platter",
+
+    ingredients: [
+
+      {
+        id: "jollof",
+        name: "Jollof Rice",
+        price: 30
+      },
+
+      {
+        id: "chicken-special",
+        name: "Grilled Chicken",
+        price: 45
+      },
+
+      {
+        id: "beef",
+        name: "Grilled Beef",
+        price: 50
+      },
+
+      {
+        id: "plantain-special",
+        name: "Fried Plantain",
+        price: 20
       },
 
       {
         id: "salad-special",
         name: "Fresh Salad",
-        price: 15
+        price: 20
       },
 
       {
         id: "drink-special",
         name: "Soft Drink",
-        price: 10
+        price: 12
       }
+
     ]
+
+  },
+
+
+  {
+    id: "premium",
+
+    name: "Premium Sharing Platter",
+
+    ingredients: [
+
+      {
+        id: "premium-rice",
+        name: "Jollof Rice",
+        price: 35
+      },
+
+      {
+        id: "premium-chicken",
+        name: "Grilled Chicken",
+        price: 50
+      },
+
+      {
+        id: "premium-beef",
+        name: "Grilled Beef",
+        price: 55
+      },
+
+      {
+        id: "premium-plantain",
+        name: "Fried Plantain",
+        price: 25
+      },
+
+      {
+        id: "premium-salad",
+        name: "Fresh Salad",
+        price: 25
+      },
+
+      {
+        id: "premium-fruit",
+        name: "Fresh Fruit",
+        price: 25
+      },
+
+      {
+        id: "premium-drinks",
+        name: "Two Soft Drinks",
+        price: 24
+      }
+
+    ]
+
   }
+
 ];
 
 
 /* =========================================================
-   APPLICATION STATE
+   STATE
 ========================================================= */
 
 const state = {
@@ -240,11 +472,8 @@ const state = {
    HELPERS
 ========================================================= */
 
-const money = value => {
-
-  return Number(value || 0).toFixed(2);
-
-};
+const money = value =>
+  Number(value || 0).toFixed(2);
 
 
 function escapeHtml(value) {
@@ -253,11 +482,13 @@ function escapeHtml(value) {
     /[&<>"']/g,
 
     character => ({
+
       "&": "&amp;",
       "<": "&lt;",
       ">": "&gt;",
       '"': "&quot;",
       "'": "&#039;"
+
     })[character]
 
   );
@@ -266,7 +497,7 @@ function escapeHtml(value) {
 
 
 /* =========================================================
-   PRODUCT IMAGE FALLBACK
+   IMAGE
 ========================================================= */
 
 function productImage(image, name) {
@@ -281,25 +512,33 @@ function productImage(image, name) {
 
   }
 
+
   return `
+
     <img
       src="${image}"
       alt="${escapeHtml(name)}"
       loading="lazy"
-      onerror="this.style.display='none';this.parentElement.classList.add('image-error')"
+      onerror="
+        this.style.display='none';
+        this.parentElement.classList.add('image-error');
+        this.parentElement.innerHTML='<div class=&quot;product-placeholder&quot;>${escapeHtml(name)}</div>';
+      "
     >
+
   `;
 
 }
 
 
 /* =========================================================
-   CATEGORY FILTERS
+   FILTERS
 ========================================================= */
 
 function renderFilters() {
 
-  const element = document.querySelector("#categoryFilters");
+  const element =
+    document.querySelector("#categoryFilters");
 
   if (!element) return;
 
@@ -307,7 +546,7 @@ function renderFilters() {
   element.innerHTML = `
 
     <button
-      class="filter active"
+      class="filter ${state.filter === "all" ? "active" : ""}"
       data-filter="all"
     >
       All
@@ -316,7 +555,11 @@ function renderFilters() {
     ${state.categories.map(category => `
 
       <button
-        class="filter"
+        class="filter ${
+          state.filter === category.slug
+            ? "active"
+            : ""
+        }"
         data-filter="${category.slug}"
       >
         ${escapeHtml(category.name)}
@@ -327,86 +570,106 @@ function renderFilters() {
   `;
 
 
-  element.querySelectorAll(".filter").forEach(button => {
+  element
+    .querySelectorAll(".filter")
+    .forEach(button => {
 
-    button.addEventListener("click", () => {
+      button.addEventListener(
+        "click",
+        () => {
 
-      element
-        .querySelectorAll(".filter")
-        .forEach(item => item.classList.remove("active"));
+          state.filter =
+            button.dataset.filter;
 
-      button.classList.add("active");
+          renderFilters();
 
-      state.filter = button.dataset.filter;
+          renderProducts();
 
-      renderProducts();
+        }
+      );
 
     });
-
-  });
 
 }
 
 
 /* =========================================================
-   GET FILTERED PRODUCTS
+   FILTER PRODUCTS
 ========================================================= */
 
 function getFilteredProducts() {
 
-  let list = [...state.products];
+  let list =
+    [...state.products];
 
-
-  /* CATEGORY */
 
   if (state.filter !== "all") {
 
-    list = list.filter(product => {
-
-      return product.category.toLowerCase() === state.filter;
-
-    });
+    list =
+      list.filter(product =>
+        product.category
+          .toLowerCase() === state.filter
+      );
 
   }
 
-
-  /* SEARCH */
 
   if (state.search.trim()) {
 
-    const query = state.search.toLowerCase();
+    const query =
+      state.search
+        .trim()
+        .toLowerCase();
 
-    list = list.filter(product => {
 
-      return (
-        product.name.toLowerCase().includes(query) ||
-        product.category.toLowerCase().includes(query)
+    list =
+      list.filter(product =>
+
+        product.name
+          .toLowerCase()
+          .includes(query)
+
+        ||
+
+        product.category
+          .toLowerCase()
+          .includes(query)
+
       );
 
-    });
-
   }
 
 
-  /* SORT */
+  switch (state.sort) {
 
-  if (state.sort === "price-low") {
+    case "price-low":
 
-    list.sort((a, b) => a.price - b.price);
+      list.sort(
+        (a, b) =>
+          a.price - b.price
+      );
 
-  }
+      break;
 
-  if (state.sort === "price-high") {
 
-    list.sort((a, b) => b.price - a.price);
+    case "price-high":
 
-  }
+      list.sort(
+        (a, b) =>
+          b.price - a.price
+      );
 
-  if (state.sort === "name") {
+      break;
 
-    list.sort((a, b) =>
-      a.name.localeCompare(b.name)
-    );
+
+    case "name":
+
+      list.sort(
+        (a, b) =>
+          a.name.localeCompare(b.name)
+      );
+
+      break;
 
   }
 
@@ -417,25 +680,31 @@ function getFilteredProducts() {
 
 
 /* =========================================================
-   RENDER PRODUCTS
+   PRODUCTS
 ========================================================= */
 
 function renderProducts() {
 
-  const grid = document.querySelector("#productGrid");
+  const grid =
+    document.querySelector("#productGrid");
 
-  const count = document.querySelector("#productCount");
+  const count =
+    document.querySelector("#productCount");
+
 
   if (!grid) return;
 
 
-  const list = getFilteredProducts();
+  const list =
+    getFilteredProducts();
 
 
   if (count) {
 
     count.textContent =
-      `${list.length} product${list.length === 1 ? "" : "s"}`;
+      `${list.length} product${
+        list.length === 1 ? "" : "s"
+      }`;
 
   }
 
@@ -446,10 +715,12 @@ function renderProducts() {
 
       <div class="loading">
 
-        <strong>No products found.</strong>
+        <strong>
+          Nothing found.
+        </strong>
 
         <p>
-          Try another category or search.
+          Try another search or category.
         </p>
 
       </div>
@@ -461,68 +732,76 @@ function renderProducts() {
   }
 
 
-  grid.innerHTML = list.map(product => `
+  grid.innerHTML =
 
-    <article class="product">
+    list.map(product => `
 
-      <div class="product-img">
+      <article class="product">
 
-        ${productImage(
-          product.image,
-          product.name
-        )}
+        <div class="product-img">
 
-      </div>
+          ${productImage(
+            product.image,
+            product.name
+          )}
+
+        </div>
 
 
-      <div class="product-body">
+        <div class="product-body">
 
-        <small>
-          ${escapeHtml(product.category)}
-        </small>
+          <small>
+            ${escapeHtml(
+              product.category
+            )}
+          </small>
 
-        <h3>
-          ${escapeHtml(product.name)}
-        </h3>
 
-        <p class="price">
-          GH₵${money(product.price)}
-        </p>
+          <h3>
+            ${escapeHtml(
+              product.name
+            )}
+          </h3>
 
-        <button
-          class="btn primary"
-          onclick="addProduct('${product.id}')"
-        >
-          Add to basket
-        </button>
 
-      </div>
+          <p class="price">
+            GH₵${money(product.price)}
+          </p>
 
-    </article>
 
-  `).join("");
+          <button
+            class="btn primary"
+            onclick="addProduct('${product.id}')"
+          >
+            Add to basket
+          </button>
+
+        </div>
+
+      </article>
+
+    `).join("");
 
 }
 
 
 /* =========================================================
-   SORTING
+   SORT
 ========================================================= */
 
-const sortProducts =
-  document.querySelector("#sortProducts");
+document
+  .querySelector("#sortProducts")
+  ?.addEventListener(
+    "change",
+    event => {
 
-if (sortProducts) {
+      state.sort =
+        event.target.value;
 
-  sortProducts.addEventListener("change", event => {
+      renderProducts();
 
-    state.sort = event.target.value;
-
-    renderProducts();
-
-  });
-
-}
+    }
+  );
 
 
 /* =========================================================
@@ -533,50 +812,40 @@ document
   .querySelectorAll(".category-card")
   .forEach(card => {
 
-    card.addEventListener("click", event => {
+    card.addEventListener(
+      "click",
+      event => {
 
-      const category =
-        card.dataset.category?.toLowerCase();
-
-      if (!category) return;
-
-
-      state.filter = category;
+        event.preventDefault();
 
 
-      document
-        .querySelector("#shop")
-        ?.scrollIntoView({
-          behavior: "smooth"
-        });
+        const category =
+          card.dataset.category
+            ?.toLowerCase();
 
 
-      setTimeout(() => {
+        if (!category) return;
+
+
+        state.filter =
+          category;
+
+        state.search = "";
+
 
         renderFilters();
 
-        const filterButton =
-          document.querySelector(
-            `.filter[data-filter="${category}"]`
-          );
-
-        if (filterButton) {
-
-          document
-            .querySelectorAll(".filter")
-            .forEach(button =>
-              button.classList.remove("active")
-            );
-
-          filterButton.classList.add("active");
-
-        }
-
         renderProducts();
 
-      }, 300);
 
-    });
+        document
+          .querySelector("#shop")
+          ?.scrollIntoView({
+            behavior: "smooth"
+          });
+
+      }
+    );
 
   });
 
@@ -603,22 +872,23 @@ const searchSubmit =
 
 function openSearch() {
 
-  if (!searchOverlay) return;
+  searchOverlay
+    ?.classList.add("open");
 
-  searchOverlay.classList.add("open");
 
-  setTimeout(() => {
-
-    searchInput?.focus();
-
-  }, 100);
+  setTimeout(
+    () =>
+      searchInput?.focus(),
+    100
+  );
 
 }
 
 
 function closeSearch() {
 
-  searchOverlay?.classList.remove("open");
+  searchOverlay
+    ?.classList.remove("open");
 
 }
 
@@ -628,21 +898,28 @@ searchBtn?.addEventListener(
   openSearch
 );
 
+
 searchClose?.addEventListener(
   "click",
   closeSearch
 );
 
 
-searchOverlay?.addEventListener("click", event => {
+searchOverlay?.addEventListener(
+  "click",
+  event => {
 
-  if (event.target === searchOverlay) {
+    if (
+      event.target ===
+      searchOverlay
+    ) {
 
-    closeSearch();
+      closeSearch();
+
+    }
 
   }
-
-});
+);
 
 
 function performSearch() {
@@ -650,7 +927,10 @@ function performSearch() {
   state.search =
     searchInput?.value.trim() || "";
 
-  state.filter = "all";
+
+  state.filter =
+    "all";
+
 
   renderFilters();
 
@@ -684,6 +964,7 @@ searchInput?.addEventListener(
 
     }
 
+
     if (event.key === "Escape") {
 
       closeSearch();
@@ -705,33 +986,48 @@ const mainNav =
   document.querySelector("#mainNav");
 
 
-menuBtn?.addEventListener("click", () => {
+menuBtn?.addEventListener(
+  "click",
+  () => {
 
-  const open =
-    mainNav.classList.toggle("open");
-
-  menuBtn.setAttribute(
-    "aria-expanded",
-    open ? "true" : "false"
-  );
-
-});
+    const open =
+      mainNav.classList.toggle(
+        "open"
+      );
 
 
-mainNav?.querySelectorAll("a").forEach(link => {
-
-  link.addEventListener("click", () => {
-
-    mainNav.classList.remove("open");
-
-    menuBtn?.setAttribute(
+    menuBtn.setAttribute(
       "aria-expanded",
-      "false"
+      open
+        ? "true"
+        : "false"
+    );
+
+  }
+);
+
+
+mainNav
+  ?.querySelectorAll("a")
+  .forEach(link => {
+
+    link.addEventListener(
+      "click",
+      () => {
+
+        mainNav.classList.remove(
+          "open"
+        );
+
+        menuBtn?.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+
+      }
     );
 
   });
-
-});
 
 
 /* =========================================================
@@ -741,7 +1037,10 @@ mainNav?.querySelectorAll("a").forEach(link => {
 function renderMeals() {
 
   const select =
-    document.querySelector("#mealSelect");
+    document.querySelector(
+      "#mealSelect"
+    );
+
 
   if (!select) return;
 
@@ -768,24 +1067,35 @@ function renderMeals() {
 function renderIngredients() {
 
   const select =
-    document.querySelector("#mealSelect");
+    document.querySelector(
+      "#mealSelect"
+    );
 
   const list =
-    document.querySelector("#ingredientList");
+    document.querySelector(
+      "#ingredientList"
+    );
 
   const total =
-    document.querySelector("#platterTotal");
+    document.querySelector(
+      "#platterTotal"
+    );
 
-  const addButton =
-    document.querySelector("#addPlatter");
+  const button =
+    document.querySelector(
+      "#addPlatter"
+    );
 
 
-  if (!select || !list) return;
+  if (!select || !list)
+    return;
 
 
   const meal =
     state.meals.find(
-      item => item.id === select.value
+      item =>
+        item.id ===
+        select.value
     );
 
 
@@ -793,50 +1103,64 @@ function renderIngredients() {
 
     list.innerHTML = "";
 
-    if (total) {
-      total.textContent = "0.00";
-    }
 
-    if (addButton) {
-      addButton.disabled = true;
-    }
+    if (total)
+      total.textContent =
+        "0.00";
+
+
+    if (button)
+      button.disabled =
+        true;
+
 
     return;
 
   }
 
 
-  list.innerHTML = meal.ingredients.map(
-    ingredient => `
+  list.innerHTML =
 
-      <div class="ingredient">
+    meal.ingredients
+      .map(ingredient => `
 
-        <label>
+        <div class="ingredient">
 
-          <input
-            type="checkbox"
-            class="ingredient-check"
-            value="${ingredient.id}"
-            data-price="${ingredient.price}"
-            data-name="${escapeHtml(ingredient.name)}"
-          >
+          <label>
 
-          ${escapeHtml(ingredient.name)}
+            <input
+              type="checkbox"
+              class="ingredient-check"
+              value="${ingredient.id}"
+              data-price="${ingredient.price}"
+              data-name="${escapeHtml(
+                ingredient.name
+              )}"
+            >
 
-        </label>
+            ${escapeHtml(
+              ingredient.name
+            )}
 
-        <span>
-          GH₵${money(ingredient.price)}
-        </span>
+          </label>
 
-      </div>
 
-    `
-  ).join("");
+          <span>
+            GH₵${money(
+              ingredient.price
+            )}
+          </span>
+
+        </div>
+
+      `)
+      .join("");
 
 
   list
-    .querySelectorAll(".ingredient-check")
+    .querySelectorAll(
+      ".ingredient-check"
+    )
     .forEach(input => {
 
       input.addEventListener(
@@ -865,18 +1189,23 @@ function updatePlatter() {
 
   selected.forEach(item => {
 
-    total += Number(
-      item.dataset.price
-    );
+    total +=
+      Number(
+        item.dataset.price
+      );
 
   });
 
 
   const totalElement =
-    document.querySelector("#platterTotal");
+    document.querySelector(
+      "#platterTotal"
+    );
 
-  const addButton =
-    document.querySelector("#addPlatter");
+  const button =
+    document.querySelector(
+      "#addPlatter"
+    );
 
 
   if (totalElement) {
@@ -887,9 +1216,9 @@ function updatePlatter() {
   }
 
 
-  if (addButton) {
+  if (button) {
 
-    addButton.disabled =
+    button.disabled =
       total <= 0;
 
   }
@@ -911,87 +1240,123 @@ document
 
 document
   .querySelector("#addPlatter")
-  ?.addEventListener("click", () => {
+  ?.addEventListener(
+    "click",
+    () => {
 
-    const mealId =
-      document.querySelector("#mealSelect")?.value;
-
-    const meal =
-      state.meals.find(
-        item => item.id === mealId
-      );
-
-
-    if (!meal) return;
+      const mealId =
+        document
+          .querySelector(
+            "#mealSelect"
+          )
+          ?.value;
 
 
-    const selected =
-      [...document.querySelectorAll(
-        ".ingredient-check:checked"
-      )].map(item => ({
-
-        id: item.value,
-
-        name: item.dataset.name,
-
-        price: Number(
-          item.dataset.price
-        )
-
-      }));
+      const meal =
+        state.meals.find(
+          item =>
+            item.id ===
+            mealId
+        );
 
 
-    if (!selected.length) return;
+      if (!meal) return;
 
 
-    const price =
-      selected.reduce(
-        (total, item) =>
-          total + item.price,
-        0
-      );
+      const selected =
+
+        [
+          ...document.querySelectorAll(
+            ".ingredient-check:checked"
+          )
+        ]
+        .map(item => ({
+
+          id:
+            item.value,
+
+          name:
+            item.dataset.name,
+
+          price:
+            Number(
+              item.dataset.price
+            )
+
+        }));
 
 
-    state.cart.push({
-
-      id: `platter-${Date.now()}`,
-
-      name: `Custom ${meal.name}`,
-
-      price,
-
-      qty: 1,
-
-      meta: selected
-        .map(item => item.name)
-        .join(", ")
-
-    });
+      if (!selected.length)
+        return;
 
 
-    saveCart();
+      const price =
+        selected.reduce(
+          (sum, item) =>
+            sum + item.price,
+          0
+        );
 
-    renderCart();
 
-    openCart();
+      state.cart.push({
 
-  });
+        id:
+          `platter-${Date.now()}`,
+
+        name:
+          `Custom ${meal.name}`,
+
+        price,
+
+        qty: 1,
+
+        meta:
+          selected
+            .map(item =>
+              item.name
+            )
+            .join(", ")
+
+      });
+
+
+      saveCart();
+
+      renderCart();
+
+      openCart();
+
+    }
+  );
 
 
 /* =========================================================
-   CART
+   CART STORAGE
 ========================================================= */
 
 function loadCart() {
 
   try {
 
-    state.cart =
-      JSON.parse(
-        localStorage.getItem(
-          "ee_cart"
-        ) || "[]"
+    const saved =
+      localStorage.getItem(
+        "ee_cart"
       );
+
+
+    state.cart =
+      saved
+        ? JSON.parse(saved)
+        : [];
+
+
+    if (!Array.isArray(
+      state.cart
+    )) {
+
+      state.cart = [];
+
+    }
 
   } catch {
 
@@ -1006,17 +1371,24 @@ function saveCart() {
 
   localStorage.setItem(
     "ee_cart",
-    JSON.stringify(state.cart)
+    JSON.stringify(
+      state.cart
+    )
   );
 
 }
 
 
+/* =========================================================
+   ADD PRODUCT
+========================================================= */
+
 function addProduct(id) {
 
   const product =
     state.products.find(
-      item => item.id === id
+      item =>
+        item.id === id
     );
 
 
@@ -1025,7 +1397,8 @@ function addProduct(id) {
 
   const existing =
     state.cart.find(
-      item => item.id === id
+      item =>
+        item.id === id
     );
 
 
@@ -1037,13 +1410,16 @@ function addProduct(id) {
 
     state.cart.push({
 
-      id: product.id,
+      id:
+        product.id,
 
-      name: product.name,
+      name:
+        product.name,
 
-      price: Number(
-        product.price
-      ),
+      price:
+        Number(
+          product.price
+        ),
 
       qty: 1
 
@@ -1061,7 +1437,8 @@ function addProduct(id) {
 }
 
 
-window.addProduct = addProduct;
+window.addProduct =
+  addProduct;
 
 
 /* =========================================================
@@ -1071,19 +1448,26 @@ window.addProduct = addProduct;
 function renderCart() {
 
   const count =
-    document.querySelector("#cartCount");
+    document.querySelector(
+      "#cartCount"
+    );
 
   const items =
-    document.querySelector("#cartItems");
+    document.querySelector(
+      "#cartItems"
+    );
 
   const total =
-    document.querySelector("#cartTotal");
+    document.querySelector(
+      "#cartTotal"
+    );
 
 
   const quantity =
     state.cart.reduce(
       (sum, item) =>
-        sum + item.qty,
+        sum +
+        Number(item.qty),
       0
     );
 
@@ -1096,7 +1480,8 @@ function renderCart() {
   }
 
 
-  if (!items) return;
+  if (!items)
+    return;
 
 
   if (!state.cart.length) {
@@ -1105,10 +1490,13 @@ function renderCart() {
 
       <div class="loading">
 
-        <strong>Your basket is empty.</strong>
+        <strong>
+          Your basket is empty.
+        </strong>
 
         <p>
-          Add something you love to get started.
+          Add something you love
+          to get started.
         </p>
 
       </div>
@@ -1118,61 +1506,80 @@ function renderCart() {
   } else {
 
     items.innerHTML =
-      state.cart.map(
-        (item, index) => `
 
-          <div class="cart-row">
+      state.cart
+        .map(
+          (item, index) => `
 
-            <div>
-
-              <b>
-                ${escapeHtml(item.name)}
-              </b>
-
-              ${
-                item.meta
-                  ? `<small>
-                      ${escapeHtml(item.meta)}
-                    </small>`
-                  : ""
-              }
+            <div class="cart-row">
 
               <div>
-                GH₵${money(
-                  item.price *
-                  item.qty
-                )}
+
+                <b>
+                  ${escapeHtml(
+                    item.name
+                  )}
+                </b>
+
+
+                ${
+                  item.meta
+                    ? `
+                      <small>
+                        ${escapeHtml(
+                          item.meta
+                        )}
+                      </small>
+                    `
+                    : ""
+                }
+
+
+                <div>
+                  GH₵${money(
+                    item.price *
+                    item.qty
+                  )}
+                </div>
+
+              </div>
+
+
+              <div class="qty">
+
+                <button
+                  onclick="changeQty(
+                    ${index},
+                    -1
+                  )"
+                  aria-label="Decrease quantity"
+                >
+                  −
+                </button>
+
+
+                <span>
+                  ${item.qty}
+                </span>
+
+
+                <button
+                  onclick="changeQty(
+                    ${index},
+                    1
+                  )"
+                  aria-label="Increase quantity"
+                >
+                  +
+                </button>
+
               </div>
 
             </div>
 
-
-            <div class="qty">
-
-              <button
-                onclick="changeQty(${index}, -1)"
-                aria-label="Decrease quantity"
-              >
-                −
-              </button>
-
-              <span>
-                ${item.qty}
-              </span>
-
-              <button
-                onclick="changeQty(${index}, 1)"
-                aria-label="Increase quantity"
-              >
-                +
-              </button>
-
-            </div>
-
-          </div>
-
-        `
-      ).join("");
+          `
+        )
+        .join("");
 
   }
 
@@ -1181,8 +1588,8 @@ function renderCart() {
     state.cart.reduce(
       (sum, item) =>
         sum +
-        item.price *
-        item.qty,
+        Number(item.price) *
+        Number(item.qty),
       0
     );
 
@@ -1198,20 +1605,30 @@ function renderCart() {
 
 
 /* =========================================================
-   CHANGE CART QUANTITY
+   CHANGE QUANTITY
 ========================================================= */
 
-function changeQty(index, amount) {
+function changeQty(
+  index,
+  amount
+) {
 
-  if (!state.cart[index]) return;
+  if (!state.cart[index])
+    return;
 
 
-  state.cart[index].qty += amount;
+  state.cart[index].qty +=
+    amount;
 
 
-  if (state.cart[index].qty <= 0) {
+  if (
+    state.cart[index].qty <= 0
+  ) {
 
-    state.cart.splice(index, 1);
+    state.cart.splice(
+      index,
+      1
+    );
 
   }
 
@@ -1223,7 +1640,8 @@ function changeQty(index, amount) {
 }
 
 
-window.changeQty = changeQty;
+window.changeQty =
+  changeQty;
 
 
 /* =========================================================
@@ -1231,22 +1649,34 @@ window.changeQty = changeQty;
 ========================================================= */
 
 const cartDrawer =
-  document.querySelector("#cartDrawer");
+  document.querySelector(
+    "#cartDrawer"
+  );
 
 const drawerOverlay =
-  document.querySelector("#drawerOverlay");
+  document.querySelector(
+    "#drawerOverlay"
+  );
 
 
 function openCart() {
 
-  cartDrawer?.classList.add("open");
+  cartDrawer
+    ?.classList.add(
+      "open"
+    );
 
-  drawerOverlay?.classList.add("open");
+  drawerOverlay
+    ?.classList.add(
+      "open"
+    );
+
 
   cartDrawer?.setAttribute(
     "aria-hidden",
     "false"
   );
+
 
   document.body.style.overflow =
     "hidden";
@@ -1256,14 +1686,22 @@ function openCart() {
 
 function closeCart() {
 
-  cartDrawer?.classList.remove("open");
+  cartDrawer
+    ?.classList.remove(
+      "open"
+    );
 
-  drawerOverlay?.classList.remove("open");
+  drawerOverlay
+    ?.classList.remove(
+      "open"
+    );
+
 
   cartDrawer?.setAttribute(
     "aria-hidden",
     "true"
   );
+
 
   document.body.style.overflow =
     "";
@@ -1294,36 +1732,45 @@ drawerOverlay?.addEventListener(
 
 
 /* =========================================================
-   CHECKOUT MODAL
+   CHECKOUT
 ========================================================= */
 
 const modal =
-  document.querySelector("#modal");
+  document.querySelector(
+    "#modal"
+  );
 
 
 function openCheckout() {
 
   if (!state.cart.length) {
 
-    alert("Your basket is empty.");
+    alert(
+      "Your basket is empty."
+    );
 
     return;
 
   }
 
-  modal?.classList.remove("hidden");
+
+  modal
+    ?.classList.remove(
+      "hidden"
+    );
 
 }
 
 
 function closeCheckout() {
 
-  modal?.classList.add("hidden");
+  modal
+    ?.classList.add(
+      "hidden"
+    );
 
 }
 
-
-/* OPEN CHECKOUT */
 
 document
   .querySelector("#checkoutBtn")
@@ -1333,8 +1780,6 @@ document
   );
 
 
-/* CLOSE CHECKOUT */
-
 document
   .querySelector("#closeModal")
   ?.addEventListener(
@@ -1343,13 +1788,14 @@ document
   );
 
 
-/* CLOSE WHEN CLICKING OUTSIDE MODAL */
-
 modal?.addEventListener(
   "click",
   event => {
 
-    if (event.target === modal) {
+    if (
+      event.target ===
+      modal
+    ) {
 
       closeCheckout();
 
@@ -1360,7 +1806,7 @@ modal?.addEventListener(
 
 
 /* =========================================================
-   CHECKOUT FORM
+   WHATSAPP CHECKOUT
 ========================================================= */
 
 document
@@ -1374,7 +1820,9 @@ document
 
       if (!state.cart.length) {
 
-        alert("Your basket is empty.");
+        alert(
+          "Your basket is empty."
+        );
 
         return;
 
@@ -1382,123 +1830,134 @@ document
 
 
       const form =
-        new FormData(event.target);
+        new FormData(
+          event.target
+        );
 
 
       const customer = {
 
         name:
-          form.get("name"),
+          String(
+            form.get("name") || ""
+          ),
 
         phone:
-          form.get("phone"),
+          String(
+            form.get("phone") || ""
+          ),
 
         email:
-          form.get("email"),
+          String(
+            form.get("email") || ""
+          ),
 
         address:
-          form.get("address")
+          String(
+            form.get("address") || ""
+          )
 
       };
 
 
-      /* SAVE CUSTOMER DETAILS */
-
       localStorage.setItem(
         "ee_customer",
-        JSON.stringify(customer)
+        JSON.stringify(
+          customer
+        )
       );
 
-
-      /* =====================================================
-         CALCULATE ORDER TOTAL
-      ====================================================== */
 
       const total =
         state.cart.reduce(
           (sum, item) =>
             sum +
-            (Number(item.price) * Number(item.qty)),
+            Number(item.price) *
+            Number(item.qty),
           0
         );
 
 
-      /* =====================================================
-         BUILD WHATSAPP MESSAGE
-      ====================================================== */
-
       let message =
-        "Hello Everything Everything! 👋\n\n" +
+        "Hello Everything Everything! 👋\n\n";
+
+
+      message +=
         "I would like to place an order.\n\n";
 
 
-      message += "CUSTOMER DETAILS\n";
+      message +=
+        "CUSTOMER DETAILS\n";
+
 
       message +=
-        "Name: " +
-        customer.name +
-        "\n";
+        `Name: ${customer.name}\n`;
+
 
       message +=
-        "Phone: " +
-        customer.phone +
-        "\n";
-
-      message +=
-        "Email: " +
-        customer.email +
-        "\n";
-
-      message +=
-        "Delivery location: " +
-        customer.address +
-        "\n\n";
+        `Phone: ${customer.phone}\n`;
 
 
-      message += "ORDER DETAILS\n";
-
-
-      state.cart.forEach((item, index) => {
+      if (customer.email) {
 
         message +=
-          `${index + 1}. ${item.name}\n`;
+          `Email: ${customer.email}\n`;
 
-        message +=
-          `Quantity: ${item.qty}\n`;
-
-        message +=
-          `Price: GH₵${money(item.price)} each\n`;
+      }
 
 
-        if (item.meta) {
+      message +=
+        `Delivery location: ${customer.address}\n\n`;
+
+
+      message +=
+        "ORDER DETAILS\n\n";
+
+
+      state.cart.forEach(
+        (item, index) => {
 
           message +=
-            `Ingredients: ${item.meta}\n`;
+            `${index + 1}. ${item.name}\n`;
+
+
+          message +=
+            `Quantity: ${item.qty}\n`;
+
+
+          message +=
+            `Price: GH₵${money(
+              item.price
+            )} each\n`;
+
+
+          if (item.meta) {
+
+            message +=
+              `Selection: ${item.meta}\n`;
+
+          }
+
+
+          message +=
+            `Subtotal: GH₵${money(
+              item.price *
+              item.qty
+            )}\n\n`;
 
         }
-
-
-        message +=
-          `Subtotal: GH₵${money(
-            item.price * item.qty
-          )}\n\n`;
-
-      });
+      );
 
 
       message +=
-        "TOTAL: GH₵" +
-        money(total) +
-        "\n\n";
+        `TOTAL: GH₵${money(
+          total
+        )}\n\n`;
 
 
       message +=
         "Please confirm my order and let me know the next steps. Thank you!";
 
-
-      /* =====================================================
-         WHATSAPP
-      ====================================================== */
 
       const whatsappNumber =
         "233547026348";
@@ -1508,15 +1967,15 @@ document
         "https://wa.me/" +
         whatsappNumber +
         "?text=" +
-        encodeURIComponent(message);
+        encodeURIComponent(
+          message
+        );
 
-
-      /* CLOSE MODAL */
 
       closeCheckout();
 
+      closeCart();
 
-      /* OPEN WHATSAPP */
 
       window.location.href =
         whatsappUrl;
@@ -1538,13 +1997,18 @@ document
       event.preventDefault();
 
 
-      const email =
+      const input =
         document.querySelector(
           "#newsletterEmail"
-        )?.value.trim();
+        );
 
 
-      if (!email) return;
+      const email =
+        input?.value.trim();
+
+
+      if (!email)
+        return;
 
 
       localStorage.setItem(
@@ -1572,16 +2036,22 @@ document
 
 
 /* =========================================================
-   KEYBOARD ESCAPE
+   ESCAPE
 ========================================================= */
 
 document.addEventListener(
   "keydown",
   event => {
 
-    if (event.key !== "Escape") {
+    if (
+      event.key !==
+      "Escape"
+    ) {
+
       return;
+
     }
+
 
     closeSearch();
 
