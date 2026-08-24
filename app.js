@@ -9,7 +9,8 @@
 ========================================================= */
 
 const SUPABASE_URL = "https://spplkkeeisaozamrsfwg.supabase.co";
-const SUPABASE_KEY = "sb_publishable_py0X361Nk1IT8YGrsj_xsQ_OQe2jBYM";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwcGxra2VlaXNhb3phbXJzZndnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY3NDUwNjcsImV4cCI6MjEwMjMyMTA2N30.FcDkhkXE5SezAH8NoQE04hODDsToC2fNpDFU4m0RHkg";
+
 
 const supabaseClient =
   window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
