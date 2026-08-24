@@ -475,6 +475,41 @@ main {
 
 
 /* =========================================================
+   STOCK INDICATORS
+========================================================= */
+
+.platter-box select:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.stock-note {
+  display: block;
+  margin-top: 6px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.stock-note.low {
+  color: var(--orange);
+}
+
+.stock-note.out {
+  color: #c0392b;
+}
+
+.product.out-of-stock .product-img {
+  opacity: .5;
+}
+
+.product button:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+
+/* =========================================================
    BUTTONS
 ========================================================= */
 
