@@ -5,192 +5,57 @@
 
 
 /* =========================================================
-   STORE DATA
+   SUPABASE CONNECTION
 ========================================================= */
 
-const products = [
+const SUPABASE_URL = "https://spplkkeeisaozamrsfwg.supabase.co";
+const SUPABASE_KEY = "sb_publishable_py0X361Nk1IT8YGrsj_xsQ_OQe2jBYM";
 
-  /* ----------------- GROCERIES ----------------- */
+const supabaseClient =
+  window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+
+/* =========================================================
+   FALLBACK PRODUCTS
+   Used only if the live database can't be reached, so the
+   site still shows something instead of an empty page.
+========================================================= */
+
+const FALLBACK_PRODUCTS = [
   {
     id: "product-1",
     name: "Featured Product",
     category: "Groceries",
     price: 25,
+    stock: 0,
     image: "assets/images/products/product-1.jpg"
-  },
-  {
-    id: "product-2",
-    name: "Everyday Essentials",
-    category: "Groceries",
-    price: 40,
-    image: "assets/images/products/product-2.jpg"
-  },
-  {
-    id: "product-3",
-    name: "Fresh Produce Box",
-    category: "Groceries",
-    price: 35,
-    image: "assets/images/products/product-3.jpg"
-  },
-  {
-    id: "product-4",
-    name: "Pantry Staples Pack",
-    category: "Groceries",
-    price: 55,
-    image: "assets/images/products/product-4.jpg"
-  },
-  {
-    id: "product-5",
-    name: "Breakfast Cereal",
-    category: "Groceries",
-    price: 28,
-    image: "assets/images/products/product-5.jpg"
-  },
-  {
-    id: "product-6",
-    name: "Cooking Oil 5L",
-    category: "Groceries",
-    price: 65,
-    image: "assets/images/products/product-6.jpg"
-  },
+  }
+];
 
-  /* ----------------- CLOTHING ----------------- */
 
-  {
-    id: "product-7",
-    name: "Signature Clothing",
-    category: "Clothing",
-    price: 180,
-    image: "assets/images/products/product-7.jpg"
-  },
-  {
-    id: "product-8",
-    name: "Premium Collection",
-    category: "Clothing",
-    price: 250,
-    image: "assets/images/products/product-8.jpg"
-  },
-  {
-    id: "product-9",
-    name: "Men's Casual Shirt",
-    category: "Clothing",
-    price: 95,
-    image: "assets/images/products/product-9.jpg"
-  },
-  {
-    id: "product-10",
-    name: "Women's Summer Dress",
-    category: "Clothing",
-    price: 160,
-    image: "assets/images/products/product-10.jpg"
-  },
-  {
-    id: "product-11",
-    name: "Denim Jacket",
-    category: "Clothing",
-    price: 220,
-    image: "assets/images/products/product-11.jpg"
-  },
-  {
-    id: "product-12",
-    name: "Kids Playwear Set",
-    category: "Clothing",
-    price: 85,
-    image: "assets/images/products/product-12.jpg"
-  },
+/* =========================================================
+   FETCH PRODUCTS FROM SUPABASE
+========================================================= */
 
-  /* ----------------- JEWELRY ----------------- */
+async function fetchProducts() {
 
-  {
-    id: "product-13",
-    name: "Classic Jewelry",
-    category: "Jewelry",
-    price: 120,
-    image: "assets/images/products/product-13.jpg"
-  },
-  {
-    id: "product-14",
-    name: "Everyday Jewelry",
-    category: "Jewelry",
-    price: 90,
-    image: "assets/images/products/product-14.jpg"
-  },
-  {
-    id: "product-15",
-    name: "Gold Plated Necklace",
-    category: "Jewelry",
-    price: 200,
-    image: "assets/images/products/product-15.jpg"
-  },
-  {
-    id: "product-16",
-    name: "Silver Hoop Earrings",
-    category: "Jewelry",
-    price: 75,
-    image: "assets/images/products/product-16.jpg"
-  },
-  {
-    id: "product-17",
-    name: "Beaded Bracelet",
-    category: "Jewelry",
-    price: 45,
-    image: "assets/images/products/product-17.jpg"
-  },
-  {
-    id: "product-18",
-    name: "Statement Ring",
-    category: "Jewelry",
-    price: 110,
-    image: "assets/images/products/product-18.jpg"
-  },
+  const { data, error } =
+    await supabaseClient
+      .from("products")
+      .select("*")
+      .order("category", { ascending: true });
 
-  /* ----------------- GIFTS ----------------- */
+  if (error || !data) {
 
-  {
-    id: "product-19",
-    name: "Special Gift",
-    category: "Gifts",
-    price: 100,
-    image: "assets/images/products/product-19.jpg"
-  },
-  {
-    id: "product-20",
-    name: "Gift Box",
-    category: "Gifts",
-    price: 150,
-    image: "assets/images/products/product-20.jpg"
-  },
-  {
-    id: "product-21",
-    name: "Personalized Mug",
-    category: "Gifts",
-    price: 40,
-    image: "assets/images/products/product-21.jpg"
-  },
-  {
-    id: "product-22",
-    name: "Scented Candle Set",
-    category: "Gifts",
-    price: 60,
-    image: "assets/images/products/product-22.jpg"
-  },
-  {
-    id: "product-23",
-    name: "Gift Hamper",
-    category: "Gifts",
-    price: 220,
-    image: "assets/images/products/product-23.jpg"
-  },
-  {
-    id: "product-24",
-    name: "Anniversary Gift Bag",
-    category: "Gifts",
-    price: 130,
-    image: "assets/images/products/product-24.jpg"
+    console.error("Could not load products:", error);
+
+    return FALLBACK_PRODUCTS;
+
   }
 
-];
+  return data;
+
+}
 
 
 /* =========================================================
@@ -349,7 +214,7 @@ const bundles = [
 
 const state = {
 
-  products,
+  products: [],
 
   categories,
 
@@ -591,46 +456,73 @@ function renderProducts() {
   }
 
 
-  grid.innerHTML = list.map(product => `
+  grid.innerHTML = list.map(product => {
 
-    <article class="product">
+    const stock = Number(product.stock ?? 0);
 
-      <div class="product-img">
+    const outOfStock = stock <= 0;
 
-        ${productImage(
-          product.image,
-          product.name
-        )}
-
-      </div>
+    const lowStock = !outOfStock && stock <= 5;
 
 
-      <div class="product-body">
+    let stockLabel = "";
 
-        <small>
-          ${escapeHtml(product.category)}
-        </small>
+    if (outOfStock) {
 
-        <h3>
-          ${escapeHtml(product.name)}
-        </h3>
+      stockLabel = `<span class="stock-note out">Out of stock</span>`;
 
-        <p class="price">
-          GH₵${money(product.price)}
-        </p>
+    } else if (lowStock) {
 
-        <button
-          class="btn primary"
-          onclick="addProduct('${product.id}')"
-        >
-          Add to basket
-        </button>
+      stockLabel = `<span class="stock-note low">Only ${stock} left</span>`;
 
-      </div>
+    }
 
-    </article>
 
-  `).join("");
+    return `
+
+      <article class="product ${outOfStock ? "out-of-stock" : ""}">
+
+        <div class="product-img">
+
+          ${productImage(
+            product.image,
+            product.name
+          )}
+
+        </div>
+
+
+        <div class="product-body">
+
+          <small>
+            ${escapeHtml(product.category)}
+          </small>
+
+          <h3>
+            ${escapeHtml(product.name)}
+          </h3>
+
+          <p class="price">
+            GH₵${money(product.price)}
+          </p>
+
+          ${stockLabel}
+
+          <button
+            class="btn primary"
+            onclick="addProduct('${product.id}')"
+            ${outOfStock ? "disabled" : ""}
+          >
+            ${outOfStock ? "Out of stock" : "Add to basket"}
+          </button>
+
+        </div>
+
+      </article>
+
+    `;
+
+  }).join("");
 
 }
 
@@ -866,7 +758,7 @@ mainNav?.querySelectorAll("a").forEach(link => {
 
 /* =========================================================
    PLATTER / BUNDLE BUILDER
-   Now works across Groceries, Clothing, Jewelry and Gifts.
+   Works across Groceries, Clothing, Jewelry and Gifts.
    Flow: choose a category -> choose a bundle -> pick items.
 ========================================================= */
 
@@ -1223,6 +1115,19 @@ function addProduct(id) {
     );
 
 
+  const currentQty =
+    existing ? existing.qty : 0;
+
+
+  if (currentQty + 1 > Number(product.stock ?? 0)) {
+
+    alert("Sorry, no more of this item in stock.");
+
+    return;
+
+  }
+
+
   if (existing) {
 
     existing.qty++;
@@ -1400,10 +1305,30 @@ function changeQty(index, amount) {
   if (!state.cart[index]) return;
 
 
-  state.cart[index].qty += amount;
+  const item = state.cart[index];
 
 
-  if (state.cart[index].qty <= 0) {
+  const product =
+    state.products.find(p => p.id === item.id);
+
+
+  if (amount > 0 && product) {
+
+    if (item.qty + amount > Number(product.stock ?? 0)) {
+
+      alert("Sorry, no more of this item in stock.");
+
+      return;
+
+    }
+
+  }
+
+
+  item.qty += amount;
+
+
+  if (item.qty <= 0) {
 
     state.cart.splice(index, 1);
 
@@ -1561,7 +1486,7 @@ document
   .querySelector("#checkoutForm")
   ?.addEventListener(
     "submit",
-    event => {
+    async event => {
 
       event.preventDefault();
 
@@ -1691,6 +1616,26 @@ document
 
 
       /* =====================================================
+         DECREMENT LIVE STOCK FOR EACH REAL PRODUCT IN THE ORDER
+         (custom platters/bundles aren't stock-tracked yet)
+      ====================================================== */
+
+      for (const item of state.cart) {
+
+        const isRealProduct =
+          state.products.some(p => p.id === item.id);
+
+        if (!isRealProduct) continue;
+
+        await supabaseClient.rpc("decrement_stock", {
+          p_id: item.id,
+          qty: item.qty
+        });
+
+      }
+
+
+      /* =====================================================
          WHATSAPP
       ====================================================== */
 
@@ -1703,6 +1648,19 @@ document
         whatsappNumber +
         "?text=" +
         encodeURIComponent(message);
+
+
+      /* CLEAR CART AND REFRESH LIVE STOCK */
+
+      state.cart = [];
+
+      saveCart();
+
+      state.products = await fetchProducts();
+
+      renderProducts();
+
+      renderCart();
 
 
       /* CLOSE MODAL */
@@ -1791,9 +1749,11 @@ document.addEventListener(
    INITIALIZE
 ========================================================= */
 
-function initializeStore() {
+async function initializeStore() {
 
   loadCart();
+
+  state.products = await fetchProducts();
 
   renderFilters();
 
