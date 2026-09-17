@@ -460,7 +460,7 @@ function getFilteredProducts() {
   let list = [...state.products];
 
 
-  /* CATEGORY */
+    /* CATEGORY */
 
   if (state.filter !== "all") {
 
@@ -473,7 +473,21 @@ function getFilteredProducts() {
   }
 
 
+  /* SUBCATEGORY */
+
+  if (state.subFilter !== "all") {
+
+    list = list.filter(product => {
+
+      return product.subcategory === state.subFilter;
+
+    });
+
+  }
+
+
   /* SEARCH */
+
 
   if (state.search.trim()) {
 
