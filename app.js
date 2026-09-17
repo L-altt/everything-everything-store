@@ -330,7 +330,7 @@ function renderFilters() {
   `;
 
 
-  element.querySelectorAll(".filter").forEach(button => {
+    element.querySelectorAll(".filter").forEach(button => {
 
     button.addEventListener("click", () => {
 
@@ -342,6 +342,12 @@ function renderFilters() {
 
       state.filter = button.dataset.filter;
 
+      state.subFilter = "all";
+
+      state.page = 1;
+
+      renderSubFilters();
+
       renderProducts();
 
     });
@@ -349,6 +355,100 @@ function renderFilters() {
   });
 
 }
+
+
+/* =========================================================
+   SUBCATEGORY FILTERS
+   Appears only when the active category has products with
+   a subcategory set (e.g. Jewelry -> Necklaces, Rings...).
+========================================================= */
+
+function renderSubFilters() {
+
+  const element = document.querySelector("#subcategoryFilters");
+
+  if (!element) return;
+
+
+  let pool = [...state.products];
+
+  if (state.filter !== "all") {
+
+    pool = pool.filter(
+      product => product.category.toLowerCase() === state.filter
+    );
+
+  }
+
+
+  const subcategories = [
+    ...new Set(
+      pool
+        .map(product => product.subcategory)
+        .filter(Boolean)
+    )
+  ];
+
+
+  if (!subcategories.length) {
+
+    element.innerHTML = "";
+
+    element.style.display = "none";
+
+    return;
+
+  }
+
+
+  element.style.display = "flex";
+
+
+  element.innerHTML = `
+
+    <button
+      class="filter sub-filter active"
+      data-subfilter="all"
+    >
+      All
+    </button>
+
+    ${subcategories.map(sub => `
+
+      <button
+        class="filter sub-filter"
+        data-subfilter="${escapeHtml(sub)}"
+      >
+        ${escapeHtml(sub)}
+      </button>
+
+    `).join("")}
+
+  `;
+
+
+  element.querySelectorAll(".sub-filter").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      element
+        .querySelectorAll(".sub-filter")
+        .forEach(item => item.classList.remove("active"));
+
+      button.classList.add("active");
+
+      state.subFilter = button.dataset.subfilter;
+
+      state.page = 1;
+
+      renderProducts();
+
+    });
+
+  });
+
+}
+
 
 
 /* =========================================================
