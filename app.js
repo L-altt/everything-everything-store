@@ -808,9 +808,15 @@ document
         });
 
 
-      setTimeout(() => {
+            setTimeout(() => {
+
+        state.subFilter = "all";
+
+        state.page = 1;
 
         renderFilters();
+
+        renderSubFilters();
 
         const filterButton =
           document.querySelector(
@@ -832,6 +838,7 @@ document
         renderProducts();
 
       }, 300);
+
 
     });
 
