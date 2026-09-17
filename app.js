@@ -225,11 +225,18 @@ const state = {
 
   filter: "all",
 
+  subFilter: "all",
+
   search: "",
 
-  sort: "default"
+  sort: "default",
+
+  page: 1
 
 };
+
+const PRODUCTS_PER_PAGE = 12;
+
 
 
 /* =========================================================
