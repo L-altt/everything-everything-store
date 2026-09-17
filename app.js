@@ -573,12 +573,29 @@ function renderProducts() {
 
     `;
 
+    renderPagination(0);
+
     return;
 
   }
 
 
-  grid.innerHTML = list.map(product => {
+  const totalPages =
+    Math.max(1, Math.ceil(list.length / PRODUCTS_PER_PAGE));
+
+  if (state.page > totalPages) {
+
+    state.page = totalPages;
+
+  }
+
+
+  const start = (state.page - 1) * PRODUCTS_PER_PAGE;
+
+  const pageItems = list.slice(start, start + PRODUCTS_PER_PAGE);
+
+
+  grid.innerHTML = pageItems.map(product => {
 
     const stock = Number(product.stock ?? 0);
 
@@ -646,7 +663,100 @@ function renderProducts() {
 
   }).join("");
 
+
+  renderPagination(list.length);
+
 }
+
+
+/* =========================================================
+   PAGINATION
+========================================================= */
+
+function renderPagination(totalItems) {
+
+  const container = document.querySelector("#pagination");
+
+  if (!container) return;
+
+
+  const totalPages =
+    Math.ceil(totalItems / PRODUCTS_PER_PAGE);
+
+
+  if (totalPages <= 1) {
+
+    container.innerHTML = "";
+
+    return;
+
+  }
+
+
+  let buttons = "";
+
+
+  buttons += `
+    <button
+      class="page-btn"
+      data-page="${state.page - 1}"
+      ${state.page === 1 ? "disabled" : ""}
+    >
+      Prev
+    </button>
+  `;
+
+
+  for (let page = 1; page <= totalPages; page++) {
+
+    buttons += `
+      <button
+        class="page-btn ${page === state.page ? "active" : ""}"
+        data-page="${page}"
+      >
+        ${page}
+      </button>
+    `;
+
+  }
+
+
+  buttons += `
+    <button
+      class="page-btn"
+      data-page="${state.page + 1}"
+      ${state.page === totalPages ? "disabled" : ""}
+    >
+      Next
+    </button>
+  `;
+
+
+  container.innerHTML = buttons;
+
+
+  container.querySelectorAll(".page-btn").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      const page = Number(button.dataset.page);
+
+      if (!page || page < 1 || page > totalPages) return;
+
+      state.page = page;
+
+      renderProducts();
+
+      document
+        .querySelector("#shop")
+        ?.scrollIntoView({ behavior: "smooth" });
+
+    });
+
+  });
+
+}
+
 
 
 /* =========================================================
