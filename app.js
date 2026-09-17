@@ -2006,7 +2006,10 @@ async function initializeStore() {
 
   renderFilters();
 
+  renderSubFilters();
+
   renderProducts();
+
 
   renderPlatterCategories();
 
