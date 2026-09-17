@@ -909,7 +909,13 @@ function performSearch() {
 
   state.filter = "all";
 
+  state.subFilter = "all";
+
+  state.page = 1;
+
   renderFilters();
+
+  renderSubFilters();
 
   renderProducts();
 
@@ -923,6 +929,7 @@ function performSearch() {
     });
 
 }
+
 
 
 searchSubmit?.addEventListener(
