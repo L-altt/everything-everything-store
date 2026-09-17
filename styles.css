@@ -2328,3 +2328,59 @@ select:focus-visible {
   }
 
 }
+
+.sub-filters {
+  display: none;
+  margin-top: -20px;
+  margin-bottom: 30px;
+  justify-content: flex-start;
+}
+
+.sub-filter {
+  background: var(--cream-dark);
+  font-size: 10px;
+}
+
+.sub-filter:hover,
+.sub-filter.active {
+  background: var(--green);
+  border-color: var(--green);
+  color: white;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 40px;
+}
+
+.page-btn {
+  min-width: 38px;
+  height: 38px;
+  border: 1px solid var(--border);
+  background: white;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.page-btn:hover:not(:disabled) {
+  border-color: var(--black);
+}
+
+.page-btn.active {
+  background: var(--black);
+  color: white;
+  border-color: var(--black);
+}
+
+.page-btn:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+
+
