@@ -772,11 +772,14 @@ if (sortProducts) {
 
     state.sort = event.target.value;
 
+    state.page = 1;
+
     renderProducts();
 
   });
 
 }
+
 
 
 /* =========================================================
