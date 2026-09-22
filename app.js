@@ -520,7 +520,7 @@ function renderProducts() {
 
     return `
 
-      <article class="product ${outOfStock ? "out-of-stock" : ""}">
+      <article class="product ${outOfStock ? "out-of-stock" : ""}" data-id="${escapeHtml(product.id)}" tabindex="0">
 
         <div class="product-img">
 
@@ -638,6 +638,218 @@ function renderPagination(totalItems) {
   });
 
 }
+
+
+/* =========================================================
+   PRODUCT POPUP
+   Click a product to see it enlarged with its details
+   before adding it to the basket.
+========================================================= */
+
+const productModalStyles = document.createElement("style");
+
+productModalStyles.textContent = `
+  .product { cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; }
+  .product:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(0,0,0,.12); }
+  .product button { cursor: pointer; }
+
+  .pm-overlay {
+    position: fixed; inset: 0; z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    padding: 16px; background: rgba(0,0,0,.6);
+    opacity: 0; pointer-events: none; transition: opacity .2s ease;
+  }
+  .pm-overlay.open { opacity: 1; pointer-events: auto; }
+
+  .pm-card {
+    position: relative; background: #fff; color: #222;
+    width: 100%; max-width: 820px; max-height: 90vh; overflow: auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,.35);
+    transform: scale(.9); transition: transform .2s ease;
+  }
+  .pm-overlay.open .pm-card { transform: scale(1); }
+
+  .pm-img {
+    background: #f3f3f3; min-height: 340px;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .pm-img img { width: 100%; height: 100%; object-fit: cover; }
+
+  .pm-body { padding: 28px; display: flex; flex-direction: column; gap: 12px; }
+  .pm-body h2 { margin: 0; font-size: 1.6rem; line-height: 1.2; }
+  .pm-price { margin: 0; font-size: 1.4rem; font-weight: 800; }
+  .pm-desc { margin: 0; color: #555; line-height: 1.5; }
+  .pm-body .btn { margin-top: auto; }
+
+  .pm-close {
+    position: absolute; top: 10px; right: 12px; z-index: 2;
+    width: 38px; height: 38px; border: 0; border-radius: 50%;
+    background: #fff; font-size: 24px; line-height: 1; cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,.25);
+  }
+
+  @media (max-width: 640px) {
+    .pm-card { grid-template-columns: 1fr; }
+    .pm-img { min-height: 240px; max-height: 320px; }
+    .pm-body { padding: 20px; }
+  }
+`;
+
+document.head.appendChild(productModalStyles);
+
+
+function openProductModal(id) {
+
+  const product =
+    state.products.find(item => item.id === id);
+
+  if (!product) return;
+
+  let overlay = document.querySelector("#productModal");
+
+  if (!overlay) {
+
+    overlay = document.createElement("div");
+
+    overlay.id = "productModal";
+    overlay.className = "pm-overlay";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+
+    overlay.addEventListener("click", event => {
+      if (event.target === overlay) {
+        closeProductModal();
+      }
+    });
+
+    document.body.appendChild(overlay);
+
+  }
+
+  const stock = Number(product.stock ?? 0);
+  const outOfStock = stock <= 0;
+
+  let stockLabel = "";
+
+  if (outOfStock) {
+    stockLabel = `<span class="stock-note out">Out of stock</span>`;
+  } else if (stock <= 5) {
+    stockLabel = `<span class="stock-note low">Only ${stock} left</span>`;
+  }
+
+  const category =
+    escapeHtml(product.category) +
+    (product.subcategory
+      ? " · " + escapeHtml(product.subcategory)
+      : "");
+
+  overlay.innerHTML = `
+
+    <div class="pm-card">
+
+      <button
+        class="pm-close"
+        aria-label="Close"
+        onclick="closeProductModal()"
+      >
+        &times;
+      </button>
+
+      <div class="pm-img">
+        ${productImage(product.image, product.name)}
+      </div>
+
+      <div class="pm-body">
+
+        <small>${category}</small>
+
+        <h2>${escapeHtml(product.name)}</h2>
+
+        <p class="pm-price">GH₵${money(product.price)}</p>
+
+        ${
+          product.description
+            ? `<p class="pm-desc">${escapeHtml(product.description)}</p>`
+            : ""
+        }
+
+        ${stockLabel}
+
+        <button
+          class="btn primary"
+          onclick="addFromModal('${escapeHtml(product.id)}')"
+          ${outOfStock ? "disabled" : ""}
+        >
+          ${outOfStock ? "Out of stock" : "Add to basket"}
+        </button>
+
+      </div>
+
+    </div>
+
+  `;
+
+  setTimeout(() => overlay.classList.add("open"), 10);
+
+  document.body.style.overflow = "hidden";
+
+}
+
+
+function closeProductModal() {
+
+  const overlay = document.querySelector("#productModal");
+
+  if (!overlay || !overlay.classList.contains("open")) return;
+
+  overlay.classList.remove("open");
+
+  document.body.style.overflow = "";
+
+}
+
+
+function addFromModal(id) {
+
+  closeProductModal();
+
+  addProduct(id);
+
+}
+
+window.closeProductModal = closeProductModal;
+window.addFromModal = addFromModal;
+
+
+/* Open the popup when a product card (not its button) is clicked */
+
+const productGridElement = document.querySelector("#productGrid");
+
+productGridElement?.addEventListener("click", event => {
+
+  if (event.target.closest("button")) return;
+
+  const card = event.target.closest(".product");
+
+  if (card?.dataset.id) {
+    openProductModal(card.dataset.id);
+  }
+
+});
+
+productGridElement?.addEventListener("keydown", event => {
+
+  if (event.key !== "Enter" || event.target.tagName === "BUTTON") return;
+
+  const card = event.target.closest(".product");
+
+  if (card?.dataset.id) {
+    openProductModal(card.dataset.id);
+  }
+
+});
 
 
 /* =========================================================
@@ -1583,6 +1795,7 @@ document.addEventListener("keydown", event => {
   closeSearch();
   closeCart();
   closeCheckout();
+  closeProductModal();
 
 });
 
