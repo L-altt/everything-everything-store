@@ -1653,7 +1653,7 @@ document
       ------------------------------------------------------ */
 
       let message =
-        "Hello Everything Everything! 👋\n\n" +
+        "Hello Empo 360! 👋\n\n" +
         "I would like to place an order.\n\n";
 
       message += "CUSTOMER DETAILS\n";
